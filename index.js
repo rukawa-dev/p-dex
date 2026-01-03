@@ -52,15 +52,29 @@ const searchOptions = document.querySelectorAll('input[name="search-option"]');
 const searchInput = document.getElementById('search-input');
 const gridContainer = document.getElementById('pokemon-list');
 
+// --- 'Caught' Pokemon Logic ---
+let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
+
+function toggleCaughtStatus(pokemonId, cardElement) {
+    if (caughtPokemon.has(pokemonId)) {
+        caughtPokemon.delete(pokemonId);
+        cardElement.classList.remove('is-caught');
+    } else {
+        caughtPokemon.add(pokemonId);
+        cardElement.classList.add('is-caught');
+    }
+    localStorage.setItem('caughtPokemon', JSON.stringify(Array.from(caughtPokemon)));
+}
+// --- End Logic ---
+
 function renderGrid(dataToRender) {
   gridContainer.innerHTML = ''; // Clear existing cards
 
   dataToRender.forEach(pokemon => {
-    const cardLink = document.createElement('a');
-    cardLink.href = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
-    cardLink.target = '_blank';
-    cardLink.rel = 'noopener noreferrer';
-    cardLink.className = 'relative block bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-200';
+    const card = document.createElement('div');
+    const isCaught = caughtPokemon.has(pokemon.id);
+    card.className = `relative bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-all duration-200 ${isCaught ? 'is-caught' : ''}`;
+    card.dataset.pokemonId = pokemon.id;
 
     const typesHtml = pokemon.types.map(type => {
         const colorClass = typeColors[type] || 'bg-gray-200 text-gray-800';
@@ -75,12 +89,24 @@ function renderGrid(dataToRender) {
     }).join(' ');
 
     const evolutionColorClass = evolutionCategoryColors[pokemon.evolution.category] || 'text-gray-500';
+    const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
 
-    cardLink.innerHTML = `
+    card.innerHTML = `
+        <div class="absolute top-2 right-2">
+            <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" name="toggle" id="toggle-${pokemon.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" ${isCaught ? 'checked' : ''}/>
+                <label for="toggle-${pokemon.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
+        </div>
         <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono">#${pokemon.id}</p>
         <div class="p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
             <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24" loading="lazy">
-            <h3 class="text-lg font-bold text-gray-800 mt-2">${pokemon.name}</h3>
+            <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
+                <h3 class="text-lg font-bold text-gray-800 group-hover:underline">${pokemon.name}</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+            </a>
         </div>
         <div class="p-4 space-y-3">
             <div>
@@ -98,7 +124,11 @@ function renderGrid(dataToRender) {
         </div>
     `;
     
-    gridContainer.appendChild(cardLink);
+    gridContainer.appendChild(card);
+
+    // Add event listener to the toggle
+    const toggle = card.querySelector(`#toggle-${pokemon.id}`);
+    toggle.addEventListener('change', () => toggleCaughtStatus(pokemon.id, card));
   });
 }
 
