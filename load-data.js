@@ -2,28 +2,7 @@ const fs = require('fs');
 
 const API_URL = 'https://pokeapi.co/api/v2';
 
-// 인자 파싱
-const args = process.argv.slice(2);
-let startId = 1;
-let endId = 3; 
-
-if (args.length > 0) {
-    const range = args[0].split('-');
-    if (range.length === 2) {
-        startId = parseInt(range[0]);
-        endId = parseInt(range[1]);
-    } else {
-        const singleId = parseInt(args[0]);
-        if (!isNaN(singleId)) {
-            startId = singleId;
-            endId = singleId;
-        }
-    }
-}
-
-console.log(`Generating data for Pokemon #${startId} to #${endId}`);
-
-// --- 타입 상성 관련 로직 추가 ---
+// --- 타입 상성 관련 로직 ---
 const ALL_TYPES = [
     'normal', 'fire', 'water', 'electric', 'grass', 'ice', 
     'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 
@@ -58,8 +37,7 @@ function calculateWeaknesses(pokemonTypes) {
         .filter(([, multiplier]) => multiplier >= 2)
         .map(([type]) => type);
 }
-// --- 로직 추가 끝 ---
-
+// --- 로직 끝 ---
 
 // 한국어 이름 가져오기 헬퍼 함수
 async function getKoreanName(url) {
@@ -97,16 +75,15 @@ async function fetchPokemonData(id) {
     const types = data.types.map(t => t.type.name);
     const weaknesses = calculateWeaknesses(types);
 
-    // 공식 일러스트 이미지 URL 사용
     const imageUrl = data.sprites.other['official-artwork'].front_default;
 
     return {
       id: data.id,
       name: koreanName,
       types: types,
-      weaknesses: weaknesses, // 약점 필드 추가
+      weaknesses: weaknesses,
       evolution: evolutionCondition,
-      image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png` // 공식 이미지가 없을 경우 대비
+      image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
     };
   } catch (error) {
     console.error(`Error fetching pokemon ${id}:`, error);
@@ -115,9 +92,7 @@ async function fetchPokemonData(id) {
 }
 
 async function parseEvolution(chain, currentName) {
-    if (chain.species.name === currentName) {
-        return { text: '-', category: 'NONE' };
-    }
+    if (chain.species.name === currentName) return { text: '-', category: 'NONE' };
     
     for (const evo of chain.evolves_to) {
         if (evo.species.name === currentName) {
@@ -125,7 +100,6 @@ async function parseEvolution(chain, currentName) {
             const details = await formatEvolutionDetails(evo.evolution_details[0]);
             return { text: `${preEvoName} ${details.text}`, category: details.category };
         }
-        
         for (const evo2 of evo.evolves_to) {
             if (evo2.species.name === currentName) {
                 const preEvoName = await getKoreanName(evo.species.url);
@@ -139,35 +113,56 @@ async function parseEvolution(chain, currentName) {
 
 async function formatEvolutionDetails(details) {
     if (!details) return { text: '특수 조건', category: 'ETC' };
-
-    if (details.min_level) {
-        return { text: `Lv.${details.min_level}`, category: 'LV' };
-    }
+    if (details.min_level) return { text: `Lv.${details.min_level}`, category: 'LV' };
     if (details.item) {
         const itemName = await getKoreanName(details.item.url) || '아이템';
         return { text: `${itemName} 사용`, category: 'ITEM' };
     }
-    if (details.trigger?.name === 'trade') {
-        return { text: '통신교환', category: 'TRADE' };
-    }
-    if (details.min_happiness) {
-        return { text: '친밀도 높음', category: 'ETC' };
-    }
-    
+    if (details.trigger?.name === 'trade') return { text: '통신교환', category: 'TRADE' };
+    if (details.min_happiness) return { text: '친밀도 높음', category: 'ETC' };
     return { text: '특수 조건', category: 'ETC' };
 }
 
-async function generateData() {
-  await fetchAllTypeRelations(); // 모든 타입 상성 정보 미리 로드
+async function main() {
+    const args = process.argv.slice(2);
+    let startId = 1;
+    let endId = 3;
 
-  const allPokemon = [];
-  for (let i = startId; i <= endId; i++) {
-    const pokemon = await fetchPokemonData(i);
-    if (pokemon) allPokemon.push(pokemon);
-  }
-  const fileContent = `const pokemonData = ${JSON.stringify(allPokemon, null, 2)};`;
-  fs.writeFileSync('dex-data.js', fileContent);
-  console.log('Successfully generated dex-data.js');
+    if (args.length > 0) {
+        if (args[0] === 'all') {
+            console.log('Fetching total pokemon count...');
+            const response = await fetch(`${API_URL}/pokemon-species?limit=1`);
+            const data = await response.json();
+            startId = 1;
+            endId = data.count;
+        } else {
+            const range = args[0].split('-');
+            if (range.length === 2) {
+                startId = parseInt(range[0]);
+                endId = parseInt(range[1]);
+            } else {
+                const singleId = parseInt(args[0]);
+                if (!isNaN(singleId)) {
+                    startId = singleId;
+                    endId = singleId;
+                }
+            }
+        }
+    }
+
+    console.log(`Generating data for Pokemon #${startId} to #${endId}`);
+    
+    await fetchAllTypeRelations();
+
+    const allPokemon = [];
+    for (let i = startId; i <= endId; i++) {
+        const pokemon = await fetchPokemonData(i);
+        if (pokemon) allPokemon.push(pokemon);
+    }
+    
+    const fileContent = `const pokemonData = ${JSON.stringify(allPokemon, null, 2)};`;
+    fs.writeFileSync('dex-data.js', fileContent);
+    console.log(`Successfully generated dex-data.js for ${allPokemon.length} Pokemon.`);
 }
 
-generateData();
+main();
