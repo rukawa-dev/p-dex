@@ -40,10 +40,17 @@ const typeNamesKo = {
   fairy: '페어리',
 };
 
+const evolutionCategoryColors = {
+    LV: 'text-blue-600',
+    ITEM: 'text-green-600',
+    TRADE: 'text-purple-600',
+    ETC: 'text-orange-600',
+    NONE: 'text-gray-500'
+};
+
 function renderTable() {
   const tableBody = document.getElementById('pokemon-list');
   
-  // pokemonData는 dex-data.js에서 정의됨
   if (typeof pokemonData === 'undefined') {
     console.error('pokemonData is not defined. Make sure dex-data.js is loaded.');
     return;
@@ -61,21 +68,26 @@ function renderTable() {
                 </span>`;
     }).join('');
 
+    const evolutionColorClass = evolutionCategoryColors[pokemon.evolution.category] || 'text-gray-500';
+    const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
+
     row.innerHTML = `
       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
         <p class="text-gray-900 whitespace-no-wrap font-mono">#${String(pokemon.id).padStart(3, '0')}</p>
       </td>
       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center font-bold text-gray-700">
-        ${pokemon.name}
+        <div class="flex items-center justify-center">
+            <img src="${pokemon.image}" alt="${pokemon.name}" class="w-10 h-10 mr-2">
+            <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="hover:underline">
+              ${pokemon.name}
+            </a>
+        </div>
       </td>
       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
         ${typesHtml}
       </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center text-gray-500">
-        ${pokemon.evolution}
-      </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center text-gray-500">
-        ${pokemon.location || '-'}
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center ${evolutionColorClass} font-semibold">
+        ${pokemon.evolution.text}
       </td>
     `;
     
