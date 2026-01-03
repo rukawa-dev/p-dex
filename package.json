@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./input.css -o ./output.css --watch",
-    "update-data": "node load-data.js",
-    "update-data:all": "node load-data.js 1-151",
-    "update-data:custom": "node load-data.js",
+    "data": "node load-data.js",
+    "data:test": "node load-data.js 1-3",
     "dev": "concurrently \"npm run build:css\""
   },
   "author": "",
