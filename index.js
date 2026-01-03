@@ -50,58 +50,55 @@ const evolutionCategoryColors = {
 
 const searchOptions = document.querySelectorAll('input[name="search-option"]');
 const searchInput = document.getElementById('search-input');
-const tableBody = document.getElementById('pokemon-list');
+const gridContainer = document.getElementById('pokemon-list');
 
-function renderTable(dataToRender) {
-  tableBody.innerHTML = ''; // Clear existing rows
+function renderGrid(dataToRender) {
+  gridContainer.innerHTML = ''; // Clear existing cards
 
   dataToRender.forEach(pokemon => {
-    const row = document.createElement('tr');
-    row.className = 'hover:bg-gray-50 transition-colors duration-200';
-    
+    const card = document.createElement('div');
+    card.className = 'bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-200';
+
     const typesHtml = pokemon.types.map(type => {
         const colorClass = typeColors[type] || 'bg-gray-200 text-gray-800';
         const typeName = typeNamesKo[type] || type;
-        return `<span class="relative inline-block px-3 py-1 font-semibold leading-tight ${colorClass} rounded-full mr-1 text-xs">
-                  <span class="relative z-10">${typeName}</span>
-                </span>`;
-    }).join('');
+        return `<span class="inline-block px-2 py-1 text-xs font-semibold ${colorClass} rounded-full">${typeName}</span>`;
+    }).join(' ');
 
     const weaknessesHtml = (pokemon.weaknesses || []).map(type => {
         const colorClass = typeColors[type] || 'bg-gray-200 text-gray-800';
         const typeName = typeNamesKo[type] || type;
-        return `<span class="relative inline-block px-3 py-1 font-semibold leading-tight ${colorClass} rounded-full mr-1 text-xs">
-                  <span class="relative z-10">${typeName}</span>
-                </span>`;
-    }).join('');
+        return `<span class="inline-block px-2 py-1 text-xs font-semibold ${colorClass} rounded-full">${typeName}</span>`;
+    }).join(' ');
 
     const evolutionColorClass = evolutionCategoryColors[pokemon.evolution.category] || 'text-gray-500';
     const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
 
-    row.innerHTML = `
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
-        <p class="text-gray-900 whitespace-no-wrap font-mono">${pokemon.id}</p>
-      </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center font-bold text-gray-700">
-        <div class="flex items-center justify-center">
-            <img src="${pokemon.image}" alt="${pokemon.name}" class="w-10 h-10 mr-2">
-            <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="hover:underline">
-              ${pokemon.name}
-            </a>
+    card.innerHTML = `
+        <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="p-4 bg-gray-50 flex flex-col items-center justify-center">
+                <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24">
+                <p class="text-sm text-gray-500 font-mono">No. ${pokemon.id}</p>
+                <h3 class="text-lg font-bold text-gray-800">${pokemon.name}</h3>
+            </div>
+        </a>
+        <div class="p-4 space-y-3">
+            <div>
+                <h4 class="text-xs font-bold text-gray-500 uppercase mb-1">타입</h4>
+                <div class="flex flex-wrap gap-1">${typesHtml}</div>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-gray-500 uppercase mb-1">약점</h4>
+                <div class="flex flex-wrap gap-1">${weaknessesHtml}</div>
+            </div>
+            <div>
+                <h4 class="text-xs font-bold text-gray-500 uppercase mb-1">진화 조건</h4>
+                <p class="text-sm ${evolutionColorClass} font-semibold">${pokemon.evolution.text}</p>
+            </div>
         </div>
-      </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
-        ${typesHtml}
-      </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
-        ${weaknessesHtml}
-      </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center ${evolutionColorClass} font-semibold">
-        ${pokemon.evolution.text}
-      </td>
     `;
     
-    tableBody.appendChild(row);
+    gridContainer.appendChild(card);
   });
 }
 
@@ -110,7 +107,7 @@ function handleSearch() {
     const searchColumn = document.querySelector('input[name="search-option"]:checked').value;
 
     if (!searchTerm) {
-        renderTable(pokemonData);
+        renderGrid(pokemonData);
         return;
     }
 
@@ -121,7 +118,6 @@ function handleSearch() {
             case 'name':
                 return pokemon.name.toLowerCase().includes(searchTerm);
             case 'type':
-                // 타입은 영문명과 한글명 모두 검색 가능하도록 처리
                 return pokemon.types.some(type => 
                     type.toLowerCase().includes(searchTerm) || 
                     (typeNamesKo[type] && typeNamesKo[type].toLowerCase().includes(searchTerm))
@@ -133,12 +129,12 @@ function handleSearch() {
         }
     });
 
-    renderTable(filteredData);
+    renderGrid(filteredData);
 }
 
 // Initial render
 if (typeof pokemonData !== 'undefined') {
-    renderTable(pokemonData);
+    renderGrid(pokemonData);
     searchInput.addEventListener('input', handleSearch);
     searchOptions.forEach(radio => radio.addEventListener('change', handleSearch));
 } else {
