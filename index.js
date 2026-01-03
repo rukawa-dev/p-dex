@@ -51,6 +51,7 @@ const evolutionCategoryColors = {
 const searchOptions = document.querySelectorAll('input[name="search-option"]');
 const searchInput = document.getElementById('search-input');
 const gridContainer = document.getElementById('pokemon-list');
+const resetCaughtBtn = document.getElementById('reset-caught-btn');
 
 // --- 'Caught' Pokemon Logic ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
@@ -64,6 +65,14 @@ function toggleCaughtStatus(pokemonId, cardElement) {
         cardElement.classList.add('is-caught');
     }
     localStorage.setItem('caughtPokemon', JSON.stringify(Array.from(caughtPokemon)));
+}
+
+function resetCaughtData() {
+    if (confirm('정말로 모든 "잡은 포켓몬" 데이터를 초기화하시겠습니까?')) {
+        localStorage.removeItem('caughtPokemon');
+        caughtPokemon.clear();
+        handleSearch(); // Re-render the grid to reflect the changes
+    }
 }
 // --- End Logic ---
 
@@ -167,6 +176,7 @@ if (typeof pokemonData !== 'undefined') {
     renderGrid(pokemonData);
     searchInput.addEventListener('input', handleSearch);
     searchOptions.forEach(radio => radio.addEventListener('change', handleSearch));
+    resetCaughtBtn.addEventListener('click', resetCaughtData);
 } else {
     console.error('pokemonData is not defined. Make sure dex-data.js is loaded.');
 }
