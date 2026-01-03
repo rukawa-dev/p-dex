@@ -68,14 +68,22 @@ function renderTable() {
                 </span>`;
     }).join('');
 
+    const weaknessesHtml = (pokemon.weaknesses || []).map(type => {
+        const colorClass = typeColors[type] || 'bg-gray-200 text-gray-800';
+        const typeName = typeNamesKo[type] || type;
+        return `<span class="relative inline-block px-3 py-1 font-semibold leading-tight ${colorClass} rounded-full mr-1 text-xs">
+                  <span class="relative z-10">${typeName}</span>
+                </span>`;
+    }).join('');
+
     const evolutionColorClass = evolutionCategoryColors[pokemon.evolution.category] || 'text-gray-500';
     const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
 
     row.innerHTML = `
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
         <p class="text-gray-900 whitespace-no-wrap font-mono">#${String(pokemon.id).padStart(3, '0')}</p>
       </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center font-bold text-gray-700">
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center font-bold text-gray-700">
         <div class="flex items-center justify-center">
             <img src="${pokemon.image}" alt="${pokemon.name}" class="w-10 h-10 mr-2">
             <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="hover:underline">
@@ -83,10 +91,13 @@ function renderTable() {
             </a>
         </div>
       </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
         ${typesHtml}
       </td>
-      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center ${evolutionColorClass} font-semibold">
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
+        ${weaknessesHtml}
+      </td>
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center ${evolutionColorClass} font-semibold">
         ${pokemon.evolution.text}
       </td>
     `;

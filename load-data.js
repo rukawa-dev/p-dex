@@ -23,6 +23,44 @@ if (args.length > 0) {
 
 console.log(`Generating data for Pokemon #${startId} to #${endId}`);
 
+// --- 타입 상성 관련 로직 추가 ---
+const ALL_TYPES = [
+    'normal', 'fire', 'water', 'electric', 'grass', 'ice', 
+    'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 
+    'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
+];
+const typeRelationsCache = new Map();
+
+async function fetchAllTypeRelations() {
+    console.log('Fetching all type relations...');
+    await Promise.all(ALL_TYPES.map(async (type) => {
+        const response = await fetch(`${API_URL}/type/${type}`);
+        const data = await response.json();
+        typeRelationsCache.set(type, data.damage_relations);
+    }));
+    console.log('All type relations cached.');
+}
+
+function calculateWeaknesses(pokemonTypes) {
+    const multipliers = {};
+    ALL_TYPES.forEach(t => multipliers[t] = 1);
+
+    pokemonTypes.forEach(type => {
+        const relations = typeRelationsCache.get(type);
+        if (relations) {
+            relations.double_damage_from.forEach(t => multipliers[t.name] *= 2);
+            relations.half_damage_from.forEach(t => multipliers[t.name] *= 0.5);
+            relations.no_damage_from.forEach(t => multipliers[t.name] *= 0);
+        }
+    });
+
+    return Object.entries(multipliers)
+        .filter(([, multiplier]) => multiplier >= 2)
+        .map(([type]) => type);
+}
+// --- 로직 추가 끝 ---
+
+
 // 한국어 이름 가져오기 헬퍼 함수
 async function getKoreanName(url) {
     try {
@@ -56,10 +94,14 @@ async function fetchPokemonData(id) {
         evolutionCondition = await parseEvolution(evoData.chain, data.name);
     }
 
+    const types = data.types.map(t => t.type.name);
+    const weaknesses = calculateWeaknesses(types);
+
     return {
       id: data.id,
       name: koreanName,
-      types: data.types.map(t => t.type.name),
+      types: types,
+      weaknesses: weaknesses, // 약점 필드 추가
       evolution: evolutionCondition,
       image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
     };
@@ -113,6 +155,8 @@ async function formatEvolutionDetails(details) {
 }
 
 async function generateData() {
+  await fetchAllTypeRelations(); // 모든 타입 상성 정보 미리 로드
+
   const allPokemon = [];
   for (let i = startId; i <= endId; i++) {
     const pokemon = await fetchPokemonData(i);
