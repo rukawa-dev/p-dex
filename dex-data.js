@@ -22,7 +22,7 @@ const pokemonData = [
     "types": [
       "psychic"
     ],
-    "evolution": "기본"
+    "evolution": "-"
   },
   {
     "id": 64,
@@ -46,7 +46,7 @@ const pokemonData = [
     "types": [
       "fighting"
     ],
-    "evolution": "기본"
+    "evolution": "-"
   },
   {
     "id": 67,
@@ -71,7 +71,7 @@ const pokemonData = [
       "grass",
       "poison"
     ],
-    "evolution": "기본"
+    "evolution": "-"
   },
   {
     "id": 70,

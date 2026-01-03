@@ -13,8 +13,6 @@ if (args.length > 0) {
         startId = parseInt(range[0]);
         endId = parseInt(range[1]);
     } else {
-        // 인자가 하나만 있으면 해당 번호만 조회하거나, 1부터 해당 번호까지 조회하는 등 정책을 정할 수 있음
-        // 여기서는 "1-10" 형식을 권장하고, 숫자 하나면 해당 번호만 조회하도록 처리
         const singleId = parseInt(args[0]);
         if (!isNaN(singleId)) {
             startId = singleId;
@@ -55,7 +53,7 @@ async function fetchPokemonData(id) {
     const koreanName = speciesData.names.find(name => name.language.name === 'ko')?.name || data.name;
     
     // 진화 정보 파싱
-    let evolutionCondition = '기본';
+    let evolutionCondition = '-';
     if (speciesData.evolution_chain) {
         const evoResponse = await fetch(speciesData.evolution_chain.url);
         const evoData = await evoResponse.json();
@@ -78,7 +76,7 @@ async function fetchPokemonData(id) {
 async function parseEvolution(chain, currentName) {
     // 1단계 (기본형)
     if (chain.species.name === currentName) {
-        return '기본';
+        return '-';
     }
     
     // 2단계 탐색
