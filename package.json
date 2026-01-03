@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./input.css -o ./output.css --watch",
     "update-data": "node load-data.js",
-    "dev": "concurrently \"npm run build:css\" \"npm run update-data\""
+    "update-data:all": "node load-data.js 1-151",
+    "update-data:custom": "node load-data.js",
+    "dev": "concurrently \"npm run build:css\""
   },
   "author": "",
   "license": "ISC",

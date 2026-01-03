@@ -1,7 +1,29 @@
 const fs = require('fs');
 
-const POKEMON_COUNT = 3; // 테스트용 3마리
 const API_URL = 'https://pokeapi.co/api/v2';
+
+// 인자 파싱 (예: node load-data.js 1-10)
+const args = process.argv.slice(2);
+let startId = 1;
+let endId = 3; // 기본값
+
+if (args.length > 0) {
+    const range = args[0].split('-');
+    if (range.length === 2) {
+        startId = parseInt(range[0]);
+        endId = parseInt(range[1]);
+    } else {
+        // 인자가 하나만 있으면 해당 번호만 조회하거나, 1부터 해당 번호까지 조회하는 등 정책을 정할 수 있음
+        // 여기서는 "1-10" 형식을 권장하고, 숫자 하나면 해당 번호만 조회하도록 처리
+        const singleId = parseInt(args[0]);
+        if (!isNaN(singleId)) {
+            startId = singleId;
+            endId = singleId;
+        }
+    }
+}
+
+console.log(`Generating data for Pokemon #${startId} to #${endId}`);
 
 // 한국어 이름 가져오기 헬퍼 함수
 async function getKoreanName(url) {
@@ -62,7 +84,6 @@ async function parseEvolution(chain, currentName) {
     // 2단계 탐색
     for (const evo of chain.evolves_to) {
         if (evo.species.name === currentName) {
-            // 부모(chain)의 한국어 이름을 가져옴
             const preEvoName = await getKoreanName(chain.species.url);
             const details = formatEvolutionDetails(evo.evolution_details[0]);
             return `${preEvoName} ${details}`;
@@ -71,7 +92,6 @@ async function parseEvolution(chain, currentName) {
         // 3단계 탐색
         for (const evo2 of evo.evolves_to) {
             if (evo2.species.name === currentName) {
-                // 부모(evo)의 한국어 이름을 가져옴
                 const preEvoName = await getKoreanName(evo.species.url);
                 const details = formatEvolutionDetails(evo2.evolution_details[0]);
                 return `${preEvoName} ${details}`;
@@ -99,7 +119,7 @@ function formatEvolutionDetails(details) {
 async function generateData() {
   const allPokemon = [];
   
-  for (let i = 1; i <= POKEMON_COUNT; i++) {
+  for (let i = startId; i <= endId; i++) {
     const pokemon = await fetchPokemonData(i);
     if (pokemon) {
       allPokemon.push(pokemon);
