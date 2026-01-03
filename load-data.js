@@ -57,15 +57,26 @@ async function fetchPokemonData(id) {
     if (speciesData.evolution_chain) {
         const evoResponse = await fetch(speciesData.evolution_chain.url);
         const evoData = await evoResponse.json();
-        // 비동기 함수 호출
         evolutionCondition = await parseEvolution(evoData.chain, data.name);
+    }
+
+    // 출현 장소 정보 (첫 번째 장소만)
+    let locationName = '-';
+    const encountersResponse = await fetch(`${API_URL}/pokemon/${id}/encounters`);
+    if (encountersResponse.ok) {
+        const encountersData = await encountersResponse.json();
+        if (encountersData.length > 0) {
+            // location_area의 한국어 이름을 가져옴
+            locationName = await getKoreanName(encountersData[0].location_area.url);
+        }
     }
 
     return {
       id: data.id,
       name: koreanName,
       types: data.types.map(t => t.type.name),
-      evolution: evolutionCondition
+      evolution: evolutionCondition,
+      location: locationName
     };
   } catch (error) {
     console.error(`Error fetching pokemon ${id}:`, error);

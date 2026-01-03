@@ -74,6 +74,9 @@ function renderTable() {
       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center text-gray-500">
         ${pokemon.evolution}
       </td>
+      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center text-gray-500">
+        ${pokemon.location || '-'}
+      </td>
     `;
     
     tableBody.appendChild(row);
