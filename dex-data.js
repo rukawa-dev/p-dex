@@ -6,7 +6,7 @@ const pokemonData = [
       "grass",
       "poison"
     ],
-    "evolution": "-"
+    "evolution": "기본"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@ const pokemonData = [
       "grass",
       "poison"
     ],
-    "evolution": "Lv.16"
+    "evolution": "이상해씨 Lv.16"
   },
   {
     "id": 3,
@@ -24,6 +24,6 @@ const pokemonData = [
       "grass",
       "poison"
     ],
-    "evolution": "Lv.32"
+    "evolution": "이상해풀 Lv.32"
   }
 ];

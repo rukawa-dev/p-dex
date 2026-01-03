@@ -3,6 +3,19 @@ const fs = require('fs');
 const POKEMON_COUNT = 3; // 테스트용 3마리
 const API_URL = 'https://pokeapi.co/api/v2';
 
+// 한국어 이름 가져오기 헬퍼 함수
+async function getKoreanName(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) return '???';
+        const data = await response.json();
+        return data.names.find(name => name.language.name === 'ko')?.name || data.name;
+    } catch (error) {
+        console.error('Error fetching korean name:', error);
+        return '???';
+    }
+}
+
 async function fetchPokemonData(id) {
   try {
     console.log(`Fetching data for Pokemon #${id}...`);
@@ -12,19 +25,20 @@ async function fetchPokemonData(id) {
     if (!response.ok) throw new Error(`Failed to fetch pokemon ${id}`);
     const data = await response.json();
 
-    // 종 정보 (한국어 이름, 진화 체인 URL)
+    // 종 정보
     const speciesResponse = await fetch(`${API_URL}/pokemon-species/${id}`);
     if (!speciesResponse.ok) throw new Error(`Failed to fetch species ${id}`);
     const speciesData = await speciesResponse.json();
 
     const koreanName = speciesData.names.find(name => name.language.name === 'ko')?.name || data.name;
     
-    // 진화 정보
-    let evolutionCondition = '-';
+    // 진화 정보 파싱
+    let evolutionCondition = '기본';
     if (speciesData.evolution_chain) {
         const evoResponse = await fetch(speciesData.evolution_chain.url);
         const evoData = await evoResponse.json();
-        evolutionCondition = parseEvolution(evoData.chain, data.name);
+        // 비동기 함수 호출
+        evolutionCondition = await parseEvolution(evoData.chain, data.name);
     }
 
     return {
@@ -39,21 +53,28 @@ async function fetchPokemonData(id) {
   }
 }
 
-function parseEvolution(chain, currentName) {
-    // 1단계 (기본)
+async function parseEvolution(chain, currentName) {
+    // 1단계 (기본형)
     if (chain.species.name === currentName) {
-        return '-';
+        return '기본';
     }
     
-    // 2단계
+    // 2단계 탐색
     for (const evo of chain.evolves_to) {
         if (evo.species.name === currentName) {
-            return formatEvolutionDetails(evo.evolution_details[0]);
+            // 부모(chain)의 한국어 이름을 가져옴
+            const preEvoName = await getKoreanName(chain.species.url);
+            const details = formatEvolutionDetails(evo.evolution_details[0]);
+            return `${preEvoName} ${details}`;
         }
-        // 3단계
+        
+        // 3단계 탐색
         for (const evo2 of evo.evolves_to) {
             if (evo2.species.name === currentName) {
-                return formatEvolutionDetails(evo2.evolution_details[0]);
+                // 부모(evo)의 한국어 이름을 가져옴
+                const preEvoName = await getKoreanName(evo.species.url);
+                const details = formatEvolutionDetails(evo2.evolution_details[0]);
+                return `${preEvoName} ${details}`;
             }
         }
     }
@@ -61,9 +82,18 @@ function parseEvolution(chain, currentName) {
 }
 
 function formatEvolutionDetails(details) {
-    if (!details) return '-';
-    if (details.min_level) return `Lv.${details.min_level}`;
-    return '특수 조건';
+    if (!details) return '';
+    
+    const conditions = [];
+    
+    if (details.min_level) conditions.push(`Lv.${details.min_level}`);
+    if (details.item) conditions.push(`아이템 사용`);
+    if (details.trigger?.name === 'trade') conditions.push('통신교환');
+    if (details.min_happiness) conditions.push(`친밀도 ${details.min_happiness}`);
+    if (details.known_move_type) conditions.push(`특정 기술 보유`);
+    
+    if (conditions.length === 0) return '특수 조건';
+    return conditions.join(', ');
 }
 
 async function generateData() {
