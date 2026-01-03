@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for caught Pokemon */
-.is-caught {
-    @apply grayscale opacity-60;
+/* Apply grayscale to the image inside a caught card */
+.is-caught .pokemon-image {
+    @apply grayscale;
 }
 
 /* Custom toggle switch styles */
 .toggle-checkbox:checked {
-    @apply bg-green-500;
+    @apply bg-red-500;
     right: 0;
 }
 .toggle-checkbox:checked + .toggle-label {
-    @apply bg-green-500;
+    @apply bg-red-500;
 }

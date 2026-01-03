@@ -73,7 +73,7 @@ function renderGrid(dataToRender) {
   dataToRender.forEach(pokemon => {
     const card = document.createElement('div');
     const isCaught = caughtPokemon.has(pokemon.id);
-    card.className = `relative bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-all duration-200 ${isCaught ? 'is-caught' : ''}`;
+    card.className = `relative bg-white rounded-lg shadow-md overflow-hidden ${isCaught ? 'is-caught' : ''}`;
     card.dataset.pokemonId = pokemon.id;
 
     const typesHtml = pokemon.types.map(type => {
@@ -100,7 +100,7 @@ function renderGrid(dataToRender) {
         </div>
         <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono">#${pokemon.id}</p>
         <div class="p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
-            <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24" loading="lazy">
+            <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image" loading="lazy">
             <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
                 <h3 class="text-lg font-bold text-gray-800 group-hover:underline">${pokemon.name}</h3>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
