@@ -10,6 +10,38 @@
 <body class="bg-gray-100 p-8 font-sans">
   <div class="max-w-5xl mx-auto">
     <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">포켓몬 도감</h1>
+
+    <!-- Search Filter Section -->
+    <div class="mb-4 flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
+        <!-- Radio Button Group -->
+        <div class="flex space-x-1 rounded-lg bg-gray-200 p-1">
+            <div>
+                <input type="radio" name="search-option" id="search-name" value="name" class="sr-only peer" checked>
+                <label for="search-name" class="cursor-pointer rounded-md px-3 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+                    이름
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="search-option" id="search-id" value="id" class="sr-only peer">
+                <label for="search-id" class="cursor-pointer rounded-md px-3 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+                    도감번호
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="search-option" id="search-type" value="type" class="sr-only peer">
+                <label for="search-type" class="cursor-pointer rounded-md px-3 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+                    타입
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="search-option" id="search-evolution" value="evolution" class="sr-only peer">
+                <label for="search-evolution" class="cursor-pointer rounded-md px-3 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+                    진화 조건
+                </label>
+            </div>
+        </div>
+        <input type="text" id="search-input" placeholder="검색..." class="w-full sm:w-auto flex-grow p-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+    </div>
     
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
       <table class="min-w-full leading-normal">

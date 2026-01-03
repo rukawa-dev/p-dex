@@ -48,15 +48,14 @@ const evolutionCategoryColors = {
     NONE: 'text-gray-500'
 };
 
-function renderTable() {
-  const tableBody = document.getElementById('pokemon-list');
-  
-  if (typeof pokemonData === 'undefined') {
-    console.error('pokemonData is not defined. Make sure dex-data.js is loaded.');
-    return;
-  }
+const searchOptions = document.querySelectorAll('input[name="search-option"]');
+const searchInput = document.getElementById('search-input');
+const tableBody = document.getElementById('pokemon-list');
 
-  pokemonData.forEach(pokemon => {
+function renderTable(dataToRender) {
+  tableBody.innerHTML = ''; // Clear existing rows
+
+  dataToRender.forEach(pokemon => {
     const row = document.createElement('tr');
     row.className = 'hover:bg-gray-50 transition-colors duration-200';
     
@@ -106,4 +105,42 @@ function renderTable() {
   });
 }
 
-renderTable();
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const searchColumn = document.querySelector('input[name="search-option"]:checked').value;
+
+    if (!searchTerm) {
+        renderTable(pokemonData);
+        return;
+    }
+
+    const filteredData = pokemonData.filter(pokemon => {
+        switch (searchColumn) {
+            case 'id':
+                return String(pokemon.id).includes(searchTerm);
+            case 'name':
+                return pokemon.name.toLowerCase().includes(searchTerm);
+            case 'type':
+                // 타입은 영문명과 한글명 모두 검색 가능하도록 처리
+                return pokemon.types.some(type => 
+                    type.toLowerCase().includes(searchTerm) || 
+                    (typeNamesKo[type] && typeNamesKo[type].toLowerCase().includes(searchTerm))
+                );
+            case 'evolution':
+                return pokemon.evolution.text.toLowerCase().includes(searchTerm);
+            default:
+                return false;
+        }
+    });
+
+    renderTable(filteredData);
+}
+
+// Initial render
+if (typeof pokemonData !== 'undefined') {
+    renderTable(pokemonData);
+    searchInput.addEventListener('input', handleSearch);
+    searchOptions.forEach(radio => radio.addEventListener('change', handleSearch));
+} else {
+    console.error('pokemonData is not defined. Make sure dex-data.js is loaded.');
+}
