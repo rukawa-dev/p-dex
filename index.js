@@ -81,7 +81,7 @@ function renderTable() {
 
     row.innerHTML = `
       <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center">
-        <p class="text-gray-900 whitespace-no-wrap font-mono">#${String(pokemon.id).padStart(3, '0')}</p>
+        <p class="text-gray-900 whitespace-no-wrap font-mono">${pokemon.id}</p>
       </td>
       <td class="px-5 py-5 border-b border-gray-200 bg-white text-base text-center font-bold text-gray-700">
         <div class="flex items-center justify-center">
