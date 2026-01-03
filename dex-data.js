@@ -16,7 +16,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
   },
   {
     "id": 2,
@@ -35,7 +35,7 @@ const pokemonData = [
       "text": "이상해씨 Lv.16",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
   },
   {
     "id": 3,
@@ -54,7 +54,7 @@ const pokemonData = [
       "text": "이상해풀 Lv.32",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
   },
   {
     "id": 4,
@@ -71,7 +71,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
   },
   {
     "id": 5,
@@ -88,7 +88,7 @@ const pokemonData = [
       "text": "파이리 Lv.16",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
   },
   {
     "id": 6,
@@ -106,7 +106,7 @@ const pokemonData = [
       "text": "리자드 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
   },
   {
     "id": 7,
@@ -122,7 +122,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
   },
   {
     "id": 8,
@@ -138,7 +138,7 @@ const pokemonData = [
       "text": "꼬부기 Lv.16",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png"
   },
   {
     "id": 9,
@@ -154,7 +154,7 @@ const pokemonData = [
       "text": "어니부기 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
   },
   {
     "id": 10,
@@ -171,7 +171,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"
   },
   {
     "id": 11,
@@ -188,7 +188,7 @@ const pokemonData = [
       "text": "캐터피 Lv.7",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png"
   },
   {
     "id": 12,
@@ -208,7 +208,7 @@ const pokemonData = [
       "text": "단데기 Lv.10",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
   },
   {
     "id": 13,
@@ -227,7 +227,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
   },
   {
     "id": 14,
@@ -246,7 +246,7 @@ const pokemonData = [
       "text": "뿔충이 Lv.7",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/14.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png"
   },
   {
     "id": 15,
@@ -265,7 +265,7 @@ const pokemonData = [
       "text": "딱충이 Lv.10",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
   },
   {
     "id": 16,
@@ -283,7 +283,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png"
   },
   {
     "id": 17,
@@ -301,7 +301,7 @@ const pokemonData = [
       "text": "구구 Lv.18",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png"
   },
   {
     "id": 18,
@@ -319,7 +319,7 @@ const pokemonData = [
       "text": "피죤 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png"
   },
   {
     "id": 19,
@@ -334,7 +334,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png"
   },
   {
     "id": 20,
@@ -349,7 +349,7 @@ const pokemonData = [
       "text": "꼬렛 Lv.20",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/20.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/20.png"
   },
   {
     "id": 21,
@@ -367,7 +367,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png"
   },
   {
     "id": 22,
@@ -385,7 +385,7 @@ const pokemonData = [
       "text": "깨비참 Lv.20",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/22.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png"
   },
   {
     "id": 23,
@@ -401,7 +401,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png"
   },
   {
     "id": 24,
@@ -417,7 +417,7 @@ const pokemonData = [
       "text": "아보 Lv.22",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/24.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png"
   },
   {
     "id": 25,
@@ -432,7 +432,7 @@ const pokemonData = [
       "text": "피츄 친밀도 높음",
       "category": "ETC"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
   },
   {
     "id": 26,
@@ -447,7 +447,7 @@ const pokemonData = [
       "text": "피카츄 천둥의돌 사용",
       "category": "ITEM"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png"
   },
   {
     "id": 27,
@@ -464,7 +464,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/27.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/27.png"
   },
   {
     "id": 28,
@@ -481,7 +481,7 @@ const pokemonData = [
       "text": "모래두지 Lv.22",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/28.png"
   },
   {
     "id": 29,
@@ -497,7 +497,7 @@ const pokemonData = [
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/29.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/29.png"
   },
   {
     "id": 30,
@@ -513,6 +513,6 @@ const pokemonData = [
       "text": "니드런♀ Lv.16",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/30.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/30.png"
   }
 ];

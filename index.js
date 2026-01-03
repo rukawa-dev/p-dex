@@ -57,7 +57,7 @@ function renderGrid(dataToRender) {
 
   dataToRender.forEach(pokemon => {
     const card = document.createElement('div');
-    card.className = 'bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-200';
+    card.className = 'relative bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-200';
 
     const typesHtml = pokemon.types.map(type => {
         const colorClass = typeColors[type] || 'bg-gray-200 text-gray-800';
@@ -75,11 +75,11 @@ function renderGrid(dataToRender) {
     const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
 
     card.innerHTML = `
+        <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono">#${pokemon.id}</p>
         <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="p-4 bg-gray-50 flex flex-col items-center justify-center">
-                <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24">
-                <p class="text-sm text-gray-500 font-mono">No. ${pokemon.id}</p>
-                <h3 class="text-lg font-bold text-gray-800">${pokemon.name}</h3>
+            <div class="p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
+                <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24" loading="lazy">
+                <h3 class="text-lg font-bold text-gray-800 mt-2">${pokemon.name}</h3>
             </div>
         </a>
         <div class="p-4 space-y-3">

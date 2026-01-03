@@ -97,13 +97,16 @@ async function fetchPokemonData(id) {
     const types = data.types.map(t => t.type.name);
     const weaknesses = calculateWeaknesses(types);
 
+    // 공식 일러스트 이미지 URL 사용
+    const imageUrl = data.sprites.other['official-artwork'].front_default;
+
     return {
       id: data.id,
       name: koreanName,
       types: types,
       weaknesses: weaknesses, // 약점 필드 추가
       evolution: evolutionCondition,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
+      image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png` // 공식 이미지가 없을 경우 대비
     };
   } catch (error) {
     console.error(`Error fetching pokemon ${id}:`, error);
