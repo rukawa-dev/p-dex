@@ -83,6 +83,19 @@ npm run dev
 
 ---
 
+## 📝 라이선스 (License)
+본 프로젝트의 소스 코드에 대한 저작권은 rukawa-dev에게 있습니다.
+
+**허용 범위**: 개인적인 학습 목적의 코드 참조 및 열람.
+
+**금지 사항**: 사전 승인 없는 코드의 무단 복제, 수정, 재배포 및 상업적 이용을 엄격히 금지합니다.
+
+**문의**: https://litt.ly/softland
+
+Copyright © rukawa-dev. All rights reserved. No part of this source code may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the copyright holder.
+
+---
+
 ## ⚖️ 면책 조항 (Disclaimer)
 
 본 프로젝트는 개인적인 학습 및 포트폴리오 목적으로 제작된 **비영리 팬 프로젝트**이며, 이를 통해 어떠한 금전적 이득도 취하지 않습니다.

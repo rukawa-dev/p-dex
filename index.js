@@ -44,6 +44,7 @@ const evolutionCategoryColors = {
     LV: 'text-blue-600',
     ITEM: 'text-green-600',
     TRADE: 'text-purple-600',
+    TRADE_WITH_ITEM: 'text-purple-600', // 아이템을 지니고 통신교환
     ETC: 'text-orange-600',
     NONE: 'text-gray-500'
 };
