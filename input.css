@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .is-caught .pokemon-image{
   @apply grayscale;
 }
@@ -17,4 +18,18 @@
 }
 .toggle-checkbox:checked + .toggle-label{
   @apply bg-red-500;
+}
+
+body{
+  font-family:'Pretendard', sans-serif;
+}
+
+/* 사이드바 애니메이션 최적화 */
+#sidebar{
+  transition:transform 0.3s ease-in-out;
+}
+
+.overlay-active{
+  display:block !important;
+  opacity:1 !important;
 }
