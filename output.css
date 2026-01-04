@@ -720,16 +720,12 @@ video {
   z-index: 40;
 }
 
-.z-50 {
-  z-index: 50;
+.z-\[1000\] {
+  z-index: 1000;
 }
 
 .z-\[999\] {
   z-index: 999;
-}
-
-.z-\[1000\] {
-  z-index: 1000;
 }
 
 .col-span-full {
@@ -2413,11 +2409,6 @@ video {
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -2428,14 +2419,14 @@ video {
   line-height: 1.25rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold {
