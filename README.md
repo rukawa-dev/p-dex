@@ -3,7 +3,7 @@
 간단한 웹 기반 포켓몬 도감 프로젝트입니다. PokeAPI의 데이터를 기반으로 하며, Vanilla JavaScript와 Tailwind CSS를 사용하여 제작되었습니다.
 
 ![스크린샷](screen-shot.png)
-
+DEMO : https://rukawa-dev.github.io/p-dex/
 ---
 
 ## ✨ 주요 기능
