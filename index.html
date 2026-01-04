@@ -20,15 +20,16 @@
 <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
 
 <aside id="sidebar" class="fixed top-0 left-0 w-72 h-full bg-white z-50 transform -translate-x-full shadow-2xl">
-  <div class="bg-gradient-to-br from-red-500 via-orange-400 to-teal-500 p-6 flex flex-col justify-end relative">
-    <button id="close-sidebar" class="absolute right-4 text-white/80 hover:text-white transition-colors">
+  <div class="h-20 bg-gradient-to-br from-red-500 via-orange-400 to-teal-500 p-6 flex items-center justify-between relative">
+    <h2 class="text-white text-2xl font-extrabold tracking-tight">Categories</h2>
+    <button id="close-sidebar" class="text-white/80 hover:text-white transition-colors">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
       </svg>
     </button>
   </div>
   
-  <nav class="p-4 space-y-1 overflow-y-auto" style="max-height: calc(100vh - 160px);">
+  <nav class="p-4 space-y-1 overflow-y-auto" style="max-height: calc(100vh - 80px);">
     <a href="#" class="flex items-center space-x-4 p-3 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
