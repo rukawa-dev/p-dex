@@ -126,7 +126,7 @@ async function formatEvolutionDetails(details) {
 async function main() {
     const args = process.argv.slice(2);
     let startId = 1;
-    let endId = 3;
+    let endId = 151; // 기본값으로 1세대 포켓몬만 설정
 
     if (args.length > 0) {
         if (args[0] === 'all') {
@@ -160,9 +160,10 @@ async function main() {
         if (pokemon) allPokemon.push(pokemon);
     }
     
-    const fileContent = `const pokemonData = ${JSON.stringify(allPokemon, null, 2)};`;
-    fs.writeFileSync('dex-data.js', fileContent);
-    console.log(`Successfully generated dex-data.js for ${allPokemon.length} Pokemon.`);
+    // pokemon.json 파일로 저장하도록 수정
+    const fileContent = JSON.stringify(allPokemon, null, 2);
+    fs.writeFileSync('pokemon.json', fileContent);
+    console.log(`Successfully generated pokemon.json for ${allPokemon.length} Pokemon.`);
 }
 
 main();

@@ -140,8 +140,9 @@ function toggleCaughtStatus(pokemonId, cardElement) {
 
 /**
  * '잡은 포켓몬' 데이터를 초기화하고 그리드를 다시 렌더링합니다.
+ * @param {object[]} pokemonData - 전체 포켓몬 데이터 배열
  */
-function resetCaughtData() {
+function resetCaughtData(pokemonData) {
   if (confirm('정말로 모든 "잡은 포켓몬" 데이터를 초기화하시겠습니까?')) {
     localStorage.removeItem('caughtPokemon');
     caughtPokemon.clear();
@@ -194,18 +195,25 @@ function renderGrid(dataToRender) {
 }
 
 // --- 애플리케이션 초기화 ---
-function initialize() {
-  if (typeof pokemonData === 'undefined') {
-    console.error('pokemonData가 정의되지 않았습니다. dex-data.js 파일이 올바르게 로드되었는지 확인하세요.');
-    return;
+async function initialize() {
+  try {
+    const response = await fetch('pokemon.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const pokemonData = await response.json();
+    
+    renderGrid(pokemonData);
+    
+    // 이벤트 리스너 연결
+    searchInput.addEventListener('input', handleSearch);
+    searchOptionSelect.addEventListener('change', handleSearch);
+    resetCaughtBtn.addEventListener('click', () => resetCaughtData(pokemonData));
+
+  } catch (error) {
+    console.error('데이터를 불러오는 데 실패했습니다:', error);
+    gridContainer.innerHTML = '<p class="col-span-full text-center text-red-500">포켓몬 데이터를 불러오는 중 오류가 발생했습니다. 파일을 확인해주세요.</p>';
   }
-  
-  renderGrid(pokemonData);
-  
-  // 이벤트 리스너 연결
-  searchInput.addEventListener('input', handleSearch);
-  searchOptionSelect.addEventListener('change', handleSearch);
-  resetCaughtBtn.addEventListener('click', resetCaughtData);
 }
 
 initialize();
