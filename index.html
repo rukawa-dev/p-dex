@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=480,user-scalable=yes">
   <title>전국 도감 by.PLAY-LAND</title>
   
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
@@ -20,17 +23,30 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-8">
     <div class="flex flex-col space-y-2 py-4">
       
-      <!-- Row 1: App Title & Reset Button -->
+      <!-- Row 1: App Title & Actions -->
       <div class="flex items-center justify-between">
-        <div class="app-title-c02ebe9c flex items-center space-x-2">
-          <img src="favicon_io/favicon-32x32.png" alt="P-DEX" class="h-8 w-8">
+        <a href="https://www.youtube.com/channel/UCsjg2i6JY7xU5UeZ19OK3IQ" target="_blank" rel="noopener noreferrer" class="app-title-c02ebe9c flex items-center space-x-2 transition-opacity hover:opacity-80">
+          <img src="favicon_io/favicon-32x32.png" alt="P-DEX" class="h-8 w-8 rounded-full">
           <span class="font-bold text-lg text-gray-800">PLAY-LAND P-DEX</span>
+        </a>
+        
+        <!-- Right side actions -->
+        <div class="flex items-center space-x-2">
+          <button id="reset-caught-btn" class="flex items-center space-x-2 p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors flex-shrink-0">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd"></path>
+            </svg>
+            <span>초기화</span>
+          </button>
+          <a href="https://github.com/rukawa-dev/p-dex" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 p-2 text-sm bg-gray-800 text-white rounded-md shadow-sm hover:bg-black transition-colors">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
         </div>
-        <button id="reset-caught-btn" class="p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors flex-shrink-0">
-          초기화
-        </button>
       </div>
-
+      
       <!-- Row 2: Filters & Search Input -->
       <div class="flex items-center space-x-2">
         <!-- Custom Dropdown -->
@@ -43,7 +59,9 @@
           </select>
           <!-- Custom Arrow -->
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+            </svg>
           </div>
         </div>
         <input type="search" id="search-input" placeholder="검색..." class="w-full flex-grow p-2 text-sm border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
