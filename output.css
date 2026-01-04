@@ -724,6 +724,14 @@ video {
   z-index: 50;
 }
 
+.z-\[999\] {
+  z-index: 999;
+}
+
+.z-\[1000\] {
+  z-index: 1000;
+}
+
 .col-span-full {
   grid-column: 1 / -1;
 }
@@ -2423,6 +2431,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
