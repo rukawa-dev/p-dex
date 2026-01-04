@@ -49,7 +49,8 @@ const evolutionCategoryColors = {
     NONE: 'text-gray-500'
 };
 
-const searchOptions = document.querySelectorAll('input[name="search-option"]');
+// DOM 요소 참조를 드롭다운으로 변경
+const searchOptionSelect = document.getElementById('search-option-select');
 const searchInput = document.getElementById('search-input');
 const gridContainer = document.getElementById('pokemon-list');
 const resetCaughtBtn = document.getElementById('reset-caught-btn');
@@ -158,7 +159,8 @@ function renderGrid(dataToRender) {
 
 function handleSearch() {
     const searchTerm = searchInput.value.toLowerCase();
-    const searchColumn = document.querySelector('input[name="search-option"]:checked').value;
+    // 검색 기준을 드롭다운에서 가져오도록 수정
+    const searchColumn = searchOptionSelect.value;
     const allCards = gridContainer.querySelectorAll('.pokemon-card');
 
     allCards.forEach(card => {
@@ -192,7 +194,8 @@ function handleSearch() {
 if (typeof pokemonData !== 'undefined') {
     renderGrid(pokemonData);
     searchInput.addEventListener('input', handleSearch);
-    searchOptions.forEach(radio => radio.addEventListener('change', handleSearch));
+    // 이벤트 리스너를 드롭다운에 연결
+    searchOptionSelect.addEventListener('change', handleSearch);
     resetCaughtBtn.addEventListener('click', resetCaughtData);
 } else {
     console.error('pokemonData가 정의되지 않았습니다. dex-data.js 파일이 올바르게 로드되었는지 확인하세요.');

@@ -18,41 +18,36 @@
 <!-- Sticky Header -->
 <header class="sticky top-0 z-10 bg-gray-100/80 backdrop-blur-sm shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-8">
-    <!-- Search Filter Section -->
-    <div class="py-4 flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
-      <div class="flex w-full items-center space-x-2 sm:w-auto">
-        <button id="reset-caught-btn" class="p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors">
+    <div class="flex flex-col space-y-2 py-4">
+      
+      <!-- Row 1: App Title & Reset Button -->
+      <div class="flex items-center justify-between">
+        <div class="app-title-c02ebe9c flex items-center space-x-2">
+          <img src="favicon_io/favicon-32x32.png" alt="P-DEX" class="h-8 w-8">
+          <span class="font-bold text-lg text-gray-800">PLAY-LAND P-DEX</span>
+        </div>
+        <button id="reset-caught-btn" class="p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors flex-shrink-0">
           초기화
         </button>
-        <!-- Radio Button Group -->
-        <div class="filter-28f3453e flex flex-grow space-x-1 rounded-lg bg-gray-200 p-2">
-          <div>
-            <input type="radio" name="search-option" id="search-name" value="name" class="sr-only peer" checked>
-            <label for="search-name" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-              이름
-            </label>
-          </div>
-          <div>
-            <input type="radio" name="search-option" id="search-id" value="id" class="sr-only peer">
-            <label for="search-id" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-              도감번호
-            </label>
-          </div>
-          <div>
-            <input type="radio" name="search-option" id="search-type" value="type" class="sr-only peer">
-            <label for="search-type" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-              타입
-            </label>
-          </div>
-          <div>
-            <input type="radio" name="search-option" id="search-evolution" value="evolution" class="sr-only peer">
-            <label for="search-evolution" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-              진화 조건
-            </label>
+      </div>
+
+      <!-- Row 2: Filters & Search Input -->
+      <div class="flex items-center space-x-2">
+        <!-- Custom Dropdown -->
+        <div class="relative">
+          <select id="search-option-select" class="appearance-none p-2 pl-3 pr-8 text-sm border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-white cursor-pointer">
+            <option value="name" selected>이름</option>
+            <option value="id">도감번호</option>
+            <option value="type">타입</option>
+            <option value="evolution">진화 조건</option>
+          </select>
+          <!-- Custom Arrow -->
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
+        <input type="search" id="search-input" placeholder="검색..." class="w-full flex-grow p-2 text-sm border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
       </div>
-      <input type="search" id="search-input" placeholder="검색..." class="w-full sm:w-auto flex-grow p-2 text-sm border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
     </div>
   </div>
 </header>
