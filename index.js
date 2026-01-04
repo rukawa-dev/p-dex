@@ -53,7 +53,7 @@ const searchInput = document.getElementById('search-input');
 const gridContainer = document.getElementById('pokemon-list');
 const resetCaughtBtn = document.getElementById('reset-caught-btn');
 
-// --- 'Caught' Pokemon Logic ---
+// --- '잡은 포켓몬' 관련 로직 ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
 
 function toggleCaughtStatus(pokemonId, cardElement) {
@@ -71,19 +71,33 @@ function resetCaughtData() {
     if (confirm('정말로 모든 "잡은 포켓몬" 데이터를 초기화하시겠습니까?')) {
         localStorage.removeItem('caughtPokemon');
         caughtPokemon.clear();
-        handleSearch(); // Re-render the grid to reflect the changes
+        // 전체 카드를 다시 렌더링하지 않고 시각적으로만 업데이트합니다.
+        document.querySelectorAll('.pokemon-card').forEach(card => {
+            card.classList.remove('is-caught');
+            const checkbox = card.querySelector('.toggle-checkbox');
+            if (checkbox) {
+                checkbox.checked = false;
+            }
+        });
     }
 }
-// --- End Logic ---
+// --- 로직 끝 ---
 
 function renderGrid(dataToRender) {
-  gridContainer.innerHTML = ''; // Clear existing cards
+  gridContainer.innerHTML = ''; // 기존 카드를 모두 지웁니다.
 
   dataToRender.forEach(pokemon => {
     const card = document.createElement('div');
     const isCaught = caughtPokemon.has(pokemon.id);
-    card.className = `relative bg-white rounded-lg shadow-md overflow-hidden ${isCaught ? 'is-caught' : ''}`;
+    
+    // 필터링을 위한 공통 클래스 및 데이터 속성을 추가합니다.
+    card.className = `pokemon-card relative bg-white rounded-lg shadow-md overflow-hidden ${isCaught ? 'is-caught' : ''}`;
     card.dataset.pokemonId = pokemon.id;
+    card.dataset.name = pokemon.name.toLowerCase();
+    card.dataset.types = pokemon.types.join(',');
+    card.dataset.typesKo = pokemon.types.map(t => typeNamesKo[t] || '').join(',');
+    card.dataset.evolution = pokemon.evolution.text.toLowerCase();
+
 
     const typesHtml = pokemon.types.map(type => {
         const colorClass = typeColors[type] || 'bg-gray-200 text-gray-800';
@@ -135,7 +149,7 @@ function renderGrid(dataToRender) {
     
     gridContainer.appendChild(card);
 
-    // Add event listener to the toggle
+    // 토글 스위치에 이벤트 리스너를 추가합니다.
     const toggle = card.querySelector(`#toggle-${pokemon.id}`);
     toggle.addEventListener('change', () => toggleCaughtStatus(pokemon.id, card));
   });
@@ -144,39 +158,41 @@ function renderGrid(dataToRender) {
 function handleSearch() {
     const searchTerm = searchInput.value.toLowerCase();
     const searchColumn = document.querySelector('input[name="search-option"]:checked').value;
+    const allCards = gridContainer.querySelectorAll('.pokemon-card');
 
-    if (!searchTerm) {
-        renderGrid(pokemonData);
-        return;
-    }
-
-    const filteredData = pokemonData.filter(pokemon => {
-        switch (searchColumn) {
-            case 'id':
-                return String(pokemon.id).includes(searchTerm);
-            case 'name':
-                return pokemon.name.toLowerCase().includes(searchTerm);
-            case 'type':
-                return pokemon.types.some(type => 
-                    type.toLowerCase().includes(searchTerm) || 
-                    (typeNamesKo[type] && typeNamesKo[type].toLowerCase().includes(searchTerm))
-                );
-            case 'evolution':
-                return pokemon.evolution.text.toLowerCase().includes(searchTerm);
-            default:
-                return false;
+    allCards.forEach(card => {
+        let isMatch = false;
+        if (!searchTerm) {
+            isMatch = true;
+        } else {
+            switch (searchColumn) {
+                case 'id':
+                    isMatch = card.dataset.pokemonId.includes(searchTerm);
+                    break;
+                case 'name':
+                    isMatch = card.dataset.name.includes(searchTerm);
+                    break;
+                case 'type':
+                    const types = card.dataset.types.split(',');
+                    const typesKo = card.dataset.typesKo.split(',');
+                    isMatch = types.some(t => t.includes(searchTerm)) || typesKo.some(t => t.includes(searchTerm));
+                    break;
+                case 'evolution':
+                    isMatch = card.dataset.evolution.includes(searchTerm);
+                    break;
+            }
         }
+        
+        card.style.display = isMatch ? '' : 'none';
     });
-
-    renderGrid(filteredData);
 }
 
-// Initial render
+// 초기 렌더링
 if (typeof pokemonData !== 'undefined') {
     renderGrid(pokemonData);
     searchInput.addEventListener('input', handleSearch);
     searchOptions.forEach(radio => radio.addEventListener('change', handleSearch));
     resetCaughtBtn.addEventListener('click', resetCaughtData);
 } else {
-    console.error('pokemonData is not defined. Make sure dex-data.js is loaded.');
+    console.error('pokemonData가 정의되지 않았습니다. dex-data.js 파일이 올바르게 로드되었는지 확인하세요.');
 }
