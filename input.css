@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Apply grayscale to the image inside a caught card */
-.is-caught .pokemon-image {
-    @apply grayscale;
+.is-caught .pokemon-image{
+  @apply grayscale;
 }
 
-/* Custom toggle switch styles */
-.toggle-checkbox:checked {
-    @apply bg-red-500;
-    right: 0;
+.is-caught .img-box-56319e8e{
+  background-color:#999999;
 }
-.toggle-checkbox:checked + .toggle-label {
-    @apply bg-red-500;
+
+.toggle-checkbox:checked{
+  @apply bg-red-500;
+  right:0;
+  border-color:black;
+}
+.toggle-checkbox:checked + .toggle-label{
+  @apply bg-red-500;
 }

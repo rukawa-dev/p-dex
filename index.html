@@ -10,54 +10,56 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
   <link rel="manifest" href="favicon_io/site.webmanifest">
-
+  
   <link href="./output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-4 sm:p-8 font-sans">
-  <div class="max-w-7xl mx-auto">
-
-    <!-- Search Filter Section -->
-    <div class="mb-6 flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
-        <!-- Radio Button Group -->
-        <div class="filter-28f3453e flex space-x-1 rounded-lg bg-gray-200 p-2">
-            <div>
-                <input type="radio" name="search-option" id="search-name" value="name" class="sr-only peer" checked>
-                <label for="search-name" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-                    이름
-                </label>
-            </div>
-            <div>
-                <input type="radio" name="search-option" id="search-id" value="id" class="sr-only peer">
-                <label for="search-id" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-                    도감번호
-                </label>
-            </div>
-            <div>
-                <input type="radio" name="search-option" id="search-type" value="type" class="sr-only peer">
-                <label for="search-type" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-                    타입
-                </label>
-            </div>
-            <div>
-                <input type="radio" name="search-option" id="search-evolution" value="evolution" class="sr-only peer">
-                <label for="search-evolution" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
-                    진화 조건
-                </label>
-            </div>
+<div class="max-w-7xl mx-auto">
+  
+  <!-- Search Filter Section -->
+  <div class="mb-6 flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
+    <div class="flex w-full items-center space-x-2 sm:w-auto">
+      <button id="reset-caught-btn" class="p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors">
+        초기화
+      </button>
+      <!-- Radio Button Group -->
+      <div class="filter-28f3453e flex flex-grow space-x-1 rounded-lg bg-gray-200 p-2">
+        <div>
+          <input type="radio" name="search-option" id="search-name" value="name" class="sr-only peer" checked>
+          <label for="search-name" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+            이름
+          </label>
         </div>
-        <input type="text" id="search-input" placeholder="검색..." class="w-full sm:w-auto flex-grow p-2 text-sm border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-        <button id="reset-caught-btn" class="p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors">
-            초기화
-        </button>
+        <div>
+          <input type="radio" name="search-option" id="search-id" value="id" class="sr-only peer">
+          <label for="search-id" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+            도감번호
+          </label>
+        </div>
+        <div>
+          <input type="radio" name="search-option" id="search-type" value="type" class="sr-only peer">
+          <label for="search-type" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+            타입
+          </label>
+        </div>
+        <div>
+          <input type="radio" name="search-option" id="search-evolution" value="evolution" class="sr-only peer">
+          <label for="search-evolution" class="cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 peer-checked:bg-white peer-checked:shadow hover:bg-gray-100">
+            진화 조건
+          </label>
+        </div>
+      </div>
     </div>
-    
-    <!-- Pokemon Card Grid -->
-    <div id="pokemon-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-      <!-- 자바스크립트로 카드 아이템이 로드됩니다 -->
-    </div>
-
+    <input type="text" id="search-input" placeholder="검색..." class="w-full sm:w-auto flex-grow p-2 text-sm border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
   </div>
-  <script src="dex-data.js"></script>
-  <script src="index.js"></script>
+  
+  <!-- Pokemon Card Grid -->
+  <div id="pokemon-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+    <!-- 자바스크립트로 카드 아이템이 로드됩니다 -->
+  </div>
+
+</div>
+<script src="dex-data.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

@@ -108,7 +108,7 @@ function renderGrid(dataToRender) {
             </div>
         </div>
         <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono">#${pokemon.id}</p>
-        <div class="p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
+        <div class="img-box-56319e8e p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
             <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image" loading="lazy">
             <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
                 <h3 class="text-lg font-bold text-gray-800 group-hover:underline">${pokemon.name}</h3>
