@@ -1,6 +1,6 @@
 # 📖 포켓몬 도감 (P-Dex)
 
-간단한 웹 기반 포켓몬 도감 프로젝트입니다. PokeAPI의 데이터를 기반으로 하며, Vanilla JavaScript와 Tailwind CSS를 사용하여 제작되었습니다.
+간단한 웹 기반 포켓몬 도감 프로젝트입니다. Vanilla JavaScript와 Tailwind CSS를 사용하여 제작되었습니다.
 
 ![스크린샷](screen-shot.png)
 DEMO : https://rukawa-dev.github.io/p-dex/
@@ -22,7 +22,7 @@ DEMO : https://rukawa-dev.github.io/p-dex/
 
 - **Frontend**: HTML, CSS, Vanilla JavaScript
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Data**: [PokeAPI (v2)](https://pokeapi.co/)
+- **Data**: [PokeAPI (v2)](https://pokeapi.co/) (데이터 소스)
 - **Build Tool**: [Node.js](https://nodejs.org/) (데이터 생성용), [npm](https://www.npmjs.com/)
 - **Dev Tools**: [concurrently](https://www.npmjs.com/package/concurrently) (동시 스크립트 실행)
 
@@ -38,7 +38,7 @@ npm install
 
 ### 2. 포켓몬 데이터 생성
 
-도감을 표시하기 위해 먼저 PokeAPI로부터 데이터를 가져와 `dex-data.js` 파일을 생성해야 합니다.
+도감을 표시하기 위해 먼저 PokeAPI로부터 데이터를 가져와 `pokemon.json` 파일을 생성해야 합니다.
 
 - **테스트용 데이터 생성 (1~30번)**
   ```bash
@@ -69,9 +69,10 @@ npm run dev
 /
 ├── favicon_io/       # 파비콘 파일
 ├── node_modules/     # npm 패키지
-├── dex-data.js       # 생성된 포켓몬 데이터 파일
+├── pokemon.json      # 생성된 포켓몬 데이터 파일
 ├── index.html        # 메인 페이지
 ├── index.js          # 클라이언트 사이드 로직 (UI 렌더링, 검색, 이벤트 처리)
+├── sidebar.js        # 사이드바 제어 로직
 ├── input.css         # Tailwind CSS 소스 파일
 ├── load-data.js      # Node.js 데이터 생성 스크립트
 ├── output.css        # 빌드된 Tailwind CSS 파일
@@ -101,6 +102,6 @@ Copyright © rukawa-dev. All rights reserved. No part of this source code may be
 본 프로젝트는 개인적인 학습 및 포트폴리오 목적으로 제작된 **비영리 팬 프로젝트**이며, 이를 통해 어떠한 금전적 이득도 취하지 않습니다.
 
 - 모든 포켓몬 데이터와 이미지는 [PokeAPI](https://pokeapi.co/)를 통해 제공받았습니다.
-- Pokémon 및 모든 관련 이름, 이미지, 상표는 © 1995-2024 Nintendo, Creatures Inc., GAME FREAK Inc.의 저작권 및 상표입니다.
+- Pokémon 및 모든 관련 이름, 이미지, 상표는 © Nintendo, Creatures Inc., GAME FREAK Inc.의 저작권 및 상표입니다.
 - 본 프로젝트는 상기 언급된 회사들과 공식적인 관련이 없으며, 어떠한 제휴 관계도 맺고 있지 않습니다.
 - 본 프로젝트를 통해 발생할 수 있는 모든 문제에 대해 제작자는 책임을 지지 않습니다.

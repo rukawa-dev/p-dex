@@ -210,13 +210,6 @@ async function initialize() {
     searchOptionSelect.addEventListener('change', handleSearch);
     resetCaughtBtn.addEventListener('click', () => resetCaughtData(pokemonData));
 
-    // 현재 연도를 가져와 푸터에 업데이트
-    const currentYear = new Date().getFullYear();
-    const yearElement = document.getElementById('current-year-204dc44a');
-    if (yearElement) {
-      yearElement.textContent = currentYear;
-    }
-
   } catch (error) {
     console.error('데이터를 불러오는 데 실패했습니다:', error);
     gridContainer.innerHTML = '<p class="col-span-full text-center text-red-500">포켓몬 데이터를 불러오는 중 오류가 발생했습니다. 파일을 확인해주세요.</p>';
