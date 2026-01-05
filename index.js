@@ -38,12 +38,13 @@ const searchInput = document.getElementById('search-input');
 const gridContainer = document.getElementById('pokemon-list');
 const resetCaughtBtn = document.getElementById('reset-caught-btn');
 const toggleCaughtBtn = document.getElementById('toggle-caught-btn');
+const toggleCaughtText = document.getElementById('toggle-caught-text');
 const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
 
 // --- 상태 관리 ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
-let isHideCaught = false; // 잡은 포켓몬 숨김 상태
+let isHideCaught = localStorage.getItem('isHideCaught') === 'true'; // localStorage에서 상태 불러오기
 
 // --- 헬퍼 함수 ---
 
@@ -160,26 +161,34 @@ function resetCaughtData(pokemonData) {
 }
 
 /**
- * 잡은 포켓몬 숨기기/보이기 상태를 토글합니다.
+ * 잡은 포켓몬 숨기기/보이기 버튼의 UI를 업데이트합니다.
  */
-function toggleHideCaught() {
-  isHideCaught = !isHideCaught;
-  
-  // 아이콘 토글
+function updateToggleBtnUI() {
   if (isHideCaught) {
     iconEye.classList.add('hidden');
     iconEyeOff.classList.remove('hidden');
+    toggleCaughtText.textContent = '보이기';
     // 숨김 상태일 때 스타일 (활성화 느낌)
     toggleCaughtBtn.classList.remove('bg-indigo-500', 'hover:bg-indigo-600', 'text-white');
     toggleCaughtBtn.classList.add('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
   } else {
     iconEye.classList.remove('hidden');
     iconEyeOff.classList.add('hidden');
+    toggleCaughtText.textContent = '숨기기';
     // 보임 상태일 때 스타일 (기본)
     toggleCaughtBtn.classList.add('bg-indigo-500', 'hover:bg-indigo-600', 'text-white');
     toggleCaughtBtn.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
   }
+}
+
+/**
+ * 잡은 포켓몬 숨기기/보이기 상태를 토글합니다.
+ */
+function toggleHideCaught() {
+  isHideCaught = !isHideCaught;
+  localStorage.setItem('isHideCaught', isHideCaught); // 상태 저장
   
+  updateToggleBtnUI();
   handleSearch();
 }
 
@@ -239,6 +248,9 @@ function renderGrid(dataToRender) {
 // --- 애플리케이션 초기화 ---
 async function initialize() {
   try {
+    // 초기 UI 상태 설정
+    updateToggleBtnUI();
+
     const response = await fetch('pokemon.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
