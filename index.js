@@ -37,9 +37,13 @@ const searchOptionSelect = document.getElementById('search-option-select');
 const searchInput = document.getElementById('search-input');
 const gridContainer = document.getElementById('pokemon-list');
 const resetCaughtBtn = document.getElementById('reset-caught-btn');
+const toggleCaughtBtn = document.getElementById('toggle-caught-btn');
+const iconEye = document.getElementById('icon-eye');
+const iconEyeOff = document.getElementById('icon-eye-off');
 
 // --- 상태 관리 ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
+let isHideCaught = false; // 잡은 포켓몬 숨김 상태
 
 // --- 헬퍼 함수 ---
 
@@ -136,6 +140,11 @@ function toggleCaughtStatus(pokemonId, cardElement) {
     cardElement.classList.add('is-caught');
   }
   localStorage.setItem('caughtPokemon', JSON.stringify(Array.from(caughtPokemon)));
+  
+  // 숨기기 옵션이 켜져 있다면, 상태 변경 시 즉시 반영
+  if (isHideCaught) {
+    handleSearch();
+  }
 }
 
 /**
@@ -151,7 +160,31 @@ function resetCaughtData(pokemonData) {
 }
 
 /**
- * 검색 입력에 따라 포켓몬 카드를 필터링합니다.
+ * 잡은 포켓몬 숨기기/보이기 상태를 토글합니다.
+ */
+function toggleHideCaught() {
+  isHideCaught = !isHideCaught;
+  
+  // 아이콘 토글
+  if (isHideCaught) {
+    iconEye.classList.add('hidden');
+    iconEyeOff.classList.remove('hidden');
+    // 숨김 상태일 때 스타일 (활성화 느낌)
+    toggleCaughtBtn.classList.remove('bg-indigo-500', 'hover:bg-indigo-600', 'text-white');
+    toggleCaughtBtn.classList.add('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
+  } else {
+    iconEye.classList.remove('hidden');
+    iconEyeOff.classList.add('hidden');
+    // 보임 상태일 때 스타일 (기본)
+    toggleCaughtBtn.classList.add('bg-indigo-500', 'hover:bg-indigo-600', 'text-white');
+    toggleCaughtBtn.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
+  }
+  
+  handleSearch();
+}
+
+/**
+ * 검색 입력 및 필터 옵션에 따라 포켓몬 카드를 필터링합니다.
  */
 function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
@@ -159,6 +192,13 @@ function handleSearch() {
   const allCards = gridContainer.querySelectorAll('.pokemon-card');
 
   allCards.forEach(card => {
+    // 1. 잡은 포켓몬 숨기기 체크 여부 확인
+    if (isHideCaught && card.classList.contains('is-caught')) {
+      card.style.display = 'none';
+      return; // 이미 숨겨졌으므로 검색어 매칭 로직 건너뜀
+    }
+
+    // 2. 검색어 매칭 확인
     let isMatch = false;
     if (!searchTerm) {
       isMatch = true;
@@ -192,6 +232,8 @@ function renderGrid(dataToRender) {
     const card = createPokemonCard(pokemon);
     gridContainer.appendChild(card);
   });
+  // 초기 렌더링 후 현재 필터 상태(숨기기 등) 적용
+  handleSearch();
 }
 
 // --- 애플리케이션 초기화 ---
@@ -208,6 +250,7 @@ async function initialize() {
     // 이벤트 리스너 연결
     searchInput.addEventListener('input', handleSearch);
     searchOptionSelect.addEventListener('change', handleSearch);
+    toggleCaughtBtn.addEventListener('click', toggleHideCaught);
     resetCaughtBtn.addEventListener('click', () => resetCaughtData(pokemonData));
 
   } catch (error) {
