@@ -3,22 +3,42 @@ const fs = require('fs');
 // 구글 시트 ID
 const SPREADSHEET_ID = '1k1QfNi_DtKKBe6IG07Ol68P-SiKTGzwml36daXYn8jQ';
 
-// 탭별 GID 설정
-const GID_ZA = '0';
-const GID_ZA_DLC = '1623373325';
+// 도감별 설정 (GID 및 파일명)
+const DEX_CONFIG = {
+  'za': {
+    gid: '0',
+    name: 'ZA 도감',
+    output: 'pokemon-za.json'
+  },
+  'za:dlc': {
+    gid: '1623373325',
+    name: 'ZA DLC 도감',
+    output: 'pokemon-za-dlc.json'
+  },
+  'paldea': {
+    gid: '1321757419',
+    name: '팔데아 도감',
+    output: 'pokemon-paldea.json'
+  }
+};
 
 async function main() {
   try {
-    // 실행 인자 확인 (dlc 여부)
+    // 실행 인자 확인
     const args = process.argv.slice(2);
-    const isDlc = args.includes('dlc');
-    
-    const targetGid = isDlc ? GID_ZA_DLC : GID_ZA;
-    const targetName = isDlc ? 'ZA DLC 도감' : 'ZA 도감';
-    const outputFileName = isDlc ? 'pokemon-za-dlc.json' : 'pokemon-za.json';
+    const dexKey = args[0] || 'za'; // 기본값은 'za'
+
+    const config = DEX_CONFIG[dexKey];
+    if (!config) {
+      console.error(`❌ 오류: 알 수 없는 도감 키입니다: '${dexKey}'`);
+      console.error(`사용 가능한 키: ${Object.keys(DEX_CONFIG).join(', ')}`);
+      return;
+    }
+
+    const { gid, name: targetName, output: outputFileName } = config;
     
     // CSV 내보내기 URL (gid 포함)
-    const csvUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=${targetGid}`;
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=${gid}`;
 
     // 1. 기존 전국도감 데이터 로드
     if (!fs.existsSync('pokemon.json')) {
@@ -31,7 +51,7 @@ async function main() {
     console.log(`✅ 총 ${allPokemonData.length}마리의 포켓몬 데이터가 로드되었습니다.`);
 
     // 2. 구글 시트 데이터 가져오기
-    console.log(`🌐 구글 시트에서 [${targetName}] 목록을 가져오는 중... (GID: ${targetGid})`);
+    console.log(`🌐 구글 시트에서 [${targetName}] 목록을 가져오는 중... (GID: ${gid})`);
     const response = await fetch(csvUrl);
     if (!response.ok) {
       throw new Error(`구글 시트 요청 실패: ${response.status} ${response.statusText}`);
@@ -79,7 +99,7 @@ async function main() {
     console.log(`✅ 포켓몬 이름 컬럼 발견: ${nameColumnIndex + 1}번째 열 (매칭률: ${maxMatches}건)`);
 
     // 4. 데이터 추출 및 매칭
-    const zaPokemonList = [];
+    const customPokemonList = [];
     const notFoundNames = [];
     const addedIds = new Set(); // 중복 방지용
 
@@ -94,7 +114,7 @@ async function main() {
       const pokemon = allPokemonData.find(p => p.name === name);
       if (pokemon) {
         if (!addedIds.has(pokemon.id)) {
-          zaPokemonList.push(pokemon);
+          customPokemonList.push(pokemon);
           addedIds.add(pokemon.id);
         }
       } else {
@@ -108,14 +128,14 @@ async function main() {
 
     // 5. 결과 저장
     console.log(`\n📊 분석 결과:`);
-    console.log(`- 발견된 포켓몬: ${zaPokemonList.length}마리`);
+    console.log(`- 발견된 포켓몬: ${customPokemonList.length}마리`);
     console.log(`- 매칭 실패: ${notFoundNames.length}건`);
     
     if (notFoundNames.length > 0) {
       console.log(`⚠️ 매칭되지 않은 이름 (일부): ${notFoundNames.slice(0, 10).join(', ')}${notFoundNames.length > 10 ? '...' : ''}`);
     }
 
-    fs.writeFileSync(outputFileName, JSON.stringify(zaPokemonList, null, 2));
+    fs.writeFileSync(outputFileName, JSON.stringify(customPokemonList, null, 2));
     console.log(`\n💾 파일 저장 완료: ${outputFileName}`);
 
   } catch (error) {
