@@ -41,10 +41,14 @@ const toggleCaughtBtn = document.getElementById('toggle-caught-btn');
 const toggleCaughtText = document.getElementById('toggle-caught-text');
 const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
+const btnNationalDex = document.getElementById('btn-national-dex');
+const btnZaDex = document.querySelector('.btn-za-f0e818cc');
 
 // --- 상태 관리 ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
-let isHideCaught = localStorage.getItem('isHideCaught') === 'true'; // localStorage에서 상태 불러오기
+let isHideCaught = localStorage.getItem('isHideCaught') === 'true';
+let currentPokemonData = []; // 현재 로드된 포켓몬 데이터를 저장할 배열
+let isNationalDex = true; // 현재 전국도감인지 여부
 
 // --- 헬퍼 함수 ---
 
@@ -64,12 +68,13 @@ function createTypeBadgesHtml(types) {
 /**
  * 개별 포켓몬 카드 DOM 요소를 생성합니다.
  * @param {object} pokemon - 포켓몬 데이터 객체
+ * @param {number} index - 리스트 내 순서 (0부터 시작)
  * @returns {HTMLElement} 생성된 카드 요소
  */
-function createPokemonCard(pokemon) {
+function createPokemonCard(pokemon, index) {
   const card = document.createElement('div');
   const isCaught = caughtPokemon.has(pokemon.id);
-
+  
   // 검색 및 필터링을 위한 데이터 속성 설정
   card.className = `pokemon-card relative bg-white rounded-lg shadow-md overflow-hidden ${isCaught ? 'is-caught' : ''}`;
   card.dataset.pokemonId = pokemon.id;
@@ -77,13 +82,16 @@ function createPokemonCard(pokemon) {
   card.dataset.types = pokemon.types.join(',');
   card.dataset.typesKo = pokemon.types.map(t => typeNamesKo[t] || '').join(',');
   card.dataset.evolution = pokemon.evolution.text.toLowerCase();
-
+  
   // HTML 컨텐츠 생성
   const typesHtml = createTypeBadgesHtml(pokemon.types);
   const weaknessesHtml = createTypeBadgesHtml(pokemon.weaknesses || []);
   const evolutionColorClass = evolutionCategoryColors[pokemon.evolution.category] || 'text-gray-500';
   const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
-
+  
+  // 도감 번호 표시 로직 (전국도감일 때는 숨김, 그 외에는 순서 번호 표시)
+  const listNumHtml = isNationalDex ? '' : `<span class="list-num-b4d752de text-gray-500 mr-1">No.${index + 1}</span>`;
+  
   card.innerHTML = `
     <div class="absolute top-2 right-2 z-10">
       <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -91,7 +99,10 @@ function createPokemonCard(pokemon) {
         <label for="toggle-${pokemon.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
       </div>
     </div>
-    <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono">#${pokemon.id}</p>
+    <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono flex items-center">
+      ${listNumHtml}
+      <span class="text-xs text-gray-300">#${pokemon.id}</span>
+    </p>
     <div class="img-box-56319e8e p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
       <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image" loading="lazy">
       <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
@@ -116,14 +127,13 @@ function createPokemonCard(pokemon) {
       </div>
     </div>
   `;
-
+  
   // '잡음' 상태 토글 이벤트 리스너 추가
   const toggle = card.querySelector(`#toggle-${pokemon.id}`);
   toggle.addEventListener('change', () => toggleCaughtStatus(pokemon.id, card));
-
+  
   return card;
 }
-
 
 // --- 이벤트 핸들러 및 주요 기능 ---
 
@@ -150,13 +160,12 @@ function toggleCaughtStatus(pokemonId, cardElement) {
 
 /**
  * '잡은 포켓몬' 데이터를 초기화하고 그리드를 다시 렌더링합니다.
- * @param {object[]} pokemonData - 전체 포켓몬 데이터 배열
  */
-function resetCaughtData(pokemonData) {
+function resetCaughtData() {
   if (confirm('정말로 모든 "잡은 포켓몬" 데이터를 초기화하시겠습니까?')) {
     localStorage.removeItem('caughtPokemon');
     caughtPokemon.clear();
-    renderGrid(pokemonData); // 데이터를 초기화하고 그리드를 다시 렌더링
+    renderGrid(currentPokemonData); // 현재 로드된 데이터로 그리드를 다시 렌더링
   }
 }
 
@@ -168,14 +177,12 @@ function updateToggleBtnUI() {
     iconEye.classList.add('hidden');
     iconEyeOff.classList.remove('hidden');
     toggleCaughtText.textContent = '보이기';
-    // 숨김 상태일 때 스타일 (활성화 느낌)
     toggleCaughtBtn.classList.remove('bg-indigo-500', 'hover:bg-indigo-600', 'text-white');
     toggleCaughtBtn.classList.add('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
   } else {
     iconEye.classList.remove('hidden');
     iconEyeOff.classList.add('hidden');
     toggleCaughtText.textContent = '숨기기';
-    // 보임 상태일 때 스타일 (기본)
     toggleCaughtBtn.classList.add('bg-indigo-500', 'hover:bg-indigo-600', 'text-white');
     toggleCaughtBtn.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-gray-700');
   }
@@ -199,14 +206,14 @@ function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
   const searchColumn = searchOptionSelect.value;
   const allCards = gridContainer.querySelectorAll('.pokemon-card');
-
+  
   allCards.forEach(card => {
     // 1. 잡은 포켓몬 숨기기 체크 여부 확인
     if (isHideCaught && card.classList.contains('is-caught')) {
       card.style.display = 'none';
       return; // 이미 숨겨졌으므로 검색어 매칭 로직 건너뜀
     }
-
+    
     // 2. 검색어 매칭 확인
     let isMatch = false;
     if (!searchTerm) {
@@ -236,22 +243,35 @@ function handleSearch() {
  * @param {object[]} dataToRender - 렌더링할 포켓몬 데이터 배열
  */
 function renderGrid(dataToRender) {
+  gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">포켓몬을 불러오는 중...</p>';
+  currentPokemonData = dataToRender; // 현재 데이터 업데이트
   gridContainer.innerHTML = ''; // 기존 카드 모두 제거
-  dataToRender.forEach(pokemon => {
-    const card = createPokemonCard(pokemon);
+  dataToRender.forEach((pokemon, index) => {
+    const card = createPokemonCard(pokemon, index);
     gridContainer.appendChild(card);
   });
   // 초기 렌더링 후 현재 필터 상태(숨기기 등) 적용
   handleSearch();
 }
 
-// --- 애플리케이션 초기화 ---
-async function initialize() {
+/**
+ * 특정 JSON 파일에서 포켓몬 데이터를 불러와 렌더링합니다.
+ * @param {string} dataUrl - 불러올 JSON 파일 경로
+ * @param {HTMLElement} activeButton - 활성화할 버튼 요소
+ * @param {boolean} isNational - 전국도감 여부
+ * @param {string} dexType - 도감 타입 ('national' or 'za')
+ */
+async function loadPokemonData(dataUrl, activeButton, isNational = false, dexType = 'national') {
   try {
-    // 초기 UI 상태 설정
-    updateToggleBtnUI();
-
-    const response = await fetch('pokemon.json');
+    gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">데이터를 로드하고 있습니다...</p>';
+    
+    // 전국도감 여부 상태 업데이트
+    isNationalDex = isNational;
+    
+    // 현재 선택된 도감 타입을 localStorage에 저장
+    localStorage.setItem('selectedDex', dexType);
+    
+    const response = await fetch(dataUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -259,15 +279,40 @@ async function initialize() {
     
     renderGrid(pokemonData);
     
-    // 이벤트 리스너 연결
-    searchInput.addEventListener('input', handleSearch);
-    searchOptionSelect.addEventListener('change', handleSearch);
-    toggleCaughtBtn.addEventListener('click', toggleHideCaught);
-    resetCaughtBtn.addEventListener('click', () => resetCaughtData(pokemonData));
-
+    // 모든 버튼에서 활성 스타일 제거
+    [btnNationalDex, btnZaDex].forEach(btn => {
+      btn.classList.remove('bg-indigo-100', 'text-indigo-600');
+    });
+    // 현재 선택된 버튼에만 활성 스타일 추가
+    activeButton.classList.add('bg-indigo-100', 'text-indigo-600');
+    
   } catch (error) {
     console.error('데이터를 불러오는 데 실패했습니다:', error);
-    gridContainer.innerHTML = '<p class="col-span-full text-center text-red-500">포켓몬 데이터를 불러오는 중 오류가 발생했습니다. 파일을 확인해주세요.</p>';
+    gridContainer.innerHTML = `<p class="col-span-full text-center text-red-500">${dataUrl} 파일을 불러오는 중 오류가 발생했습니다. 파일이 존재하는지 확인해주세요.</p>`;
+  }
+}
+
+// --- 애플리케이션 초기화 ---
+function initialize() {
+  // 초기 UI 상태 설정
+  updateToggleBtnUI();
+  
+  // 이벤트 리스너 연결
+  searchInput.addEventListener('input', handleSearch);
+  searchOptionSelect.addEventListener('change', handleSearch);
+  toggleCaughtBtn.addEventListener('click', toggleHideCaught);
+  resetCaughtBtn.addEventListener('click', resetCaughtData);
+  
+  btnNationalDex.addEventListener('click', () => loadPokemonData('pokemon.json', btnNationalDex, true, 'national'));
+  btnZaDex.addEventListener('click', () => loadPokemonData('pokemon-za.json', btnZaDex, false, 'za'));
+  
+  // 저장된 도감 상태 불러오기 (기본값: national)
+  const savedDex = localStorage.getItem('selectedDex');
+  
+  if (savedDex === 'za') {
+    loadPokemonData('pokemon-za.json', btnZaDex, false, 'za');
+  } else {
+    loadPokemonData('pokemon.json', btnNationalDex, true, 'national');
   }
 }
 
