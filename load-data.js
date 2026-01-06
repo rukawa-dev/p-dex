@@ -1,6 +1,64 @@
 const fs = require('fs');
+const path = require('path');
 
 const API_URL = 'https://pokeapi.co/api/v2';
+const CACHE_DIR = path.join(__dirname, 'cache');
+let FORCE_REFRESH = false;
+
+// --- 캐시 관련 로직 ---
+async function fetchWithCache(url) {
+    const urlObj = new URL(url);
+    // /api/v2 제거
+    const pathname = urlObj.pathname.replace('/api/v2', '');
+    // 쿼리스트링 ? -> _
+    const search = urlObj.search.replace('?', '_');
+    
+    const parts = pathname.split('/').filter(p => p);
+    
+    let dirPath = CACHE_DIR;
+    let fileName = 'index';
+    
+    if (parts.length > 0) {
+        fileName = parts.pop();
+        dirPath = path.join(CACHE_DIR, ...parts);
+    }
+    
+    const cacheFile = path.join(dirPath, fileName + search + '.json');
+    
+    if (!FORCE_REFRESH && fs.existsSync(cacheFile)) {
+        try {
+            const content = fs.readFileSync(cacheFile, 'utf-8');
+            const data = JSON.parse(content);
+            return {
+                ok: true,
+                json: async () => data
+            };
+        } catch (e) {
+            // 진행바가 깨지지 않도록 줄바꿈 추가
+            console.warn(`\n[CACHE] Failed to read cache for ${url}, fetching...`);
+        }
+    }
+    
+    // console.log(`[API] Fetching: ${url}`);
+    const response = await fetch(url);
+    if (!response.ok) return response;
+    
+    const data = await response.json();
+    
+    try {
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+        }
+        fs.writeFileSync(cacheFile, JSON.stringify(data, null, 2));
+    } catch (e) {
+        console.error(`\n[CACHE] Failed to write cache for ${url}:`, e);
+    }
+    
+    return {
+        ok: true,
+        json: async () => data
+    };
+}
 
 // --- 타입 상성 관련 로직 ---
 const ALL_TYPES = [
@@ -13,7 +71,7 @@ const typeRelationsCache = new Map();
 async function fetchAllTypeRelations() {
     console.log('Fetching all type relations...');
     await Promise.all(ALL_TYPES.map(async (type) => {
-        const response = await fetch(`${API_URL}/type/${type}`);
+        const response = await fetchWithCache(`${API_URL}/type/${type}`);
         const data = await response.json();
         typeRelationsCache.set(type, data.damage_relations);
     }));
@@ -42,7 +100,7 @@ function calculateWeaknesses(pokemonTypes) {
 // 한국어 이름 가져오기 헬퍼 함수
 async function getKoreanName(url) {
     try {
-        const response = await fetch(url);
+        const response = await fetchWithCache(url);
         if (!response.ok) return null;
         const data = await response.json();
         return data.names.find(name => name.language.name === 'ko')?.name || data.name;
@@ -53,13 +111,13 @@ async function getKoreanName(url) {
 
 async function fetchPokemonData(id) {
   try {
-    console.log(`Fetching data for Pokemon #${id}...`);
+    // console.log 제거됨
     
-    const response = await fetch(`${API_URL}/pokemon/${id}`);
+    const response = await fetchWithCache(`${API_URL}/pokemon/${id}`);
     if (!response.ok) throw new Error(`Failed to fetch pokemon ${id}`);
     const data = await response.json();
 
-    const speciesResponse = await fetch(`${API_URL}/pokemon-species/${id}`);
+    const speciesResponse = await fetchWithCache(`${API_URL}/pokemon-species/${id}`);
     if (!speciesResponse.ok) throw new Error(`Failed to fetch species ${id}`);
     const speciesData = await speciesResponse.json();
 
@@ -67,7 +125,7 @@ async function fetchPokemonData(id) {
     
     let evolutionCondition = { text: '-', category: 'NONE' };
     if (speciesData.evolution_chain) {
-        const evoResponse = await fetch(speciesData.evolution_chain.url);
+        const evoResponse = await fetchWithCache(speciesData.evolution_chain.url);
         const evoData = await evoResponse.json();
         evolutionCondition = await parseEvolution(evoData.chain, data.name);
     }
@@ -86,7 +144,7 @@ async function fetchPokemonData(id) {
       image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
     };
   } catch (error) {
-    console.error(`Error fetching pokemon ${id}:`, error);
+    console.error(`\nError fetching pokemon ${id}:`, error);
     return null;
   }
 }
@@ -124,14 +182,20 @@ async function formatEvolutionDetails(details) {
 }
 
 async function main() {
-    const args = process.argv.slice(2);
+    const rawArgs = process.argv.slice(2);
+    const args = rawArgs.filter(arg => arg !== '--refresh');
+    if (rawArgs.includes('--refresh')) {
+        FORCE_REFRESH = true;
+        console.log('Force refresh enabled. Ignoring cache.');
+    }
+
     let startId = 1;
     let endId = 151; // 기본값으로 1세대 포켓몬만 설정
 
     if (args.length > 0) {
         if (args[0] === 'all') {
             console.log('Fetching total pokemon count...');
-            const response = await fetch(`${API_URL}/pokemon-species?limit=1`);
+            const response = await fetchWithCache(`${API_URL}/pokemon-species?limit=1`);
             const data = await response.json();
             startId = 1;
             endId = data.count;
@@ -155,10 +219,18 @@ async function main() {
     await fetchAllTypeRelations();
 
     const allPokemon = [];
+    const totalCount = endId - startId + 1;
+    let processedCount = 0;
+
     for (let i = startId; i <= endId; i++) {
         const pokemon = await fetchPokemonData(i);
         if (pokemon) allPokemon.push(pokemon);
+        
+        processedCount++;
+        const percent = Math.round((processedCount / totalCount) * 100);
+        process.stdout.write(`\r[${processedCount}/${totalCount}] ${percent}%`);
     }
+    process.stdout.write('\n'); // 완료 후 줄바꿈
     
     // pokemon.json 파일로 저장하도록 수정
     const fileContent = JSON.stringify(allPokemon, null, 2);

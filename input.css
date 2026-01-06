@@ -29,3 +29,11 @@
   display:block !important;
   opacity:1 !important;
 }
+
+.scroll-btn {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.scroll-btn.show {
+  @apply opacity-100;
+}
