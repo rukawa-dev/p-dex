@@ -1,0 +1,4142 @@
+[
+  {
+    "id": 152,
+    "name": "치코리타",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/152.png"
+  },
+  {
+    "id": 153,
+    "name": "베이리프",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "치코리타 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/153.png"
+  },
+  {
+    "id": 154,
+    "name": "메가니움",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "베이리프 Lv.32",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/154.png"
+  },
+  {
+    "id": 498,
+    "name": "뚜꾸리",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/498.png"
+  },
+  {
+    "id": 499,
+    "name": "차오꿀",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "뚜꾸리 Lv.17",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/499.png"
+  },
+  {
+    "id": 500,
+    "name": "염무왕",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "차오꿀 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/500.png"
+  },
+  {
+    "id": 158,
+    "name": "리아코",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/158.png"
+  },
+  {
+    "id": 159,
+    "name": "엘리게이",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "리아코 Lv.18",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/159.png"
+  },
+  {
+    "id": 160,
+    "name": "장크로다일",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "엘리게이 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/160.png"
+  },
+  {
+    "id": 661,
+    "name": "화살꼬빈",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/661.png"
+  },
+  {
+    "id": 662,
+    "name": "불화살빈",
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "weaknesses": [
+      "water",
+      "electric",
+      "rock"
+    ],
+    "evolution": {
+      "text": "화살꼬빈 Lv.17",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/662.png"
+  },
+  {
+    "id": 663,
+    "name": "파이어로",
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "weaknesses": [
+      "water",
+      "electric",
+      "rock"
+    ],
+    "evolution": {
+      "text": "불화살빈 Lv.35",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/663.png"
+  },
+  {
+    "id": 659,
+    "name": "파르빗",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/659.png"
+  },
+  {
+    "id": 660,
+    "name": "파르토",
+    "types": [
+      "normal",
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting"
+    ],
+    "evolution": {
+      "text": "파르빗 Lv.20",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/660.png"
+  },
+  {
+    "id": 664,
+    "name": "분이벌레",
+    "types": [
+      "bug"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/664.png"
+  },
+  {
+    "id": 665,
+    "name": "분떠도리",
+    "types": [
+      "bug"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "rock"
+    ],
+    "evolution": {
+      "text": "분이벌레 Lv.9",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/665.png"
+  },
+  {
+    "id": 666,
+    "name": "비비용",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "weaknesses": [
+      "fire",
+      "electric",
+      "ice",
+      "flying",
+      "rock"
+    ],
+    "evolution": {
+      "text": "분떠도리 Lv.12",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/666.png"
+  },
+  {
+    "id": 13,
+    "name": "뿔충이",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
+  },
+  {
+    "id": 14,
+    "name": "딱충이",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "뿔충이 Lv.7",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png"
+  },
+  {
+    "id": 15,
+    "name": "독침붕",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "딱충이 Lv.10",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
+  },
+  {
+    "id": 16,
+    "name": "구구",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png"
+  },
+  {
+    "id": 17,
+    "name": "피죤",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "rock"
+    ],
+    "evolution": {
+      "text": "구구 Lv.18",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/17.png"
+  },
+  {
+    "id": 18,
+    "name": "피죤투",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "rock"
+    ],
+    "evolution": {
+      "text": "피죤 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png"
+  },
+  {
+    "id": 179,
+    "name": "메리프",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/179.png"
+  },
+  {
+    "id": 180,
+    "name": "보송송",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "메리프 Lv.15",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/180.png"
+  },
+  {
+    "id": 181,
+    "name": "전룡",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "보송송 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/181.png"
+  },
+  {
+    "id": 504,
+    "name": "보르쥐",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/504.png"
+  },
+  {
+    "id": 505,
+    "name": "보르그",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "보르쥐 Lv.20",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/505.png"
+  },
+  {
+    "id": 406,
+    "name": "꼬몽울",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/406.png"
+  },
+  {
+    "id": 315,
+    "name": "로젤리아",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "꼬몽울 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/315.png"
+  },
+  {
+    "id": 407,
+    "name": "로즈레이드",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "로젤리아 빛의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/407.png"
+  },
+  {
+    "id": 129,
+    "name": "잉어킹",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/129.png"
+  },
+  {
+    "id": 130,
+    "name": "갸라도스",
+    "types": [
+      "water",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "rock"
+    ],
+    "evolution": {
+      "text": "잉어킹 Lv.20",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png"
+  },
+  {
+    "id": 688,
+    "name": "거북손손",
+    "types": [
+      "rock",
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/688.png"
+  },
+  {
+    "id": 689,
+    "name": "거북손데스",
+    "types": [
+      "rock",
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "거북손손 Lv.39",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/689.png"
+  },
+  {
+    "id": 120,
+    "name": "별가사리",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/120.png"
+  },
+  {
+    "id": 121,
+    "name": "아쿠스타",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "별가사리 물의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/121.png"
+  },
+  {
+    "id": 669,
+    "name": "플라베베",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/669.png"
+  },
+  {
+    "id": 670,
+    "name": "플라엣테",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "플라베베 Lv.19",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/670.png"
+  },
+  {
+    "id": 671,
+    "name": "플라제스",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "플라엣테 빛의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/671.png"
+  },
+  {
+    "id": 672,
+    "name": "메이클",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/672.png"
+  },
+  {
+    "id": 673,
+    "name": "고고트",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "메이클 Lv.32",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/673.png"
+  },
+  {
+    "id": 677,
+    "name": "냐스퍼",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/677.png"
+  },
+  {
+    "id": 678,
+    "name": "냐오닉스",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/678.png"
+  },
+  {
+    "id": 667,
+    "name": "레오꼬",
+    "types": [
+      "fire",
+      "normal"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/667.png"
+  },
+  {
+    "id": 668,
+    "name": "화염레오",
+    "types": [
+      "fire",
+      "normal"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "레오꼬 Lv.35",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/668.png"
+  },
+  {
+    "id": 674,
+    "name": "판짱",
+    "types": [
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/674.png"
+  },
+  {
+    "id": 675,
+    "name": "부란다",
+    "types": [
+      "fighting",
+      "dark"
+    ],
+    "weaknesses": [
+      "fighting",
+      "flying",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "판짱 Lv.32",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/675.png"
+  },
+  {
+    "id": 568,
+    "name": "깨봉이",
+    "types": [
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/568.png"
+  },
+  {
+    "id": 569,
+    "name": "더스트나",
+    "types": [
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "깨봉이 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/569.png"
+  },
+  {
+    "id": 702,
+    "name": "데덴네",
+    "types": [
+      "electric",
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/702.png"
+  },
+  {
+    "id": 172,
+    "name": "피츄",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/172.png"
+  },
+  {
+    "id": 25,
+    "name": "피카츄",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "피츄 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+  },
+  {
+    "id": 26,
+    "name": "라이츄",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "피카츄 천둥의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png"
+  },
+  {
+    "id": 173,
+    "name": "삐",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/173.png"
+  },
+  {
+    "id": 35,
+    "name": "삐삐",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "삐 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/35.png"
+  },
+  {
+    "id": 36,
+    "name": "픽시",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "삐삐 달의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/36.png"
+  },
+  {
+    "id": 167,
+    "name": "페이검",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/167.png"
+  },
+  {
+    "id": 168,
+    "name": "아리아도스",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "페이검 Lv.22",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/168.png"
+  },
+  {
+    "id": 23,
+    "name": "아보",
+    "types": [
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/23.png"
+  },
+  {
+    "id": 24,
+    "name": "아보크",
+    "types": [
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "아보 Lv.22",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png"
+  },
+  {
+    "id": 63,
+    "name": "캐이시",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png"
+  },
+  {
+    "id": 64,
+    "name": "윤겔라",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "캐이시 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/64.png"
+  },
+  {
+    "id": 65,
+    "name": "후딘",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "윤겔라 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png"
+  },
+  {
+    "id": 92,
+    "name": "고오스",
+    "types": [
+      "ghost",
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/92.png"
+  },
+  {
+    "id": 93,
+    "name": "고우스트",
+    "types": [
+      "ghost",
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "고오스 Lv.25",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/93.png"
+  },
+  {
+    "id": 94,
+    "name": "팬텀",
+    "types": [
+      "ghost",
+      "poison"
+    ],
+    "weaknesses": [
+      "ground",
+      "psychic",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "고우스트 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+  },
+  {
+    "id": 543,
+    "name": "마디네",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/543.png"
+  },
+  {
+    "id": 544,
+    "name": "휠구",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "마디네 Lv.22",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/544.png"
+  },
+  {
+    "id": 545,
+    "name": "펜드라",
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "rock"
+    ],
+    "evolution": {
+      "text": "휠구 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/545.png"
+  },
+  {
+    "id": 679,
+    "name": "단칼빙",
+    "types": [
+      "steel",
+      "ghost"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/679.png"
+  },
+  {
+    "id": 680,
+    "name": "쌍검킬",
+    "types": [
+      "steel",
+      "ghost"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "단칼빙 Lv.35",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/680.png"
+  },
+  {
+    "id": 681,
+    "name": "킬가르도",
+    "types": [
+      "steel",
+      "ghost"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/681.png"
+  },
+  {
+    "id": 69,
+    "name": "모다피",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/69.png"
+  },
+  {
+    "id": 70,
+    "name": "우츠동",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "모다피 Lv.21",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/70.png"
+  },
+  {
+    "id": 71,
+    "name": "우츠보트",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "우츠동 리프의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/71.png"
+  },
+  {
+    "id": 511,
+    "name": "야나프",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/511.png"
+  },
+  {
+    "id": 512,
+    "name": "야나키",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "야나프 리프의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/512.png"
+  },
+  {
+    "id": 513,
+    "name": "바오프",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/513.png"
+  },
+  {
+    "id": 514,
+    "name": "바오키",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "바오프 불꽃의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/514.png"
+  },
+  {
+    "id": 515,
+    "name": "앗차프",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/515.png"
+  },
+  {
+    "id": 516,
+    "name": "앗차키",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "앗차프 물의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/516.png"
+  },
+  {
+    "id": 307,
+    "name": "요가랑",
+    "types": [
+      "fighting",
+      "psychic"
+    ],
+    "weaknesses": [
+      "flying",
+      "ghost",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/307.png"
+  },
+  {
+    "id": 308,
+    "name": "요가램",
+    "types": [
+      "fighting",
+      "psychic"
+    ],
+    "weaknesses": [
+      "flying",
+      "ghost",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "요가랑 Lv.37",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/308.png"
+  },
+  {
+    "id": 309,
+    "name": "썬더라이",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/309.png"
+  },
+  {
+    "id": 310,
+    "name": "썬더볼트",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "썬더라이 Lv.26",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/310.png"
+  },
+  {
+    "id": 280,
+    "name": "랄토스",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "ghost",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/280.png"
+  },
+  {
+    "id": 281,
+    "name": "킬리아",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "ghost",
+      "steel"
+    ],
+    "evolution": {
+      "text": "랄토스 Lv.20",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/281.png"
+  },
+  {
+    "id": 282,
+    "name": "가디안",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "ghost",
+      "steel"
+    ],
+    "evolution": {
+      "text": "킬리아 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png"
+  },
+  {
+    "id": 475,
+    "name": "엘레이드",
+    "types": [
+      "psychic",
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "ghost",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "킬리아 각성의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/475.png"
+  },
+  {
+    "id": 228,
+    "name": "델빌",
+    "types": [
+      "dark",
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/228.png"
+  },
+  {
+    "id": 229,
+    "name": "헬가",
+    "types": [
+      "dark",
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "델빌 Lv.24",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/229.png"
+  },
+  {
+    "id": 333,
+    "name": "파비코",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/333.png"
+  },
+  {
+    "id": 334,
+    "name": "파비코리",
+    "types": [
+      "dragon",
+      "flying"
+    ],
+    "weaknesses": [
+      "ice",
+      "rock",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "파비코 Lv.35",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/334.png"
+  },
+  {
+    "id": 531,
+    "name": "다부니",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/531.png"
+  },
+  {
+    "id": 682,
+    "name": "슈쁘",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/682.png"
+  },
+  {
+    "id": 683,
+    "name": "프레프티르",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "슈쁘 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/683.png"
+  },
+  {
+    "id": 684,
+    "name": "나룸퍼프",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/684.png"
+  },
+  {
+    "id": 685,
+    "name": "나루림",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "나룸퍼프 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/685.png"
+  },
+  {
+    "id": 133,
+    "name": "이브이",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+  },
+  {
+    "id": 134,
+    "name": "샤미드",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "이브이 물의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/134.png"
+  },
+  {
+    "id": 135,
+    "name": "쥬피썬더",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "이브이 천둥의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/135.png"
+  },
+  {
+    "id": 136,
+    "name": "부스터",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "이브이 불꽃의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/136.png"
+  },
+  {
+    "id": 196,
+    "name": "에브이",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "이브이 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/196.png"
+  },
+  {
+    "id": 197,
+    "name": "블래키",
+    "types": [
+      "dark"
+    ],
+    "weaknesses": [
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "이브이 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png"
+  },
+  {
+    "id": 470,
+    "name": "리피아",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "이브이 특수 조건",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/470.png"
+  },
+  {
+    "id": 471,
+    "name": "글레이시아",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "이브이 특수 조건",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/471.png"
+  },
+  {
+    "id": 700,
+    "name": "님피아",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "이브이 특수 조건",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/700.png"
+  },
+  {
+    "id": 427,
+    "name": "이어롤",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/427.png"
+  },
+  {
+    "id": 428,
+    "name": "이어롭",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "이어롤 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/428.png"
+  },
+  {
+    "id": 353,
+    "name": "어둠대신",
+    "types": [
+      "ghost"
+    ],
+    "weaknesses": [
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/353.png"
+  },
+  {
+    "id": 354,
+    "name": "다크펫",
+    "types": [
+      "ghost"
+    ],
+    "weaknesses": [
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "어둠대신 Lv.37",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/354.png"
+  },
+  {
+    "id": 582,
+    "name": "바닐프티",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/582.png"
+  },
+  {
+    "id": 583,
+    "name": "바닐리치",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "바닐프티 Lv.35",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/583.png"
+  },
+  {
+    "id": 584,
+    "name": "배바닐라",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "바닐리치 Lv.47",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/584.png"
+  },
+  {
+    "id": 322,
+    "name": "둔타",
+    "types": [
+      "fire",
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/322.png"
+  },
+  {
+    "id": 323,
+    "name": "폭타",
+    "types": [
+      "fire",
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "ground"
+    ],
+    "evolution": {
+      "text": "둔타 Lv.33",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/323.png"
+  },
+  {
+    "id": 449,
+    "name": "히포포타스",
+    "types": [
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/449.png"
+  },
+  {
+    "id": 450,
+    "name": "하마돈",
+    "types": [
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice"
+    ],
+    "evolution": {
+      "text": "히포포타스 Lv.34",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/450.png"
+  },
+  {
+    "id": 529,
+    "name": "두더류",
+    "types": [
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/529.png"
+  },
+  {
+    "id": 530,
+    "name": "몰드류",
+    "types": [
+      "ground",
+      "steel"
+    ],
+    "weaknesses": [
+      "fire",
+      "water",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "두더류 Lv.31",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/530.png"
+  },
+  {
+    "id": 551,
+    "name": "깜눈크",
+    "types": [
+      "ground",
+      "dark"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/551.png"
+  },
+  {
+    "id": 552,
+    "name": "악비르",
+    "types": [
+      "ground",
+      "dark"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "깜눈크 Lv.29",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/552.png"
+  },
+  {
+    "id": 553,
+    "name": "악비아르",
+    "types": [
+      "ground",
+      "dark"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "악비르 Lv.40",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/553.png"
+  },
+  {
+    "id": 66,
+    "name": "알통몬",
+    "types": [
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/66.png"
+  },
+  {
+    "id": 67,
+    "name": "근육몬",
+    "types": [
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "알통몬 Lv.28",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/67.png"
+  },
+  {
+    "id": 68,
+    "name": "괴력몬",
+    "types": [
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "근육몬 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png"
+  },
+  {
+    "id": 443,
+    "name": "딥상어동",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/443.png"
+  },
+  {
+    "id": 444,
+    "name": "한바이트",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "딥상어동 Lv.24",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/444.png"
+  },
+  {
+    "id": 445,
+    "name": "한카리아스",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "한바이트 Lv.48",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png"
+  },
+  {
+    "id": 703,
+    "name": "멜리시",
+    "types": [
+      "rock",
+      "fairy"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ground",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/703.png"
+  },
+  {
+    "id": 302,
+    "name": "깜까미",
+    "types": [
+      "dark",
+      "ghost"
+    ],
+    "weaknesses": [
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png"
+  },
+  {
+    "id": 303,
+    "name": "입치트",
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/303.png"
+  },
+  {
+    "id": 359,
+    "name": "앱솔",
+    "types": [
+      "dark"
+    ],
+    "weaknesses": [
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png"
+  },
+  {
+    "id": 447,
+    "name": "리오르",
+    "types": [
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/447.png"
+  },
+  {
+    "id": 448,
+    "name": "루카리오",
+    "types": [
+      "fighting",
+      "steel"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "리오르 친밀도 높음",
+      "category": "ETC"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
+  },
+  {
+    "id": 79,
+    "name": "야돈",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png"
+  },
+  {
+    "id": 80,
+    "name": "야도란",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "야돈 Lv.37",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png"
+  },
+  {
+    "id": 199,
+    "name": "야도킹",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "야돈 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/199.png"
+  },
+  {
+    "id": 318,
+    "name": "샤프니아",
+    "types": [
+      "water",
+      "dark"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/318.png"
+  },
+  {
+    "id": 319,
+    "name": "샤크니아",
+    "types": [
+      "water",
+      "dark"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "샤프니아 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/319.png"
+  },
+  {
+    "id": 602,
+    "name": "저리어",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/602.png"
+  },
+  {
+    "id": 603,
+    "name": "저리릴",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "저리어 Lv.39",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/603.png"
+  },
+  {
+    "id": 604,
+    "name": "저리더프",
+    "types": [
+      "electric"
+    ],
+    "weaknesses": [
+      "ground"
+    ],
+    "evolution": {
+      "text": "저리릴 천둥의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/604.png"
+  },
+  {
+    "id": 147,
+    "name": "미뇽",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png"
+  },
+  {
+    "id": 148,
+    "name": "신뇽",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "미뇽 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/148.png"
+  },
+  {
+    "id": 149,
+    "name": "망나뇽",
+    "types": [
+      "dragon",
+      "flying"
+    ],
+    "weaknesses": [
+      "ice",
+      "rock",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "신뇽 Lv.55",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png"
+  },
+  {
+    "id": 1,
+    "name": "이상해씨",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+  },
+  {
+    "id": 2,
+    "name": "이상해풀",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "이상해씨 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+  },
+  {
+    "id": 3,
+    "name": "이상해꽃",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "이상해풀 Lv.32",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+  },
+  {
+    "id": 4,
+    "name": "파이리",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+  },
+  {
+    "id": 5,
+    "name": "리자드",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "파이리 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png"
+  },
+  {
+    "id": 6,
+    "name": "리자몽",
+    "types": [
+      "fire",
+      "flying"
+    ],
+    "weaknesses": [
+      "water",
+      "electric",
+      "rock"
+    ],
+    "evolution": {
+      "text": "리자드 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+  },
+  {
+    "id": 7,
+    "name": "꼬부기",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
+  },
+  {
+    "id": 8,
+    "name": "어니부기",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "꼬부기 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png"
+  },
+  {
+    "id": 9,
+    "name": "거북왕",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "어니부기 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
+  },
+  {
+    "id": 618,
+    "name": "메더",
+    "types": [
+      "ground",
+      "electric"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/618.png"
+  },
+  {
+    "id": 676,
+    "name": "트리미앙",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/676.png"
+  },
+  {
+    "id": 686,
+    "name": "오케이징",
+    "types": [
+      "dark",
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/686.png"
+  },
+  {
+    "id": 687,
+    "name": "칼라마네로",
+    "types": [
+      "dark",
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "오케이징 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/687.png"
+  },
+  {
+    "id": 690,
+    "name": "수레기",
+    "types": [
+      "poison",
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "ground",
+      "psychic"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/690.png"
+  },
+  {
+    "id": 691,
+    "name": "드래캄",
+    "types": [
+      "poison",
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "ground",
+      "psychic",
+      "dragon"
+    ],
+    "evolution": {
+      "text": "수레기 Lv.48",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/691.png"
+  },
+  {
+    "id": 692,
+    "name": "완철포",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/692.png"
+  },
+  {
+    "id": 693,
+    "name": "블로스터",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "완철포 Lv.37",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/693.png"
+  },
+  {
+    "id": 704,
+    "name": "미끄메라",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/704.png"
+  },
+  {
+    "id": 705,
+    "name": "미끄네일",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "미끄메라 Lv.40",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/705.png"
+  },
+  {
+    "id": 706,
+    "name": "미끄래곤",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "미끄네일 Lv.50",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png"
+  },
+  {
+    "id": 225,
+    "name": "딜리버드",
+    "types": [
+      "ice",
+      "flying"
+    ],
+    "weaknesses": [
+      "fire",
+      "electric",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/225.png"
+  },
+  {
+    "id": 361,
+    "name": "눈꼬마",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/361.png"
+  },
+  {
+    "id": 362,
+    "name": "얼음귀신",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "눈꼬마 Lv.42",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/362.png"
+  },
+  {
+    "id": 478,
+    "name": "눈여아",
+    "types": [
+      "ice",
+      "ghost"
+    ],
+    "weaknesses": [
+      "fire",
+      "rock",
+      "ghost",
+      "dark",
+      "steel"
+    ],
+    "evolution": {
+      "text": "눈꼬마 각성의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/478.png"
+  },
+  {
+    "id": 459,
+    "name": "눈쓰개",
+    "types": [
+      "grass",
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "poison",
+      "flying",
+      "bug",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/459.png"
+  },
+  {
+    "id": 460,
+    "name": "눈설왕",
+    "types": [
+      "grass",
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "poison",
+      "flying",
+      "bug",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "눈쓰개 Lv.40",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/460.png"
+  },
+  {
+    "id": 712,
+    "name": "꽁어름",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/712.png"
+  },
+  {
+    "id": 713,
+    "name": "크레베이스",
+    "types": [
+      "ice"
+    ],
+    "weaknesses": [
+      "fire",
+      "fighting",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "꽁어름 Lv.37",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/713.png"
+  },
+  {
+    "id": 123,
+    "name": "스라크",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "weaknesses": [
+      "fire",
+      "electric",
+      "ice",
+      "flying",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/123.png"
+  },
+  {
+    "id": 212,
+    "name": "핫삼",
+    "types": [
+      "bug",
+      "steel"
+    ],
+    "weaknesses": [
+      "fire"
+    ],
+    "evolution": {
+      "text": "스라크 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
+  },
+  {
+    "id": 127,
+    "name": "쁘사이저",
+    "types": [
+      "bug"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/127.png"
+  },
+  {
+    "id": 214,
+    "name": "헤라크로스",
+    "types": [
+      "bug",
+      "fighting"
+    ],
+    "weaknesses": [
+      "fire",
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png"
+  },
+  {
+    "id": 587,
+    "name": "에몽가",
+    "types": [
+      "electric",
+      "flying"
+    ],
+    "weaknesses": [
+      "ice",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/587.png"
+  },
+  {
+    "id": 701,
+    "name": "루차불",
+    "types": [
+      "fighting",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/701.png"
+  },
+  {
+    "id": 708,
+    "name": "나목령",
+    "types": [
+      "ghost",
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/708.png"
+  },
+  {
+    "id": 709,
+    "name": "대로트",
+    "types": [
+      "ghost",
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "나목령 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/709.png"
+  },
+  {
+    "id": 559,
+    "name": "곤율랭",
+    "types": [
+      "dark",
+      "fighting"
+    ],
+    "weaknesses": [
+      "fighting",
+      "flying",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/559.png"
+  },
+  {
+    "id": 560,
+    "name": "곤율거니",
+    "types": [
+      "dark",
+      "fighting"
+    ],
+    "weaknesses": [
+      "fighting",
+      "flying",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "곤율랭 Lv.39",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/560.png"
+  },
+  {
+    "id": 714,
+    "name": "음뱃",
+    "types": [
+      "flying",
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "rock",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/714.png"
+  },
+  {
+    "id": 715,
+    "name": "음번",
+    "types": [
+      "flying",
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "rock",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "음뱃 Lv.48",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/715.png"
+  },
+  {
+    "id": 707,
+    "name": "클레피",
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/707.png"
+  },
+  {
+    "id": 607,
+    "name": "불켜미",
+    "types": [
+      "ghost",
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/607.png"
+  },
+  {
+    "id": 608,
+    "name": "램프라",
+    "types": [
+      "ghost",
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "불켜미 Lv.41",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/608.png"
+  },
+  {
+    "id": 609,
+    "name": "샹델라",
+    "types": [
+      "ghost",
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "램프라 어둠의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/609.png"
+  },
+  {
+    "id": 142,
+    "name": "프테라",
+    "types": [
+      "rock",
+      "flying"
+    ],
+    "weaknesses": [
+      "water",
+      "electric",
+      "ice",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png"
+  },
+  {
+    "id": 696,
+    "name": "티고라스",
+    "types": [
+      "rock",
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "fighting",
+      "ground",
+      "dragon",
+      "steel",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/696.png"
+  },
+  {
+    "id": 697,
+    "name": "견고라스",
+    "types": [
+      "rock",
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "fighting",
+      "ground",
+      "dragon",
+      "steel",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "티고라스 Lv.39",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/697.png"
+  },
+  {
+    "id": 698,
+    "name": "아마루스",
+    "types": [
+      "rock",
+      "ice"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "fighting",
+      "ground",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/698.png"
+  },
+  {
+    "id": 699,
+    "name": "아마루르가",
+    "types": [
+      "rock",
+      "ice"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "fighting",
+      "ground",
+      "rock",
+      "steel"
+    ],
+    "evolution": {
+      "text": "아마루스 Lv.39",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/699.png"
+  },
+  {
+    "id": 95,
+    "name": "롱스톤",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting",
+      "ground",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/95.png"
+  },
+  {
+    "id": 208,
+    "name": "강철톤",
+    "types": [
+      "steel",
+      "ground"
+    ],
+    "weaknesses": [
+      "fire",
+      "water",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "롱스톤 통신교환",
+      "category": "TRADE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png"
+  },
+  {
+    "id": 304,
+    "name": "가보리",
+    "types": [
+      "steel",
+      "rock"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/304.png"
+  },
+  {
+    "id": 305,
+    "name": "갱도라",
+    "types": [
+      "steel",
+      "rock"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "가보리 Lv.32",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/305.png"
+  },
+  {
+    "id": 306,
+    "name": "보스로라",
+    "types": [
+      "steel",
+      "rock"
+    ],
+    "weaknesses": [
+      "water",
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "갱도라 Lv.42",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/306.png"
+  },
+  {
+    "id": 694,
+    "name": "목도리키텔",
+    "types": [
+      "electric",
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/694.png"
+  },
+  {
+    "id": 695,
+    "name": "일레도리자드",
+    "types": [
+      "electric",
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting",
+      "ground"
+    ],
+    "evolution": {
+      "text": "목도리키텔 태양의돌 사용",
+      "category": "ITEM"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/695.png"
+  },
+  {
+    "id": 710,
+    "name": "호바귀",
+    "types": [
+      "ghost",
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/710.png"
+  },
+  {
+    "id": 711,
+    "name": "펌킨인",
+    "types": [
+      "ghost",
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/711.png"
+  },
+  {
+    "id": 246,
+    "name": "애버라스",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting",
+      "ground",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/246.png"
+  },
+  {
+    "id": 247,
+    "name": "데기라스",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ice",
+      "fighting",
+      "ground",
+      "steel"
+    ],
+    "evolution": {
+      "text": "애버라스 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/247.png"
+  },
+  {
+    "id": 248,
+    "name": "마기라스",
+    "types": [
+      "rock",
+      "dark"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "fighting",
+      "ground",
+      "bug",
+      "steel",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "데기라스 Lv.55",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"
+  },
+  {
+    "id": 656,
+    "name": "개구마르",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/656.png"
+  },
+  {
+    "id": 657,
+    "name": "개굴반장",
+    "types": [
+      "water"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass"
+    ],
+    "evolution": {
+      "text": "개구마르 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/657.png"
+  },
+  {
+    "id": 658,
+    "name": "개굴닌자",
+    "types": [
+      "water",
+      "dark"
+    ],
+    "weaknesses": [
+      "electric",
+      "grass",
+      "fighting",
+      "bug",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "개굴반장 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png"
+  },
+  {
+    "id": 870,
+    "name": "대여르",
+    "types": [
+      "fighting"
+    ],
+    "weaknesses": [
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/870.png"
+  },
+  {
+    "id": 650,
+    "name": "도치마론",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/650.png"
+  },
+  {
+    "id": 651,
+    "name": "도치보구",
+    "types": [
+      "grass"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "bug"
+    ],
+    "evolution": {
+      "text": "도치마론 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/651.png"
+  },
+  {
+    "id": 652,
+    "name": "브리가론",
+    "types": [
+      "grass",
+      "fighting"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "poison",
+      "flying",
+      "psychic",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "도치보구 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/652.png"
+  },
+  {
+    "id": 227,
+    "name": "무장조",
+    "types": [
+      "steel",
+      "flying"
+    ],
+    "weaknesses": [
+      "fire",
+      "electric"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/227.png"
+  },
+  {
+    "id": 653,
+    "name": "푸호꼬",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/653.png"
+  },
+  {
+    "id": 654,
+    "name": "테르나",
+    "types": [
+      "fire"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock"
+    ],
+    "evolution": {
+      "text": "푸호꼬 Lv.16",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/654.png"
+  },
+  {
+    "id": 655,
+    "name": "마폭시",
+    "types": [
+      "fire",
+      "psychic"
+    ],
+    "weaknesses": [
+      "water",
+      "ground",
+      "rock",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "테르나 Lv.36",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/655.png"
+  },
+  {
+    "id": 371,
+    "name": "아공이",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/371.png"
+  },
+  {
+    "id": 372,
+    "name": "쉘곤",
+    "types": [
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "아공이 Lv.30",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/372.png"
+  },
+  {
+    "id": 373,
+    "name": "보만다",
+    "types": [
+      "dragon",
+      "flying"
+    ],
+    "weaknesses": [
+      "ice",
+      "rock",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "쉘곤 Lv.50",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png"
+  },
+  {
+    "id": 115,
+    "name": "캥카",
+    "types": [
+      "normal"
+    ],
+    "weaknesses": [
+      "fighting"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png"
+  },
+  {
+    "id": 780,
+    "name": "할비롱",
+    "types": [
+      "normal",
+      "dragon"
+    ],
+    "weaknesses": [
+      "ice",
+      "fighting",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/780.png"
+  },
+  {
+    "id": 374,
+    "name": "메탕",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/374.png"
+  },
+  {
+    "id": 375,
+    "name": "메탕구",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "메탕 Lv.20",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/375.png"
+  },
+  {
+    "id": 376,
+    "name": "메타그로스",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "weaknesses": [
+      "fire",
+      "ground",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "메탕구 Lv.45",
+      "category": "LV"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/376.png"
+  },
+  {
+    "id": 716,
+    "name": "제르네아스",
+    "types": [
+      "fairy"
+    ],
+    "weaknesses": [
+      "poison",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/716.png"
+  },
+  {
+    "id": 717,
+    "name": "이벨타르",
+    "types": [
+      "dark",
+      "flying"
+    ],
+    "weaknesses": [
+      "electric",
+      "ice",
+      "rock",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/717.png"
+  },
+  {
+    "id": 718,
+    "name": "지가르데",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "weaknesses": [
+      "ice",
+      "dragon",
+      "fairy"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/718.png"
+  },
+  {
+    "id": 719,
+    "name": "디안시",
+    "types": [
+      "rock",
+      "fairy"
+    ],
+    "weaknesses": [
+      "water",
+      "grass",
+      "ground",
+      "steel"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/719.png"
+  },
+  {
+    "id": 150,
+    "name": "뮤츠",
+    "types": [
+      "psychic"
+    ],
+    "weaknesses": [
+      "bug",
+      "ghost",
+      "dark"
+    ],
+    "evolution": {
+      "text": "-",
+      "category": "NONE"
+    },
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
+  }
+]
