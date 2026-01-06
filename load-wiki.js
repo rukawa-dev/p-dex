@@ -2,21 +2,27 @@
 const cheerio = require('cheerio'); // HTML을 파싱하고 데이터를 추출하기 위한 라이브러리
 const fs = require('fs'); // 파일 시스템에 접근하기 위한 Node.js 내장 모듈
 const path = require('path'); // 파일 경로를 다루기 위한 Node.js 내장 모듈
+const axios = require('axios'); // HTTP 요청을 보내기 위한 라이브러리
 
 /**
- * 로컬 HTML 파일에서 이미지 정보와 포켓몬 이름을 추출하여 pokemon-wiki.json 파일을 새로 생성합니다.
+ * 나무위키 URL에서 HTML을 가져와 이미지 정보와 포켓몬 이름을 추출하여 pokemon-wiki.json 파일을 새로 생성합니다.
  * rowspan으로 이름이 누락된 경우, 대표 항목의 이름을 가져와 채워줍니다.
  * 최종적으로 이름이 누락된 항목의 총 개수를 눈에 띄게 출력합니다.
  */
-function createWikiJson() {
+async function createWikiJson() {
   try {
-    // --- 1. HTML 파일 읽기 ---
-    const htmlPath = path.join(__dirname, 'crawling', 'namu-wiki-dump.html');
-    if (!fs.existsSync(htmlPath)) {
-      console.error(`오류: ${htmlPath} 파일을 찾을 수 없습니다.`);
-      return;
-    }
-    const html = fs.readFileSync(htmlPath, 'utf-8');
+    // --- 1. HTML 가져오기 (URL 크롤링) ---
+    const url = 'https://namu.wiki/w/%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0(%ED%8F%AC%EC%BC%93%EB%AA%AC%EC%8A%A4%ED%84%B0)/%EB%AA%A9%EB%A1%9D/%EC%A0%84%EA%B5%AD%EB%8F%84%EA%B0%90';
+    console.log(`데이터를 가져오는 중: ${url}`);
+    
+    // 나무위키 등은 User-Agent 헤더가 없으면 요청을 거부할 수 있으므로 헤더를 추가합니다.
+    const response = await axios.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      }
+    });
+    
+    const html = response.data;
     const $ = cheerio.load(html);
 
     // --- 2. 이미지 및 이름 정보 추출 ---
@@ -53,13 +59,15 @@ function createWikiJson() {
         monsterName = nameCache[baseId];
       }
 
+      // ID 변환: 공백을 하이픈으로 변경
+      const wikiId = altText.replace(/ /g, '-');
+
       if (monsterName === null) {
-        missingNameIds.push(altText);
+        missingNameIds.push(wikiId);
       }
 
       imagesData.push({
-        id: altText,
-        src: realSrc,
+        "wiki-id": wikiId,
         name: monsterName
       });
     });
