@@ -5,7 +5,8 @@ const path = require('path'); // 파일 경로를 다루기 위한 Node.js 내�
 
 /**
  * 로컬 HTML 파일에서 이미지 정보와 포켓몬 이름을 추출하여 pokemon-wiki.json 파일을 새로 생성합니다.
- * 이름 추출에 실패한 경우 해당 ID를 콘솔에 출력합니다.
+ * rowspan으로 이름이 누락된 경우, 대표 항목의 이름을 가져와 채워줍니다.
+ * 최종적으로 이름이 누락된 항목의 총 개수를 눈에 띄게 출력합니다.
  */
 function createWikiJson() {
   try {
@@ -21,7 +22,8 @@ function createWikiJson() {
     // --- 2. 이미지 및 이름 정보 추출 ---
     const iconImages = $('img[alt^="icon"]');
     const imagesData = [];
-    console.log("이름이 누락된 항목의 ID:");
+    const nameCache = {}; // rowspan 처리를 위한 이름 캐시
+    const missingNameIds = []; // 이름이 누락된 ID 목록
 
     iconImages.each((i, elem) => {
       const image = $(elem);
@@ -32,23 +34,27 @@ function createWikiJson() {
         return; // data-src가 없으면 건너뜁니다.
       }
 
+      const baseId = altText.split(' ')[0]; // 'icon0386' 같은 베이스 ID 추출
       const imageTd = image.closest('td');
       const nameTd = imageTd.next('td');
       let monsterName = null;
 
       if (nameTd.length > 0) {
         const nameText = nameTd.text().trim();
-        
-        // 텍스트가 한 줄인 경우에만 이름으로 간주
         if (nameText && !nameText.includes('\n')) {
-          // 이름에서 대괄호와 숫자(각주)를 제거하여 정제
           monsterName = nameText.replace(/\[\d+\]/g, '').trim();
+          if (monsterName) {
+            nameCache[baseId] = monsterName;
+          }
         }
       }
       
-      // 이름 추출에 실패한 경우(monsterName이 null인 경우) ID를 콘솔에 출력
+      if (monsterName === null && nameCache[baseId]) {
+        monsterName = nameCache[baseId];
+      }
+
       if (monsterName === null) {
-        console.log(altText);
+        missingNameIds.push(altText);
       }
 
       imagesData.push({
@@ -58,12 +64,25 @@ function createWikiJson() {
       });
     });
 
-    // --- 3. 새로운 JSON 객체 생성 ---
+    // --- 3. 누락된 이름 개수 및 목록을 강조하여 출력 ---
+    const red = '\x1b[31m';
+    const yellow = '\x1b[33m';
+    const reset = '\x1b[0m';
+
+    console.log(`${yellow}========================================${reset}`);
+    console.log(`${yellow}최종적으로 이름이 누락된 항목의 총 개수: ${red}${missingNameIds.length}${yellow}개${reset}`);
+    if (missingNameIds.length > 0) {
+      console.log(`${yellow}누락된 ID 목록: ${reset}`, missingNameIds);
+    }
+    console.log(`${yellow}========================================${reset}`);
+
+
+    // --- 4. 새로운 JSON 객체 생성 ---
     const wikiData = {
       images: imagesData
     };
 
-    // --- 4. 새로운 데이터로 JSON 파일 생성 (덮어쓰기) ---
+    // --- 5. 새로운 데이터로 JSON 파일 생성 (덮어쓰기) ---
     const jsonPath = path.join(__dirname, 'pokemon-wiki.json');
     const newJsonData = JSON.stringify(wikiData, null, 2);
     fs.writeFileSync(jsonPath, newJsonData, 'utf-8');
