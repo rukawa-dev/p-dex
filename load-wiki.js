@@ -5,7 +5,7 @@ const path = require('path'); // 파일 경로를 다루기 위한 Node.js 내�
 
 /**
  * 로컬 HTML 파일에서 이미지 정보와 포켓몬 이름을 추출하여 pokemon-wiki.json 파일을 새로 생성합니다.
- * <td>의 순수 텍스트를 기반으로 이름을 추출합니다.
+ * 이름 추출에 실패한 경우 해당 ID를 콘솔에 출력합니다.
  */
 function createWikiJson() {
   try {
@@ -21,7 +21,7 @@ function createWikiJson() {
     // --- 2. 이미지 및 이름 정보 추출 ---
     const iconImages = $('img[alt^="icon"]');
     const imagesData = [];
-    console.log("이름 추출이 복잡한 경우(name은 null로 저장됩니다):");
+    console.log("이름이 누락된 항목의 ID:");
 
     iconImages.each((i, elem) => {
       const image = $(elem);
@@ -39,16 +39,18 @@ function createWikiJson() {
       if (nameTd.length > 0) {
         const nameText = nameTd.text().trim();
         
-        // 텍스트에 줄바꿈이 없으면 단일 이름으로 간주
+        // 텍스트가 한 줄인 경우에만 이름으로 간주
         if (nameText && !nameText.includes('\n')) {
-          monsterName = nameText;
-        } else {
-          // 텍스트가 비어있거나 줄바꿈이 포함된 복잡한 경우, 콘솔에 출력
-          console.log(`- ${altText}의 이름 TD: ${nameTd.html()}`);
+          // 이름에서 대괄호와 숫자(각주)를 제거하여 정제
+          monsterName = nameText.replace(/\[\d+\]/g, '').trim();
         }
       }
       
-      // 이름 추출 여부와 관계없이 모든 항목을 추가
+      // 이름 추출에 실패한 경우(monsterName이 null인 경우) ID를 콘솔에 출력
+      if (monsterName === null) {
+        console.log(altText);
+      }
+
       imagesData.push({
         id: altText,
         src: realSrc,
