@@ -50,9 +50,10 @@ const searchPrevBtn = document.getElementById('search-prev-btn');
 const searchNextBtn = document.getElementById('search-next-btn');
 
 // --- 상태 관리 ---
-let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
+let caughtPokemon = new Set(); // 잡은 포켓몬 데이터 (도감별로 동적 로드)
 let isHideCaught = localStorage.getItem('isHideCaught') === 'true';
 let currentPokemonData = []; // 현재 로드된 포켓몬 데이터를 저장할 배열
+let currentDexType = 'national'; // 현재 선택된 도감 타입
 let isNationalDex = true; // 현재 전국도감인지 여부
 
 // 검색 결과 이동 관련 상태
@@ -60,6 +61,22 @@ let matchedCards = [];
 let currentMatchIndex = -1;
 
 // --- 헬퍼 함수 ---
+
+/**
+ * 현재 활성화된 도감의 이름을 반환합니다.
+ * @returns {string} 도감 이름
+ */
+function getActiveDexName() {
+    const activeButton = document.querySelector('.dex-btn.bg-indigo-100');
+    if (activeButton) {
+        // 버튼 안의 span 요소에서 텍스트를 가져옵니다.
+        const span = activeButton.querySelector('span');
+        if (span) return span.textContent.trim();
+    }
+    // 비상시 기본값
+    return '현재';
+}
+
 
 /**
  * 타입 배지 HTML 문자열을 생성합니다.
@@ -159,7 +176,9 @@ function toggleCaughtStatus(pokemonId, cardElement) {
     caughtPokemon.add(pokemonId);
     cardElement.classList.add('is-caught');
   }
-  localStorage.setItem('caughtPokemon', JSON.stringify(Array.from(caughtPokemon)));
+  // 현재 도감 타입에 맞는 키를 사용하여 저장
+  const key = `caughtPokemon_${currentDexType}`;
+  localStorage.setItem(key, JSON.stringify(Array.from(caughtPokemon)));
   
   // 숨기기 옵션이 켜져 있다면, 상태 변경 시 즉시 반영
   if (isHideCaught) {
@@ -171,8 +190,10 @@ function toggleCaughtStatus(pokemonId, cardElement) {
  * '잡은 포켓몬' 데이터를 초기화하고 그리드를 다시 렌더링합니다.
  */
 function resetCaughtData() {
-  if (confirm('정말로 모든 "잡은 포켓몬" 데이터를 초기화하시겠습니까?')) {
-    localStorage.removeItem('caughtPokemon');
+  const dexName = getActiveDexName();
+  if (confirm(`정말로 '${dexName}' 도감의 "잡은 포켓몬" 데이터를 초기화하시겠습니까?`)) {
+    const key = `caughtPokemon_${currentDexType}`;
+    localStorage.removeItem(key);
     caughtPokemon.clear();
     renderGrid(currentPokemonData); // 현재 로드된 데이터로 그리드를 다시 렌더링
   }
@@ -342,12 +363,19 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
   try {
     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">데이터를 로드하고 있습니다...</p>';
     
-    // 전국도감 여부 상태 업데이트
+    // 검색 필터 초기화
+    searchInput.value = '';
+    searchOptionSelect.value = 'name';
+
+    // 도감 관련 상태 업데이트
     isNationalDex = isNational;
-    
-    // 현재 선택된 도감 타입을 localStorage에 저장
+    currentDexType = dexType; // 현재 도감 타입 업데이트
     localStorage.setItem('selectedDex', dexType);
     
+    // 새로운 도감의 '잡음' 데이터 불러오기
+    const caughtDataKey = `caughtPokemon_${dexType}`;
+    caughtPokemon = new Set(JSON.parse(localStorage.getItem(caughtDataKey)) || []);
+
     const response = await fetch(dataUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
