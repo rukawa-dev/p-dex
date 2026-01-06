@@ -43,11 +43,21 @@ const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
 const dexButtons = document.querySelectorAll('.dex-btn'); // 모든 도감 버튼 선택
 
+// 검색 내비게이션 요소
+const searchNavControls = document.getElementById('search-nav-controls');
+const searchCounter = document.getElementById('search-counter');
+const searchPrevBtn = document.getElementById('search-prev-btn');
+const searchNextBtn = document.getElementById('search-next-btn');
+
 // --- 상태 관리 ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
 let isHideCaught = localStorage.getItem('isHideCaught') === 'true';
 let currentPokemonData = []; // 현재 로드된 포켓몬 데이터를 저장할 배열
 let isNationalDex = true; // 현재 전국도감인지 여부
+
+// 검색 결과 이동 관련 상태
+let matchedCards = [];
+let currentMatchIndex = -1;
 
 // --- 헬퍼 함수 ---
 
@@ -199,21 +209,91 @@ function toggleHideCaught() {
 }
 
 /**
- * 검색 입력 및 필터 옵션에 따라 포켓몬 카드를 필터링합니다.
+ * 특정 인덱스의 매칭된 카드로 이동하고 하이라이트합니다.
+ * @param {number} index - 이동할 매칭 카드의 인덱스
+ */
+function moveToMatch(index) {
+  if (matchedCards.length === 0) return;
+  
+  // 인덱스 순환 처리
+  if (index < 0) index = matchedCards.length - 1;
+  if (index >= matchedCards.length) index = 0;
+  
+  currentMatchIndex = index;
+  
+  // 모든 카드의 하이라이트 제거
+  document.querySelectorAll('.pokemon-card').forEach(card => {
+    card.classList.remove('ring-4', 'ring-yellow-400', 'z-20');
+  });
+  
+  const targetCard = matchedCards[currentMatchIndex];
+  
+  // 타겟 카드 하이라이트 및 스크롤
+  targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  targetCard.classList.add('ring-4', 'ring-yellow-400', 'z-20');
+  
+  // 카운터 업데이트
+  searchCounter.textContent = `${currentMatchIndex + 1}/${matchedCards.length}`;
+}
+
+/**
+ * 검색 입력 및 필터 옵션에 따라 포켓몬 카드를 필터링하거나 스크롤 이동합니다.
  */
 function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
   const searchColumn = searchOptionSelect.value;
   const allCards = gridContainer.querySelectorAll('.pokemon-card');
   
+  // 검색 결과 초기화
+  matchedCards = [];
+  currentMatchIndex = -1;
+  
+  // 내비게이션 컨트롤 숨김 (flex 클래스 제거, hidden 클래스 추가)
+  searchNavControls.classList.remove('flex');
+  searchNavControls.classList.add('hidden');
+  
+  // 1. 이름 검색일 경우: 스크롤 이동 방식
+  if (searchColumn === 'name') {
+    allCards.forEach(card => {
+      // 하이라이트 초기화
+      card.classList.remove('ring-4', 'ring-yellow-400', 'z-20');
+
+      // 잡은 포켓몬 숨기기 체크 여부 확인
+      if (isHideCaught && card.classList.contains('is-caught')) {
+        card.style.display = 'none';
+        return;
+      }
+      
+      // 이름 검색 모드에서는 필터링 없이 모두 보여줌
+      card.style.display = '';
+
+      // 검색어 매칭 확인
+      if (searchTerm && card.dataset.name.includes(searchTerm)) {
+        matchedCards.push(card);
+      }
+    });
+
+    // 매칭된 결과가 있으면 내비게이션 표시 및 첫 번째 결과로 이동
+    if (matchedCards.length > 0) {
+      searchNavControls.classList.remove('hidden');
+      searchNavControls.classList.add('flex');
+      moveToMatch(0);
+    }
+    return;
+  }
+
+  // 2. 그 외 검색(도감번호, 타입 등): 필터링 방식
   allCards.forEach(card => {
-    // 1. 잡은 포켓몬 숨기기 체크 여부 확인
+    // 하이라이트 초기화
+    card.classList.remove('ring-4', 'ring-yellow-400', 'z-20');
+
+    // 잡은 포켓몬 숨기기 체크 여부 확인
     if (isHideCaught && card.classList.contains('is-caught')) {
       card.style.display = 'none';
       return; // 이미 숨겨졌으므로 검색어 매칭 로직 건너뜀
     }
     
-    // 2. 검색어 매칭 확인
+    // 검색어 매칭 확인
     let isMatch = false;
     if (!searchTerm) {
       isMatch = true;
@@ -222,9 +302,7 @@ function handleSearch() {
         case 'id':
           isMatch = card.dataset.pokemonId.includes(searchTerm);
           break;
-        case 'name':
-          isMatch = card.dataset.name.includes(searchTerm);
-          break;
+        // name은 위에서 처리됨
         case 'type':
           isMatch = card.dataset.types.includes(searchTerm) || card.dataset.typesKo.includes(searchTerm);
           break;
@@ -303,6 +381,10 @@ function initialize() {
   searchOptionSelect.addEventListener('change', handleSearch);
   toggleCaughtBtn.addEventListener('click', toggleHideCaught);
   resetCaughtBtn.addEventListener('click', resetCaughtData);
+  
+  // 검색 내비게이션 버튼 이벤트
+  searchPrevBtn.addEventListener('click', () => moveToMatch(currentMatchIndex - 1));
+  searchNextBtn.addEventListener('click', () => moveToMatch(currentMatchIndex + 1));
   
   // 도감 버튼 이벤트 리스너 일괄 등록
   dexButtons.forEach(btn => {
