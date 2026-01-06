@@ -378,6 +378,21 @@ function initialize() {
   
   // 이벤트 리스너 연결
   searchInput.addEventListener('input', handleSearch);
+  
+  // 엔터키 입력 시 다음/이전 결과로 이동
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (e.shiftKey) {
+        // Shift + Enter: 이전 결과로 이동
+        moveToMatch(currentMatchIndex - 1);
+      } else {
+        // Enter: 다음 결과로 이동
+        moveToMatch(currentMatchIndex + 1);
+      }
+    }
+  });
+
   searchOptionSelect.addEventListener('change', handleSearch);
   toggleCaughtBtn.addEventListener('click', toggleHideCaught);
   resetCaughtBtn.addEventListener('click', resetCaughtData);
