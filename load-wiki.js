@@ -4,12 +4,12 @@ const fs = require('fs'); // 파일 시스템에 접근하기 위한 Node.js 내
 const path = require('path'); // 파일 경로를 다루기 위한 Node.js 내장 모듈
 
 /**
- * 로컬 HTML 파일에서 'alt' 속성이 'icon'으로 시작하는 이미지를 포함하는
- * 고유한 <tr>의 개수를 셉니다.
+ * 로컬 HTML 파일에서 이미지 정보와 포켓몬 이름을 추출하여 pokemon-wiki.json 파일을 새로 생성합니다.
+ * <td>의 순수 텍스트를 기반으로 이름을 추출합니다.
  */
-function countUniqueIconRows() {
+function createWikiJson() {
   try {
-    // 1. 로컬 HTML 파일 읽기
+    // --- 1. HTML 파일 읽기 ---
     const htmlPath = path.join(__dirname, 'crawling', 'namu-wiki-dump.html');
     if (!fs.existsSync(htmlPath)) {
       console.error(`오류: ${htmlPath} 파일을 찾을 수 없습니다.`);
@@ -18,28 +18,60 @@ function countUniqueIconRows() {
     const html = fs.readFileSync(htmlPath, 'utf-8');
     const $ = cheerio.load(html);
 
-    // 2. 'alt' 속성이 'icon'으로 시작하는 모든 <img>를 찾습니다.
+    // --- 2. 이미지 및 이름 정보 추출 ---
     const iconImages = $('img[alt^="icon"]');
-    
-    // 3. 각 이미지의 부모 <tr>을 찾아 Set에 넣어 중복을 제거합니다.
-    const uniqueRows = new Set();
+    const imagesData = [];
+    console.log("이름 추출이 복잡한 경우(name은 null로 저장됩니다):");
+
     iconImages.each((i, elem) => {
-      const row = $(elem).closest('tr');
-      // row[0]은 Cheerio 객체에서 실제 DOM 요소를 나타냅니다.
-      // Set은 객체 참조를 기반으로 중복을 확인하므로, 동일한 <tr> 요소는 한 번만 추가됩니다.
-      if (row.length > 0) {
-        uniqueRows.add(row[0]);
+      const image = $(elem);
+      const altText = image.attr('alt');
+      const realSrc = image.attr('data-src');
+
+      if (!realSrc) {
+        return; // data-src가 없으면 건너뜁니다.
       }
+
+      const imageTd = image.closest('td');
+      const nameTd = imageTd.next('td');
+      let monsterName = null;
+
+      if (nameTd.length > 0) {
+        const nameText = nameTd.text().trim();
+        
+        // 텍스트에 줄바꿈이 없으면 단일 이름으로 간주
+        if (nameText && !nameText.includes('\n')) {
+          monsterName = nameText;
+        } else {
+          // 텍스트가 비어있거나 줄바꿈이 포함된 복잡한 경우, 콘솔에 출력
+          console.log(`- ${altText}의 이름 TD: ${nameTd.html()}`);
+        }
+      }
+      
+      // 이름 추출 여부와 관계없이 모든 항목을 추가
+      imagesData.push({
+        id: altText,
+        src: realSrc,
+        name: monsterName
+      });
     });
 
-    const uniqueRowCount = uniqueRows.size;
+    // --- 3. 새로운 JSON 객체 생성 ---
+    const wikiData = {
+      images: imagesData
+    };
 
-    console.log(`'alt' 속성이 'icon'으로 시작하는 <img>를 포함하는 고유한 <tr>의 총 개수: ${uniqueRowCount}개`);
+    // --- 4. 새로운 데이터로 JSON 파일 생성 (덮어쓰기) ---
+    const jsonPath = path.join(__dirname, 'pokemon-wiki.json');
+    const newJsonData = JSON.stringify(wikiData, null, 2);
+    fs.writeFileSync(jsonPath, newJsonData, 'utf-8');
+
+    console.log(`\n성공적으로 ${imagesData.length}개의 이미지 데이터로 ${jsonPath} 파일을 새로 생성했습니다.`);
 
   } catch (error) {
-    console.error('HTML 분석 중 오류가 발생했습니다:', error);
+    console.error('작업 중 오류가 발생했습니다:', error);
   }
 }
 
-// 고유한 행 개수 세는 함수 실행
-countUniqueIconRows();
+// 위키 JSON 생성 함수 실행
+createWikiJson();
