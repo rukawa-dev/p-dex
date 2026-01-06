@@ -1,19 +1,20 @@
 {
-  "name":"p-dex",
-  "version":"1.0.0",
-  "description":"",
-  "main":"index.js",
-  "scripts":{
-    "test":"echo \"Error: no test specified\" && exit 1",
-    "build:css":"tailwindcss -i ./input.css -o ./output.css --watch",
-    "data:all":"node load-data.js all",
-    "data:test":"node load-data.js 1-30",
-    "dev":"concurrently \"npm run build:css\""
+  "name": "p-dex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./input.css -o ./output.css --watch",
+    "data:all": "node load-data.js all",
+    "data:test": "node load-data.js 1-30",
+    "data:za": "node load-data-za.js",
+    "dev": "concurrently \"npm run build:css\""
   },
-  "author":"",
-  "license":"ISC",
-  "devDependencies":{
-    "concurrently":"^9.0.1",
-    "tailwindcss":"^3.4.1"
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "tailwindcss": "^3.4.1"
   }
 }
