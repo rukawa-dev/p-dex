@@ -110,7 +110,7 @@ function createPokemonCard(pokemon, index) {
     </div>
     <p class="absolute top-2 left-3 text-sm text-gray-400 font-bold font-mono flex items-center">
       ${listNumHtml}
-      <span class="text-xs text-gray-300">#${pokemon.id}</span>
+      <span class="text-xs text-green-600">#${pokemon.id}</span>
     </p>
     <div class="img-box-56319e8e p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
       <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image" loading="lazy">
@@ -228,8 +228,8 @@ function moveToMatch(index) {
   
   const targetCard = matchedCards[currentMatchIndex];
   
-  // 타겟 카드 하이라이트 및 스크롤
-  targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // 타겟 카드 하이라이트 및 스크롤 (즉시 이동)
+  targetCard.scrollIntoView({ behavior: 'auto', block: 'center' });
   targetCard.classList.add('ring-4', 'ring-yellow-400', 'z-20');
   
   // 카운터 업데이트

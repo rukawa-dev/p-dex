@@ -76,7 +76,7 @@
         </div>
         
         <div class="flex items-center space-x-2">
-          <button id="toggle-caught-btn" class="flex items-center space-x-2 p-2 bg-indigo-500 text-white rounded-md shadow-sm hover:bg-indigo-600 transition-colors" title="잡은 포켓몬 숨기기">
+          <button id="toggle-caught-btn" class="flex items-center space-x-2 py-2 px-3 text-sm bg-indigo-500 text-white rounded-md shadow-sm hover:bg-indigo-600 transition-colors" title="잡은 포켓몬 숨기기">
             <!-- 보임 상태 아이콘 (Eye) -->
             <svg id="icon-eye" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -88,7 +88,7 @@
             </svg>
             <span id="toggle-caught-text" class="hidden sm:inline">숨기기</span>
           </button>
-          <button id="reset-caught-btn" class="flex items-center space-x-2 p-2 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors flex-shrink-0">
+          <button id="reset-caught-btn" class="flex items-center space-x-2 py-2 px-3 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors flex-shrink-0">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd"></path>
             </svg>
@@ -117,10 +117,10 @@
             </svg>
           </div>
         </div>
-        <div class="input-box-3e3fa895 relative flex-grow flex items-center">
-          <input type="search" id="search-input" placeholder="검색..." class="w-full p-2 pr-32 text-sm border rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-          <div id="search-nav-controls" class="absolute right-2 items-center space-x-1 hidden">
-            <span id="search-counter" class="text-xs text-gray-500 mr-1">0/0</span>
+        <div class="input-box-3e3fa895 flex-grow flex items-center border rounded-md shadow-sm bg-white focus-within:ring-2 focus-within:ring-indigo-500 overflow-hidden">
+          <input type="search" id="search-input" placeholder="검색..." class="flex-grow p-2 text-sm outline-none border-none shadow-none">
+          <div id="search-nav-controls" class="flex items-center space-x-1 px-2 hidden">
+            <span id="search-counter" class="text-xs text-gray-500 mr-1 whitespace-nowrap">0/0</span>
             <div class="h-4 w-px bg-gray-300 mx-1"></div>
             <button id="search-prev-btn" class="p-1 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded" title="이전 결과">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
