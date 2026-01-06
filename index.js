@@ -41,8 +41,7 @@ const toggleCaughtBtn = document.getElementById('toggle-caught-btn');
 const toggleCaughtText = document.getElementById('toggle-caught-text');
 const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
-const btnNationalDex = document.getElementById('btn-national-dex');
-const btnZaDex = document.querySelector('.btn-za-f0e818cc');
+const dexButtons = document.querySelectorAll('.dex-btn'); // 모든 도감 버튼 선택
 
 // --- 상태 관리 ---
 let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
@@ -259,9 +258,9 @@ function renderGrid(dataToRender) {
  * @param {string} dataUrl - 불러올 JSON 파일 경로
  * @param {HTMLElement} activeButton - 활성화할 버튼 요소
  * @param {boolean} isNational - 전국도감 여부
- * @param {string} dexType - 도감 타입 ('national' or 'za')
+ * @param {string} dexType - 도감 타입 ('national', 'za', 'za-dlc', 'paldea')
  */
-async function loadPokemonData(dataUrl, activeButton, isNational = false, dexType = 'national') {
+async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
   try {
     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">데이터를 로드하고 있습니다...</p>';
     
@@ -280,11 +279,13 @@ async function loadPokemonData(dataUrl, activeButton, isNational = false, dexTyp
     renderGrid(pokemonData);
     
     // 모든 버튼에서 활성 스타일 제거
-    [btnNationalDex, btnZaDex].forEach(btn => {
+    dexButtons.forEach(btn => {
       btn.classList.remove('bg-indigo-100', 'text-indigo-600');
     });
     // 현재 선택된 버튼에만 활성 스타일 추가
-    activeButton.classList.add('bg-indigo-100', 'text-indigo-600');
+    if (activeButton) {
+      activeButton.classList.add('bg-indigo-100', 'text-indigo-600');
+    }
     
   } catch (error) {
     console.error('데이터를 불러오는 데 실패했습니다:', error);
@@ -303,16 +304,33 @@ function initialize() {
   toggleCaughtBtn.addEventListener('click', toggleHideCaught);
   resetCaughtBtn.addEventListener('click', resetCaughtData);
   
-  btnNationalDex.addEventListener('click', () => loadPokemonData('pokemon.json', btnNationalDex, true, 'national'));
-  btnZaDex.addEventListener('click', () => loadPokemonData('pokemon-za.json', btnZaDex, false, 'za'));
+  // 도감 버튼 이벤트 리스너 일괄 등록
+  dexButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const dexType = btn.dataset.dexType;
+      const file = btn.dataset.file;
+      const isNational = btn.dataset.isNational === 'true';
+      loadPokemonData(file, btn, isNational, dexType);
+    });
+  });
   
   // 저장된 도감 상태 불러오기 (기본값: national)
-  const savedDex = localStorage.getItem('selectedDex');
+  const savedDex = localStorage.getItem('selectedDex') || 'national';
   
-  if (savedDex === 'za') {
-    loadPokemonData('pokemon-za.json', btnZaDex, false, 'za');
-  } else {
-    loadPokemonData('pokemon.json', btnNationalDex, true, 'national');
+  // 저장된 도감 타입에 해당하는 버튼 찾기
+  let targetBtn = document.querySelector(`.dex-btn[data-dex-type="${savedDex}"]`);
+  
+  // 만약 저장된 도감 버튼을 찾지 못하면 기본값(전국도감)으로 설정
+  if (!targetBtn) {
+    targetBtn = document.getElementById('btn-national-dex');
+  }
+  
+  // 해당 버튼의 정보를 이용하여 데이터 로드
+  if (targetBtn) {
+    const dexType = targetBtn.dataset.dexType;
+    const file = targetBtn.dataset.file;
+    const isNational = targetBtn.dataset.isNational === 'true';
+    loadPokemonData(file, targetBtn, isNational, dexType);
   }
 }
 
