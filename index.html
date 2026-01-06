@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
   <link rel="manifest" href="favicon_io/site.webmanifest">
   
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https.cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="output.css">
 </head>
 <body class="bg-gray-100 font-sans overflow-x-hidden">
@@ -139,7 +139,7 @@
   </div>
 </header>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-8 pt-6 pb-20">
+<main class="max-w-7xl mx-auto px-4 sm:px-8 pt-6 pb-32 sm:pb-20">
   <div id="pokemon-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
   </div>
 </main>
@@ -154,6 +154,19 @@
     </a>
   </div>
 </footer>
+
+<div class="fixed bottom-28 right-5 sm:right-8 z-50 flex flex-col space-y-2">
+  <button id="btn-goto-top" class="scroll-btn bg-indigo-500 text-white rounded-full p-3 shadow-lg hover:bg-indigo-600 transition-colors" title="맨 위로">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+  <button id="btn-goto-bottom" class="scroll-btn bg-indigo-500 text-white rounded-full p-3 shadow-lg hover:bg-indigo-600 transition-colors" title="맨 아래로">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+</div>
 
 <script src="sidebar.js"></script>
 <script src="index.js"></script>

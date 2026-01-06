@@ -49,6 +49,11 @@ const searchCounter = document.getElementById('search-counter');
 const searchPrevBtn = document.getElementById('search-prev-btn');
 const searchNextBtn = document.getElementById('search-next-btn');
 
+// 스크롤 버튼 요소
+const btnGoToTop = document.getElementById('btn-goto-top');
+const btnGoToBottom = document.getElementById('btn-goto-bottom');
+
+
 // --- 상태 관리 ---
 let caughtPokemon = new Set(); // 잡은 포켓몬 데이터 (도감별로 동적 로드)
 let isHideCaught = localStorage.getItem('isHideCaught') === 'true';
@@ -396,8 +401,35 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
   } catch (error) {
     console.error('데이터를 불러오는 데 실패했습니다:', error);
     gridContainer.innerHTML = `<p class="col-span-full text-center text-red-500">${dataUrl} 파일을 불러오는 중 오류가 발생했습니다. 파일이 존재하는지 확인해주세요.</p>`;
+  } finally {
+    // 데이터 로드 및 렌더링 후 스크롤 버튼 상태를 다시 확인합니다.
+    handleScrollButtons();
   }
 }
+
+/**
+ * 스크롤 위치에 따라 TOP/BOTTOM 버튼의 표시 여부를 제어합니다.
+ */
+function handleScrollButtons() {
+  const scrollY = window.scrollY;
+  const pageHeight = document.documentElement.scrollHeight;
+  const viewportHeight = window.innerHeight;
+
+  // 스크롤이 조금이라도 내려가면 TOP 버튼 표시
+  if (scrollY > 200) {
+    btnGoToTop.classList.add('show');
+  } else {
+    btnGoToTop.classList.remove('show');
+  }
+
+  // 페이지 끝에서 조금 위에 도달하면 BOTTOM 버튼 숨김
+  if (scrollY + viewportHeight > pageHeight - 200) {
+    btnGoToBottom.classList.remove('show');
+  } else {
+    btnGoToBottom.classList.add('show');
+  }
+}
+
 
 // --- 애플리케이션 초기화 ---
 function initialize() {
@@ -429,6 +461,12 @@ function initialize() {
   searchPrevBtn.addEventListener('click', () => moveToMatch(currentMatchIndex - 1));
   searchNextBtn.addEventListener('click', () => moveToMatch(currentMatchIndex + 1));
   
+  // 스크롤 버튼 이벤트
+  btnGoToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btnGoToBottom.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
+  window.addEventListener('scroll', handleScrollButtons);
+
+
   // 도감 버튼 이벤트 리스너 일괄 등록
   dexButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -457,6 +495,9 @@ function initialize() {
     const isNational = targetBtn.dataset.isNational === 'true';
     loadPokemonData(file, targetBtn, isNational, dexType);
   }
+
+  // 초기 스크롤 버튼 상태 설정
+  handleScrollButtons();
 }
 
 initialize();
