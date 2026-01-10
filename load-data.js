@@ -12,19 +12,19 @@ async function fetchWithCache(url) {
     const pathname = urlObj.pathname.replace('/api/v2', '');
     // 쿼리스트링 ? -> _
     const search = urlObj.search.replace('?', '_');
-    
+
     const parts = pathname.split('/').filter(p => p);
-    
+
     let dirPath = CACHE_DIR;
     let fileName = 'index';
-    
+
     if (parts.length > 0) {
         fileName = parts.pop();
         dirPath = path.join(CACHE_DIR, ...parts);
     }
-    
+
     const cacheFile = path.join(dirPath, fileName + search + '.json');
-    
+
     if (!FORCE_REFRESH && fs.existsSync(cacheFile)) {
         try {
             const content = fs.readFileSync(cacheFile, 'utf-8');
@@ -38,13 +38,13 @@ async function fetchWithCache(url) {
             console.warn(`\n[CACHE] Failed to read cache for ${url}, fetching...`);
         }
     }
-    
+
     // console.log(`[API] Fetching: ${url}`);
     const response = await fetch(url);
     if (!response.ok) return response;
-    
+
     const data = await response.json();
-    
+
     try {
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath, { recursive: true });
@@ -53,7 +53,7 @@ async function fetchWithCache(url) {
     } catch (e) {
         console.error(`\n[CACHE] Failed to write cache for ${url}:`, e);
     }
-    
+
     return {
         ok: true,
         json: async () => data
@@ -62,8 +62,8 @@ async function fetchWithCache(url) {
 
 // --- 타입 상성 관련 로직 ---
 const ALL_TYPES = [
-    'normal', 'fire', 'water', 'electric', 'grass', 'ice', 
-    'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 
+    'normal', 'fire', 'water', 'electric', 'grass', 'ice',
+    'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug',
     'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
 ];
 const typeRelationsCache = new Map();
@@ -110,48 +110,48 @@ async function getKoreanName(url) {
 }
 
 async function fetchPokemonData(id) {
-  try {
-    // console.log 제거됨
-    
-    const response = await fetchWithCache(`${API_URL}/pokemon/${id}`);
-    if (!response.ok) throw new Error(`Failed to fetch pokemon ${id}`);
-    const data = await response.json();
+    try {
+        // console.log 제거됨
 
-    const speciesResponse = await fetchWithCache(`${API_URL}/pokemon-species/${id}`);
-    if (!speciesResponse.ok) throw new Error(`Failed to fetch species ${id}`);
-    const speciesData = await speciesResponse.json();
+        const response = await fetchWithCache(`${API_URL}/pokemon/${id}`);
+        if (!response.ok) throw new Error(`Failed to fetch pokemon ${id}`);
+        const data = await response.json();
 
-    const koreanName = speciesData.names.find(name => name.language.name === 'ko')?.name || data.name;
-    
-    let evolutionCondition = { text: '-', category: 'NONE' };
-    if (speciesData.evolution_chain) {
-        const evoResponse = await fetchWithCache(speciesData.evolution_chain.url);
-        const evoData = await evoResponse.json();
-        evolutionCondition = await parseEvolution(evoData.chain, data.name);
+        const speciesResponse = await fetchWithCache(`${API_URL}/pokemon-species/${id}`);
+        if (!speciesResponse.ok) throw new Error(`Failed to fetch species ${id}`);
+        const speciesData = await speciesResponse.json();
+
+        const koreanName = speciesData.names.find(name => name.language.name === 'ko')?.name || data.name;
+
+        let evolutionCondition = { text: '-', category: 'NONE' };
+        if (speciesData.evolution_chain) {
+            const evoResponse = await fetchWithCache(speciesData.evolution_chain.url);
+            const evoData = await evoResponse.json();
+            evolutionCondition = await parseEvolution(evoData.chain, data.name);
+        }
+
+        const types = data.types.map(t => t.type.name);
+        const weaknesses = calculateWeaknesses(types);
+
+        const imageUrl = data.sprites.other['official-artwork'].front_default;
+
+        return {
+            id: data.id,
+            name: koreanName,
+            types: types,
+            weaknesses: weaknesses,
+            evolution: evolutionCondition,
+            image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
+        };
+    } catch (error) {
+        console.error(`\nError fetching pokemon ${id}:`, error);
+        return null;
     }
-
-    const types = data.types.map(t => t.type.name);
-    const weaknesses = calculateWeaknesses(types);
-
-    const imageUrl = data.sprites.other['official-artwork'].front_default;
-
-    return {
-      id: data.id,
-      name: koreanName,
-      types: types,
-      weaknesses: weaknesses,
-      evolution: evolutionCondition,
-      image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
-    };
-  } catch (error) {
-    console.error(`\nError fetching pokemon ${id}:`, error);
-    return null;
-  }
 }
 
 async function parseEvolution(chain, currentName) {
     if (chain.species.name === currentName) return { text: '-', category: 'NONE' };
-    
+
     for (const evo of chain.evolves_to) {
         if (evo.species.name === currentName) {
             const preEvoName = await getKoreanName(chain.species.url);
@@ -171,13 +171,45 @@ async function parseEvolution(chain, currentName) {
 
 async function formatEvolutionDetails(details) {
     if (!details) return { text: '특수 조건', category: 'ETC' };
-    if (details.min_level) return { text: `Lv.${details.min_level}`, category: 'LV' };
+
+    // 1. 아이템 사용 (진화의돌 등)
     if (details.item) {
         const itemName = await getKoreanName(details.item.url) || '아이템';
         return { text: `${itemName} 사용`, category: 'ITEM' };
     }
-    if (details.trigger?.name === 'trade') return { text: '통신교환', category: 'TRADE' };
-    if (details.min_happiness) return { text: '친밀도 높음', category: 'ETC' };
+
+    // 2. 통신 교환 (아이템 소지 여부 확인)
+    if (details.trigger?.name === 'trade') {
+        if (details.held_item) {
+            const itemName = await getKoreanName(details.held_item.url) || '아이템';
+            return { text: `${itemName} 지니고 통신교환`, category: 'TRADE_WITH_ITEM' };
+        }
+        return { text: '통신교환', category: 'TRADE' };
+    }
+
+    // 3. 아이템 지니고 레벨업
+    if (details.held_item) {
+        const itemName = await getKoreanName(details.held_item.url) || '아이템';
+        let text = `${itemName} 지니고 레벨업`;
+        if (details.time_of_day === 'day') text += ' (낮)';
+        if (details.time_of_day === 'night') text += ' (밤)';
+        return { text: text, category: 'ITEM' };
+    }
+
+    // 4. 레벨업 및 친밀도
+    if (details.min_level) {
+        // 레벨업 조건에 추가 조건이 있는 경우 (예: 비올때)
+        if (details.needs_overworld_rain) return { text: `Lv.${details.min_level} (비)`, category: 'LV' };
+        return { text: `Lv.${details.min_level}`, category: 'LV' };
+    }
+
+    if (details.min_happiness) {
+        let text = '친밀도 높음';
+        if (details.time_of_day === 'day') text += ' (낮)';
+        if (details.time_of_day === 'night') text += ' (밤)';
+        return { text: text, category: 'ETC' };
+    }
+
     return { text: '특수 조건', category: 'ETC' };
 }
 
@@ -215,7 +247,7 @@ async function main() {
     }
 
     console.log(`Generating data for Pokemon #${startId} to #${endId}`);
-    
+
     await fetchAllTypeRelations();
 
     const allPokemon = [];
@@ -225,13 +257,13 @@ async function main() {
     for (let i = startId; i <= endId; i++) {
         const pokemon = await fetchPokemonData(i);
         if (pokemon) allPokemon.push(pokemon);
-        
+
         processedCount++;
         const percent = Math.round((processedCount / totalCount) * 100);
         process.stdout.write(`\r[${processedCount}/${totalCount}] ${percent}%`);
     }
     process.stdout.write('\n'); // 완료 후 줄바꿈
-    
+
     // pokemon.json 파일로 저장하도록 수정
     const fileContent = JSON.stringify(allPokemon, null, 2);
     fs.writeFileSync('pokemon.json', fileContent);

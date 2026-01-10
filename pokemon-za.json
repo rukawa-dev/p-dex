@@ -520,7 +520,7 @@
       "psychic"
     ],
     "evolution": {
-      "text": "꼬몽울 친밀도 높음",
+      "text": "꼬몽울 친밀도 높음 (낮)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/315.png"
@@ -1694,8 +1694,8 @@
       "steel"
     ],
     "evolution": {
-      "text": "슈쁘 통신교환",
-      "category": "TRADE"
+      "text": "슈쁘 향기주머니 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/683.png"
   },
@@ -1726,8 +1726,8 @@
       "steel"
     ],
     "evolution": {
-      "text": "나룸퍼프 통신교환",
-      "category": "TRADE"
+      "text": "나룸퍼프 휘핑팝 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/685.png"
   },
@@ -1806,7 +1806,7 @@
       "dark"
     ],
     "evolution": {
-      "text": "이브이 친밀도 높음",
+      "text": "이브이 친밀도 높음 (낮)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/196.png"
@@ -1823,7 +1823,7 @@
       "fairy"
     ],
     "evolution": {
-      "text": "이브이 친밀도 높음",
+      "text": "이브이 친밀도 높음 (밤)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png"
@@ -2368,7 +2368,7 @@
       "ground"
     ],
     "evolution": {
-      "text": "리오르 친밀도 높음",
+      "text": "리오르 친밀도 높음 (낮)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
@@ -2428,8 +2428,8 @@
       "dark"
     ],
     "evolution": {
-      "text": "야돈 통신교환",
-      "category": "TRADE"
+      "text": "야돈 왕의징표석 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/199.png"
   },
@@ -2911,7 +2911,7 @@
       "fairy"
     ],
     "evolution": {
-      "text": "미끄네일 Lv.50",
+      "text": "미끄네일 Lv.50 (비)",
       "category": "LV"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png"
@@ -3102,8 +3102,8 @@
       "fire"
     ],
     "evolution": {
-      "text": "스라크 통신교환",
-      "category": "TRADE"
+      "text": "스라크 금속코트 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
   },
@@ -3510,8 +3510,8 @@
       "ground"
     ],
     "evolution": {
-      "text": "롱스톤 통신교환",
-      "category": "TRADE"
+      "text": "롱스톤 금속코트 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png"
   },
