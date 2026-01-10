@@ -193,8 +193,8 @@
       "fighting"
     ],
     "evolution": {
-      "text": "폴리곤 통신교환",
-      "category": "TRADE"
+      "text": "폴리곤 업그레이드 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/233.png"
   },
@@ -208,8 +208,8 @@
       "fighting"
     ],
     "evolution": {
-      "text": "폴리곤2 통신교환",
-      "category": "TRADE"
+      "text": "폴리곤2 괴상한패치 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/474.png"
   },
@@ -884,7 +884,7 @@
       "dark"
     ],
     "evolution": {
-      "text": "랑딸랑 친밀도 높음",
+      "text": "랑딸랑 친밀도 높음 (밤)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/358.png"

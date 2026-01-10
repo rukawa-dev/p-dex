@@ -771,8 +771,8 @@
       "fighting"
     ],
     "evolution": {
-      "text": "핑복 특수 조건",
-      "category": "ETC"
+      "text": "핑복 동글동글돌 지니고 레벨업 (낮)",
+      "category": "ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/113.png"
   },
@@ -2869,7 +2869,7 @@
       "ground"
     ],
     "evolution": {
-      "text": "리오르 친밀도 높음",
+      "text": "리오르 친밀도 높음 (낮)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
@@ -3039,7 +3039,7 @@
       "fairy"
     ],
     "evolution": {
-      "text": "미끄네일 Lv.50",
+      "text": "미끄네일 Lv.50 (비)",
       "category": "LV"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png"
@@ -3189,7 +3189,7 @@
       "dark"
     ],
     "evolution": {
-      "text": "이브이 친밀도 높음",
+      "text": "이브이 친밀도 높음 (낮)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/196.png"
@@ -3206,7 +3206,7 @@
       "fairy"
     ],
     "evolution": {
-      "text": "이브이 친밀도 높음",
+      "text": "이브이 친밀도 높음 (밤)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/197.png"
@@ -4014,8 +4014,8 @@
       "fairy"
     ],
     "evolution": {
-      "text": "포푸니 특수 조건",
-      "category": "ETC"
+      "text": "포푸니 예리한손톱 지니고 레벨업 (밤)",
+      "category": "ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/461.png"
   },
@@ -4564,8 +4564,8 @@
       "fire"
     ],
     "evolution": {
-      "text": "스라크 통신교환",
-      "category": "TRADE"
+      "text": "스라크 금속코트 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
   },
@@ -5733,8 +5733,8 @@
       "dark"
     ],
     "evolution": {
-      "text": "야돈 통신교환",
-      "category": "TRADE"
+      "text": "야돈 왕의징표석 지니고 통신교환",
+      "category": "TRADE_WITH_ITEM"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/199.png"
   },
@@ -6163,7 +6163,7 @@
       "steel"
     ],
     "evolution": {
-      "text": "누니머기 친밀도 높음",
+      "text": "누니머기 친밀도 높음 (밤)",
       "category": "ETC"
     },
     "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/873.png"
