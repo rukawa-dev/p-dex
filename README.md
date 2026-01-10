@@ -2,7 +2,7 @@
 
 Vanilla JavaScript와 Tailwind CSS를 사용하여 제작된 웹 기반 포켓몬 도감 프로젝트입니다. 다양한 세대의 포켓몬 도감을 탐색하고, 나만의 포획 기록을 관리할 수 있습니다.
 
-![스크린샷](screen-shot.png)
+![전국도감 스크린샷](screen-shot.png)
 **LIVE DEMO**: https://rukawa-dev.github.io/p-dex/
 
 ---
@@ -10,8 +10,12 @@ Vanilla JavaScript와 Tailwind CSS를 사용하여 제작된 웹 기반 포켓�
 ## ✨ 주요 기능
 
 - **🌐 다중 도감 지원**:
-  - **전국도감**, **팔데아도감**, **ZA도감** 등 원하는 도감을 선택하여 볼 수 있습니다.
+  - **전국도감**, **팔데아도감**, **ZA도감**, **ZA DLC 도감** 등 원하는 도감을 선택하여 볼 수 있습니다.
   - 각 도감의 데이터는 독립적으로 관리되며, `localStorage`에 마지막으로 선택한 도감이 저장됩니다.
+
+- **🧬 폼 체인지 및 메가진화 지원**:
+  - **메가진화** (X/Y), **거다이맥스**, **리전폼** (알로라, 가라르, 히스이, 팔데아) 등 다양한 모습을 확인할 수 있습니다.
+  - 관련 폼이 있는 포켓몬 카드의 버튼을 클릭하여 이미지와 타입, 이름을 즉시 전환할 수 있습니다.
 
 - **🔍 강력한 검색 기능**:
   - **이름으로 검색**: 검색어와 일치하는 포켓몬 카드로 즉시 스크롤하고 하이라이트합니다. (Enter/Shift+Enter로 다음/이전 결과 이동)
@@ -19,7 +23,7 @@ Vanilla JavaScript와 Tailwind CSS를 사용하여 제작된 웹 기반 포켓�
 
 - **📝 개인화된 포획 관리**:
   - **'잡음' 상태 저장**: 각 포켓몬의 '잡음' 상태를 토글하여 기록할 수 있습니다.
-  - **도감별 데이터 분리**: '잡음' 상태는 **각 도감별로 독립적으로** 브라우저의 `localStorage`에 저장되어, 도감을 전환해도 기록이 유지됩니다.
+  - **도감별 데이터 분리**: '잡음' 상태는 **각 도감별로 독립적으로** 브라우저의 `localStorage`에 저장되어, 도감이 전환해도 기록이 유지됩니다.
   - **잡은 포켓몬 숨기기**: '숨기기' 버튼으로 잡은 포켓몬을 목록에서 일시적으로 숨길 수 있습니다.
   - **데이터 초기화**: 현재 보고 있는 도감의 '잡음' 기록만 선택적으로 초기화할 수 있습니다.
 
@@ -49,7 +53,7 @@ npm install
 
 ### 2. 포켓몬 데이터 생성
 
-도감을 표시하기 위해 먼저 PokeAPI로부터 데이터를 가져와 `pokemon.json` 파일을 생성해야 합니다. 다른 도감(`pokemon-za.json` 등)은 프로젝트에 이미 포함되어 있습니다.
+도감을 표시하기 위해 먼저 PokeAPI로부터 데이터를 가져와 `pokemon.json` 파일을 생성해야 합니다.
 
 - **테스트용 전국도감 데이터 생성 (1~30번)**
   ```bash
@@ -57,15 +61,17 @@ npm install
   ```
 
 - **전체 전국도감 데이터 생성 (1~1025번)**
-  *(주의: API 호출이 많아 몇 분 정도 소요될 수 있습니다.)*
+  *(주의: API 호출이 많아 몇 분 정도 소요될 수 있습니다. `varieties` 데이터를 포함하여 시간이 더 소요될 수 있습니다.)*
   ```bash
   npm run data:all
   ```
 
-- **커스텀 데이터 생성**
-  `load-data-custom.js` 파일에 정의된 ID 목록을 기반으로 `pokemon-custom.json` 파일을 생성합니다.
+- **커스텀 도감 데이터 생성 (ZA, Paldea 등)**
+  `pokemon.json`이 먼저 생성되어 있어야 합니다.
   ```bash
-  npm run data:custom
+  npm run data:za
+  npm run data:za:dlc
+  npm run data:paldea
   ```
 
 ### 3. 개발 서버 실행
@@ -76,7 +82,7 @@ Tailwind CSS를 실시간으로 빌드하며, 로컬에서 프로젝트를 확�
 npm run dev
 ```
 
-이후 `index.html` 파일을 브라우저에서 열면 도감을 확인할 수 있습니다. (Live Server 같은 VSCode 확장 프로그램을 사용하면 편리합니다.)
+이후 `index.html` 파일을 브라우저에서 열면 도감을 확인할 수 있습니다.
 
 ---
 
@@ -86,19 +92,21 @@ npm run dev
 /
 ├── favicon_io/         # 파비콘 파일
 ├── node_modules/       # npm 패키지
-├── pokemon.json        # (생성) 전국도감 데이터
+├── pokemon.json        # (생성) 전국도감 데이터 (Forms 포함)
 ├── pokemon-paldea.json # 팔데아도감 데이터
 ├── pokemon-za.json     # ZA도감 데이터
+├── pokemon-za-dlc.json # ZA DLC 도감 데이터
 ├── index.html          # 메인 페이지
-├── index.js            # 클라이언트 사이드 로직 (UI, 검색, 이벤트 처리)
+├── index.js            # 클라이언트 사이드 로직 (UI, 검색, 이벤트, 폼 전환)
 ├── sidebar.js          # 사이드바 제어 로직
-├── load-data.js        # (Node.js) 전국도감 데이터 생성 스크립트
-├── load-data-custom.js # (Node.js) 커스텀 데이터 생성 스크립트
+├── load-data.js        # (Node.js) 전국도감 및 폼 데이터 생성 스크립트
+├── load-data-custom.js # (Node.js) 커스텀 도감 생성 스크립트
 ├── input.css           # Tailwind CSS 소스 파일
 ├── output.css          # 빌드된 Tailwind CSS 파일
 ├── package.json        # 프로젝트 정보 및 스크립트
 ├── README.md           # 프로젝트 설명서
-└── tailwind.config.js  # Tailwind CSS 설정 파일
+├── tailwind.config.js  # Tailwind CSS 설정 파일
+└── .antigravityrules   # AI 어시스턴트 규칙 파일
 ```
 
 ---

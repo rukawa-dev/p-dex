@@ -356,7 +356,18 @@
       "text": "딱충이 Lv.10",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png",
+    "forms": [
+      {
+        "name": "메가독침붕",
+        "formType": "mega",
+        "types": [
+          "bug",
+          "poison"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10090.png"
+      }
+    ]
   },
   {
     "id": 16,
@@ -410,7 +421,18 @@
       "text": "피죤 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/18.png",
+    "forms": [
+      {
+        "name": "메가피죤투",
+        "formType": "mega",
+        "types": [
+          "normal",
+          "flying"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10073.png"
+      }
+    ]
   },
   {
     "id": 179,
@@ -455,7 +477,18 @@
       "text": "보송송 Lv.30",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/181.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/181.png",
+    "forms": [
+      {
+        "name": "메가전룡",
+        "formType": "mega",
+        "types": [
+          "electric",
+          "dragon"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10045.png"
+      }
+    ]
   },
   {
     "id": 504,
@@ -575,7 +608,18 @@
       "text": "잉어킹 Lv.20",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/130.png",
+    "forms": [
+      {
+        "name": "메가갸라도스",
+        "formType": "mega",
+        "types": [
+          "water",
+          "dark"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10041.png"
+      }
+    ]
   },
   {
     "id": 688,
@@ -681,7 +725,17 @@
       "text": "플라베베 Lv.19",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/670.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/670.png",
+    "forms": [
+      {
+        "name": "플라엣테 (폼 체인지)",
+        "formType": "eternal",
+        "types": [
+          "fairy"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10061.png"
+      }
+    ]
   },
   {
     "id": 671,
@@ -769,7 +823,17 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/678.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/678.png",
+    "forms": [
+      {
+        "name": "냐오닉스 (폼 체인지)",
+        "formType": "female",
+        "types": [
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10025.png"
+      }
+    ]
   },
   {
     "id": 667,
@@ -874,7 +938,17 @@
       "text": "깨봉이 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/569.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/569.png",
+    "forms": [
+      {
+        "name": "거다이맥스 더스트나",
+        "formType": "gmax",
+        "types": [
+          "poison"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10207.png"
+      }
+    ]
   },
   {
     "id": 702,
@@ -921,7 +995,137 @@
       "text": "피츄 친밀도 높음",
       "category": "ETC"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+    "forms": [
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "rock-star",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10080.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "belle",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10081.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "pop-star",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10082.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "phd",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10083.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "libre",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10084.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "cosplay",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10085.png"
+      },
+      {
+        "name": "피카츄 (오리진폼)",
+        "formType": "original-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10094.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "hoenn-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10095.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "sinnoh-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10096.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "unova-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10097.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "kalos-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10098.png"
+      },
+      {
+        "name": "알로라 피카츄",
+        "formType": "alola-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10099.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "partner-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10148.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "starter",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10158.png"
+      },
+      {
+        "name": "피카츄 (폼 체인지)",
+        "formType": "world-cap",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10160.png"
+      },
+      {
+        "name": "거다이맥스 피카츄",
+        "formType": "gmax",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10199.png"
+      }
+    ]
   },
   {
     "id": 26,
@@ -936,7 +1140,18 @@
       "text": "피카츄 천둥의돌 사용",
       "category": "ITEM"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/26.png",
+    "forms": [
+      {
+        "name": "알로라 라이츄",
+        "formType": "alola",
+        "types": [
+          "electric",
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10100.png"
+      }
+    ]
   },
   {
     "id": 173,
@@ -1105,7 +1320,17 @@
       "text": "윤겔라 통신교환",
       "category": "TRADE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/65.png",
+    "forms": [
+      {
+        "name": "메가후딘",
+        "formType": "mega",
+        "types": [
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10037.png"
+      }
+    ]
   },
   {
     "id": 92,
@@ -1162,7 +1387,27 @@
       "text": "고우스트 통신교환",
       "category": "TRADE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
+    "forms": [
+      {
+        "name": "메가팬텀",
+        "formType": "mega",
+        "types": [
+          "ghost",
+          "poison"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10038.png"
+      },
+      {
+        "name": "거다이맥스 팬텀",
+        "formType": "gmax",
+        "types": [
+          "ghost",
+          "poison"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10202.png"
+      }
+    ]
   },
   {
     "id": 543,
@@ -1276,7 +1521,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/681.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/681.png",
+    "forms": [
+      {
+        "name": "킬가르도 (폼 체인지)",
+        "formType": "blade",
+        "types": [
+          "steel",
+          "ghost"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10026.png"
+      }
+    ]
   },
   {
     "id": 69,
@@ -1473,7 +1729,18 @@
       "text": "요가랑 Lv.37",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/308.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/308.png",
+    "forms": [
+      {
+        "name": "메가요가램",
+        "formType": "mega",
+        "types": [
+          "fighting",
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10054.png"
+      }
+    ]
   },
   {
     "id": 309,
@@ -1503,7 +1770,17 @@
       "text": "썬더라이 Lv.26",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/310.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/310.png",
+    "forms": [
+      {
+        "name": "메가썬더볼트",
+        "formType": "mega",
+        "types": [
+          "electric"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10055.png"
+      }
+    ]
   },
   {
     "id": 280,
@@ -1557,7 +1834,18 @@
       "text": "킬리아 Lv.30",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/282.png",
+    "forms": [
+      {
+        "name": "메가가디안",
+        "formType": "mega",
+        "types": [
+          "psychic",
+          "fairy"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10051.png"
+      }
+    ]
   },
   {
     "id": 475,
@@ -1575,7 +1863,18 @@
       "text": "킬리아 각성의돌 사용",
       "category": "ITEM"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/475.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/475.png",
+    "forms": [
+      {
+        "name": "메가엘레이드",
+        "formType": "mega",
+        "types": [
+          "psychic",
+          "fighting"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10068.png"
+      }
+    ]
   },
   {
     "id": 228,
@@ -1613,7 +1912,18 @@
       "text": "델빌 Lv.24",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/229.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/229.png",
+    "forms": [
+      {
+        "name": "메가헬가",
+        "formType": "mega",
+        "types": [
+          "dark",
+          "fire"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10048.png"
+      }
+    ]
   },
   {
     "id": 333,
@@ -1650,7 +1960,18 @@
       "text": "파비코 Lv.35",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/334.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/334.png",
+    "forms": [
+      {
+        "name": "메가파비코리",
+        "formType": "mega",
+        "types": [
+          "dragon",
+          "fairy"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10067.png"
+      }
+    ]
   },
   {
     "id": 531,
@@ -1665,7 +1986,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/531.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/531.png",
+    "forms": [
+      {
+        "name": "메가다부니",
+        "formType": "mega",
+        "types": [
+          "normal",
+          "fairy"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10069.png"
+      }
+    ]
   },
   {
     "id": 682,
@@ -1744,7 +2076,25 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+    "forms": [
+      {
+        "name": "이브이 (폼 체인지)",
+        "formType": "starter",
+        "types": [
+          "normal"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10159.png"
+      },
+      {
+        "name": "거다이맥스 이브이",
+        "formType": "gmax",
+        "types": [
+          "normal"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10205.png"
+      }
+    ]
   },
   {
     "id": 134,
@@ -1909,7 +2259,18 @@
       "text": "이어롤 친밀도 높음",
       "category": "ETC"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/428.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/428.png",
+    "forms": [
+      {
+        "name": "메가이어롭",
+        "formType": "mega",
+        "types": [
+          "normal",
+          "fighting"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10088.png"
+      }
+    ]
   },
   {
     "id": 353,
@@ -1941,7 +2302,17 @@
       "text": "어둠대신 Lv.37",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/354.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/354.png",
+    "forms": [
+      {
+        "name": "메가다크펫",
+        "formType": "mega",
+        "types": [
+          "ghost"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10056.png"
+      }
+    ]
   },
   {
     "id": 582,
@@ -2029,7 +2400,18 @@
       "text": "둔타 Lv.33",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/323.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/323.png",
+    "forms": [
+      {
+        "name": "메가폭타",
+        "formType": "mega",
+        "types": [
+          "fire",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10087.png"
+      }
+    ]
   },
   {
     "id": 449,
@@ -2213,7 +2595,17 @@
       "text": "근육몬 통신교환",
       "category": "TRADE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/68.png",
+    "forms": [
+      {
+        "name": "거다이맥스 괴력몬",
+        "formType": "gmax",
+        "types": [
+          "fighting"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10201.png"
+      }
+    ]
   },
   {
     "id": 443,
@@ -2267,7 +2659,18 @@
       "text": "한바이트 Lv.48",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/445.png",
+    "forms": [
+      {
+        "name": "메가한카리아스",
+        "formType": "mega",
+        "types": [
+          "dragon",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10058.png"
+      }
+    ]
   },
   {
     "id": 703,
@@ -2302,7 +2705,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/302.png",
+    "forms": [
+      {
+        "name": "메가깜까미",
+        "formType": "mega",
+        "types": [
+          "dark",
+          "ghost"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10066.png"
+      }
+    ]
   },
   {
     "id": 303,
@@ -2319,7 +2733,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/303.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/303.png",
+    "forms": [
+      {
+        "name": "메가입치트",
+        "formType": "mega",
+        "types": [
+          "steel",
+          "fairy"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10052.png"
+      }
+    ]
   },
   {
     "id": 359,
@@ -2336,7 +2761,17 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/359.png",
+    "forms": [
+      {
+        "name": "메가앱솔",
+        "formType": "mega",
+        "types": [
+          "dark"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10057.png"
+      }
+    ]
   },
   {
     "id": 447,
@@ -2371,7 +2806,18 @@
       "text": "리오르 친밀도 높음 (낮)",
       "category": "ETC"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png",
+    "forms": [
+      {
+        "name": "메가루카리오",
+        "formType": "mega",
+        "types": [
+          "fighting",
+          "steel"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10059.png"
+      }
+    ]
   },
   {
     "id": 79,
@@ -2391,7 +2837,17 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/79.png",
+    "forms": [
+      {
+        "name": "가라르 야돈",
+        "formType": "galar",
+        "types": [
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10164.png"
+      }
+    ]
   },
   {
     "id": 80,
@@ -2411,7 +2867,27 @@
       "text": "야돈 Lv.37",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/80.png",
+    "forms": [
+      {
+        "name": "메가야도란",
+        "formType": "mega",
+        "types": [
+          "water",
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10071.png"
+      },
+      {
+        "name": "가라르 야도란",
+        "formType": "galar",
+        "types": [
+          "poison",
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10165.png"
+      }
+    ]
   },
   {
     "id": 199,
@@ -2431,7 +2907,18 @@
       "text": "야돈 왕의징표석 지니고 통신교환",
       "category": "TRADE_WITH_ITEM"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/199.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/199.png",
+    "forms": [
+      {
+        "name": "가라르 야도킹",
+        "formType": "galar",
+        "types": [
+          "poison",
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10172.png"
+      }
+    ]
   },
   {
     "id": 318,
@@ -2471,7 +2958,18 @@
       "text": "샤프니아 Lv.30",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/319.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/319.png",
+    "forms": [
+      {
+        "name": "메가샤크니아",
+        "formType": "mega",
+        "types": [
+          "water",
+          "dark"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10070.png"
+      }
+    ]
   },
   {
     "id": 602,
@@ -2626,7 +3124,27 @@
       "text": "이상해풀 Lv.32",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png",
+    "forms": [
+      {
+        "name": "메가이상해꽃",
+        "formType": "mega",
+        "types": [
+          "grass",
+          "poison"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10033.png"
+      },
+      {
+        "name": "거다이맥스 이상해꽃",
+        "formType": "gmax",
+        "types": [
+          "grass",
+          "poison"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10195.png"
+      }
+    ]
   },
   {
     "id": 4,
@@ -2678,7 +3196,36 @@
       "text": "리자드 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png",
+    "forms": [
+      {
+        "name": "메가리자몽 X",
+        "formType": "mega-x",
+        "types": [
+          "fire",
+          "dragon"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10034.png"
+      },
+      {
+        "name": "메가리자몽 Y",
+        "formType": "mega-y",
+        "types": [
+          "fire",
+          "flying"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10035.png"
+      },
+      {
+        "name": "거다이맥스 리자몽",
+        "formType": "gmax",
+        "types": [
+          "fire",
+          "flying"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10196.png"
+      }
+    ]
   },
   {
     "id": 7,
@@ -2726,7 +3273,25 @@
       "text": "어니부기 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+    "forms": [
+      {
+        "name": "메가거북왕",
+        "formType": "mega",
+        "types": [
+          "water"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10036.png"
+      },
+      {
+        "name": "거다이맥스 거북왕",
+        "formType": "gmax",
+        "types": [
+          "water"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10197.png"
+      }
+    ]
   },
   {
     "id": 618,
@@ -2745,7 +3310,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/618.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/618.png",
+    "forms": [
+      {
+        "name": "가라르 메더",
+        "formType": "galar",
+        "types": [
+          "ground",
+          "steel"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10180.png"
+      }
+    ]
   },
   {
     "id": 676,
@@ -2897,7 +3473,18 @@
       "text": "미끄메라 Lv.40",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/705.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/705.png",
+    "forms": [
+      {
+        "name": "히스이 미끄네일",
+        "formType": "hisui",
+        "types": [
+          "steel",
+          "dragon"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10241.png"
+      }
+    ]
   },
   {
     "id": 706,
@@ -2914,7 +3501,18 @@
       "text": "미끄네일 Lv.50 (비)",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/706.png",
+    "forms": [
+      {
+        "name": "히스이 미끄래곤",
+        "formType": "hisui",
+        "types": [
+          "steel",
+          "dragon"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10242.png"
+      }
+    ]
   },
   {
     "id": 225,
@@ -2969,7 +3567,17 @@
       "text": "눈꼬마 Lv.42",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/362.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/362.png",
+    "forms": [
+      {
+        "name": "메가얼음귀신",
+        "formType": "mega",
+        "types": [
+          "ice"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10074.png"
+      }
+    ]
   },
   {
     "id": 478,
@@ -3033,7 +3641,18 @@
       "text": "눈쓰개 Lv.40",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/460.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/460.png",
+    "forms": [
+      {
+        "name": "메가눈설왕",
+        "formType": "mega",
+        "types": [
+          "grass",
+          "ice"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10060.png"
+      }
+    ]
   },
   {
     "id": 712,
@@ -3069,7 +3688,18 @@
       "text": "꽁어름 Lv.37",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/713.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/713.png",
+    "forms": [
+      {
+        "name": "히스이 크레베이스",
+        "formType": "hisui",
+        "types": [
+          "ice",
+          "rock"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10243.png"
+      }
+    ]
   },
   {
     "id": 123,
@@ -3105,7 +3735,18 @@
       "text": "스라크 금속코트 지니고 통신교환",
       "category": "TRADE_WITH_ITEM"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/212.png",
+    "forms": [
+      {
+        "name": "메가핫삼",
+        "formType": "mega",
+        "types": [
+          "bug",
+          "steel"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10046.png"
+      }
+    ]
   },
   {
     "id": 127,
@@ -3122,7 +3763,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/127.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/127.png",
+    "forms": [
+      {
+        "name": "메가쁘사이저",
+        "formType": "mega",
+        "types": [
+          "bug",
+          "flying"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10040.png"
+      }
+    ]
   },
   {
     "id": 214,
@@ -3141,7 +3793,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/214.png",
+    "forms": [
+      {
+        "name": "메가헤라크로스",
+        "formType": "mega",
+        "types": [
+          "bug",
+          "fighting"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10047.png"
+      }
+    ]
   },
   {
     "id": 587,
@@ -3389,7 +4052,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/142.png",
+    "forms": [
+      {
+        "name": "메가프테라",
+        "formType": "mega",
+        "types": [
+          "rock",
+          "flying"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10042.png"
+      }
+    ]
   },
   {
     "id": 696,
@@ -3513,7 +4187,18 @@
       "text": "롱스톤 금속코트 지니고 통신교환",
       "category": "TRADE_WITH_ITEM"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/208.png",
+    "forms": [
+      {
+        "name": "메가강철톤",
+        "formType": "mega",
+        "types": [
+          "steel",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10072.png"
+      }
+    ]
   },
   {
     "id": 304,
@@ -3567,7 +4252,17 @@
       "text": "갱도라 Lv.42",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/306.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/306.png",
+    "forms": [
+      {
+        "name": "메가보스로라",
+        "formType": "mega",
+        "types": [
+          "steel"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10053.png"
+      }
+    ]
   },
   {
     "id": 694,
@@ -3621,7 +4316,36 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/710.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/710.png",
+    "forms": [
+      {
+        "name": "호바귀 (폼 체인지)",
+        "formType": "small",
+        "types": [
+          "ghost",
+          "grass"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10027.png"
+      },
+      {
+        "name": "호바귀 (폼 체인지)",
+        "formType": "large",
+        "types": [
+          "ghost",
+          "grass"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10028.png"
+      },
+      {
+        "name": "호바귀 (폼 체인지)",
+        "formType": "super",
+        "types": [
+          "ghost",
+          "grass"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10029.png"
+      }
+    ]
   },
   {
     "id": 711,
@@ -3641,7 +4365,36 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/711.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/711.png",
+    "forms": [
+      {
+        "name": "펌킨인 (폼 체인지)",
+        "formType": "small",
+        "types": [
+          "ghost",
+          "grass"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10030.png"
+      },
+      {
+        "name": "펌킨인 (폼 체인지)",
+        "formType": "large",
+        "types": [
+          "ghost",
+          "grass"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10031.png"
+      },
+      {
+        "name": "펌킨인 (폼 체인지)",
+        "formType": "super",
+        "types": [
+          "ghost",
+          "grass"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10032.png"
+      }
+    ]
   },
   {
     "id": 246,
@@ -3705,7 +4458,18 @@
       "text": "데기라스 Lv.55",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/248.png",
+    "forms": [
+      {
+        "name": "메가마기라스",
+        "formType": "mega",
+        "types": [
+          "rock",
+          "dark"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10049.png"
+      }
+    ]
   },
   {
     "id": 656,
@@ -3757,7 +4521,27 @@
       "text": "개굴반장 Lv.36",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/658.png",
+    "forms": [
+      {
+        "name": "개굴닌자 (폼 체인지)",
+        "formType": "battle-bond",
+        "types": [
+          "water",
+          "dark"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10116.png"
+      },
+      {
+        "name": "개굴닌자 (폼 체인지)",
+        "formType": "ash",
+        "types": [
+          "water",
+          "dark"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10117.png"
+      }
+    ]
   },
   {
     "id": 870,
@@ -3957,7 +4741,18 @@
       "text": "쉘곤 Lv.50",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/373.png",
+    "forms": [
+      {
+        "name": "메가보만다",
+        "formType": "mega",
+        "types": [
+          "dragon",
+          "flying"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10089.png"
+      }
+    ]
   },
   {
     "id": 115,
@@ -3972,7 +4767,17 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/115.png",
+    "forms": [
+      {
+        "name": "메가캥카",
+        "formType": "mega",
+        "types": [
+          "normal"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10039.png"
+      }
+    ]
   },
   {
     "id": 780,
@@ -4048,7 +4853,18 @@
       "text": "메탕구 Lv.45",
       "category": "LV"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/376.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/376.png",
+    "forms": [
+      {
+        "name": "메가메타그로스",
+        "formType": "mega",
+        "types": [
+          "steel",
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10076.png"
+      }
+    ]
   },
   {
     "id": 716,
@@ -4101,7 +4917,45 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/718.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/718.png",
+    "forms": [
+      {
+        "name": "지가르데 (폼 체인지)",
+        "formType": "10-power-construct",
+        "types": [
+          "dragon",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10118.png"
+      },
+      {
+        "name": "지가르데 (폼 체인지)",
+        "formType": "50-power-construct",
+        "types": [
+          "dragon",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10119.png"
+      },
+      {
+        "name": "지가르데 (폼 체인지)",
+        "formType": "complete",
+        "types": [
+          "dragon",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10120.png"
+      },
+      {
+        "name": "지가르데 (폼 체인지)",
+        "formType": "10",
+        "types": [
+          "dragon",
+          "ground"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10181.png"
+      }
+    ]
   },
   {
     "id": 719,
@@ -4120,7 +4974,18 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/719.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/719.png",
+    "forms": [
+      {
+        "name": "메가디안시",
+        "formType": "mega",
+        "types": [
+          "rock",
+          "fairy"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10075.png"
+      }
+    ]
   },
   {
     "id": 150,
@@ -4137,6 +5002,25 @@
       "text": "-",
       "category": "NONE"
     },
-    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
+    "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png",
+    "forms": [
+      {
+        "name": "메가뮤츠 X",
+        "formType": "mega-x",
+        "types": [
+          "psychic",
+          "fighting"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10043.png"
+      },
+      {
+        "name": "메가뮤츠 Y",
+        "formType": "mega-y",
+        "types": [
+          "psychic"
+        ],
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10044.png"
+      }
+    ]
   }
 ]

@@ -135,13 +135,41 @@ async function fetchPokemonData(id) {
 
         const imageUrl = data.sprites.other['official-artwork'].front_default;
 
+        const varieties = [];
+        if (speciesData.varieties) {
+            for (const v of speciesData.varieties) {
+                if (v.is_default) continue;
+
+                try {
+                    const varResponse = await fetchWithCache(v.pokemon.url);
+                    if (!varResponse.ok) continue;
+                    const varData = await varResponse.json();
+
+                    const varImage = varData.sprites.other['official-artwork'].front_default;
+                    if (!varImage) continue;
+
+                    const formName = getFormNameKo(v.pokemon.name, koreanName);
+
+                    varieties.push({
+                        name: formName,
+                        formType: v.pokemon.name.replace(speciesData.name + '-', ''),
+                        types: varData.types.map(t => t.type.name),
+                        image: varImage
+                    });
+                } catch (e) {
+                    console.warn(`Failed to fetch variety ${v.pokemon.name}:`, e);
+                }
+            }
+        }
+
         return {
             id: data.id,
             name: koreanName,
             types: types,
             weaknesses: weaknesses,
             evolution: evolutionCondition,
-            image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`
+            image: imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`,
+            forms: varieties.length > 0 ? varieties : undefined
         };
     } catch (error) {
         console.error(`\nError fetching pokemon ${id}:`, error);
@@ -268,6 +296,34 @@ async function main() {
     const fileContent = JSON.stringify(allPokemon, null, 2);
     fs.writeFileSync('pokemon.json', fileContent);
     console.log(`Successfully generated pokemon.json for ${allPokemon.length} Pokemon.`);
+}
+
+
+function getFormNameKo(formSlug, baseName) {
+    if (formSlug.includes('-mega')) {
+        let name = '메가' + baseName;
+        if (formSlug.endsWith('-x')) name += ' X';
+        if (formSlug.endsWith('-y')) name += ' Y';
+        return name;
+    }
+    if (formSlug.includes('-gmax')) return '거다이맥스 ' + baseName;
+    if (formSlug.includes('-alola')) return '알로라 ' + baseName;
+    if (formSlug.includes('-galar')) return '가라르 ' + baseName;
+    if (formSlug.includes('-hisui')) return '히스이 ' + baseName;
+    if (formSlug.includes('-paldea')) return '팔데아 ' + baseName;
+    if (formSlug.includes('-origin')) return baseName + ' (오리진폼)';
+    if (formSlug.includes('-therian')) return baseName + ' (영물폼)';
+    if (formSlug.includes('-sky')) return baseName + ' (스카이폼)';
+    if (formSlug.includes('-attack')) return baseName + ' (공격폼)';
+    if (formSlug.includes('-defense')) return baseName + ' (방어폼)';
+    if (formSlug.includes('-speed')) return baseName + ' (스피드폼)';
+    if (formSlug.includes('-sandy')) return baseName + ' (모래땅할머니)';
+    if (formSlug.includes('-trash')) return baseName + ' (쓰레기담요)';
+    if (formSlug.includes('-ice')) return baseName + ' (아이스)';
+    if (formSlug.includes('-black')) return '블랙 ' + baseName;
+    if (formSlug.includes('-white')) return '화이트 ' + baseName;
+    if (formSlug.includes('-crowned')) return baseName + ' (검왕/방패왕)';
+    return baseName + ' (폼 체인지)';
 }
 
 main();

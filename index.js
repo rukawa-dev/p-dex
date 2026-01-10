@@ -72,14 +72,14 @@ let currentMatchIndex = -1;
  * @returns {string} 도감 이름
  */
 function getActiveDexName() {
-    const activeButton = document.querySelector('.dex-btn.bg-indigo-100');
-    if (activeButton) {
-        // 버튼 안의 span 요소에서 텍스트를 가져옵니다.
-        const span = activeButton.querySelector('span');
-        if (span) return span.textContent.trim();
-    }
-    // 비상시 기본값
-    return '현재';
+  const activeButton = document.querySelector('.dex-btn.bg-indigo-100');
+  if (activeButton) {
+    // 버튼 안의 span 요소에서 텍스트를 가져옵니다.
+    const span = activeButton.querySelector('span');
+    if (span) return span.textContent.trim();
+  }
+  // 비상시 기본값
+  return '현재';
 }
 
 
@@ -105,7 +105,7 @@ function createTypeBadgesHtml(types) {
 function createPokemonCard(pokemon, index) {
   const card = document.createElement('div');
   const isCaught = caughtPokemon.has(pokemon.id);
-  
+
   // 검색 및 필터링을 위한 데이터 속성 설정
   card.className = `pokemon-card relative bg-white rounded-lg shadow-md overflow-hidden ${isCaught ? 'is-caught' : ''}`;
   card.dataset.pokemonId = pokemon.id;
@@ -113,16 +113,38 @@ function createPokemonCard(pokemon, index) {
   card.dataset.types = pokemon.types.join(',');
   card.dataset.typesKo = pokemon.types.map(t => typeNamesKo[t] || '').join(',');
   card.dataset.evolution = pokemon.evolution.text.toLowerCase();
-  
+
+  // 기본 폼 데이터 저장 (리셋용)
+  card.dataset.baseName = pokemon.name;
+  card.dataset.baseTypes = JSON.stringify(pokemon.types);
+  card.dataset.baseImage = pokemon.image;
+  if (pokemon.forms) {
+    card.dataset.forms = JSON.stringify(pokemon.forms);
+  }
+
   // HTML 컨텐츠 생성
   const typesHtml = createTypeBadgesHtml(pokemon.types);
   const weaknessesHtml = createTypeBadgesHtml(pokemon.weaknesses || []);
   const evolutionColorClass = evolutionCategoryColors[pokemon.evolution.category] || 'text-gray-500';
   const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
-  
-  // 도감 번호 표시 로직 (전국도감일 때는 숨김, 그 외에는 순서 번호 표시)
+
+  // 도감 번호 표시 로직
   const listNumHtml = isNationalDex ? '' : `<span class="list-num-b4d752de text-gray-500 mr-1">No.${index + 1}</span>`;
-  
+
+  // 폼 버튼 HTML 생성
+  let formsHtml = '';
+  if (pokemon.forms && pokemon.forms.length > 0) {
+    formsHtml = `
+      <div class="mt-3 flex flex-wrap justify-center gap-1.5 px-2">
+          <button class="form-btn px-2 py-1 text-xs bg-indigo-600 text-white rounded shadow-sm hover:bg-indigo-700 transition" onclick="resetForm(${pokemon.id})">기본</button>
+          ${pokemon.forms.map((form, i) => `
+              <button class="form-btn px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded shadow-sm hover:bg-gray-300 transition" 
+                  onclick="switchForm(${pokemon.id}, ${i})">${form.name.replace(pokemon.name, '').trim() || form.name}</button>
+          `).join('')}
+      </div>`;
+  }
+
+  card.id = `card-${pokemon.id}`;
   card.innerHTML = `
     <div class="absolute top-2 right-2 z-10">
       <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -134,17 +156,18 @@ function createPokemonCard(pokemon, index) {
       ${listNumHtml}
       <span class="text-xs text-green-600">#${pokemon.id}</span>
     </p>
-    <div class="img-box-56319e8e p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center">
-      <img src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image" loading="lazy">
+    <div class="img-box-56319e8e p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center transition-colors duration-300">
+      <img id="img-${pokemon.id}" src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image transition-transform duration-300" loading="lazy">
       <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
-        <h3 class="text-lg font-bold text-gray-800 group-hover:underline">${pokemon.name}</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <h3 id="name-${pokemon.id}" class="text-lg font-bold text-gray-800 group-hover:underline text-center break-keep">${pokemon.name}</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
         </svg>
       </a>
+      ${formsHtml}
     </div>
     <div class="p-4 space-y-3">
-      <div>
+      <div id="types-${pokemon.id}">
         <h4 class="text-xs font-bold text-gray-500 uppercase mb-1">타입</h4>
         <div class="flex flex-wrap gap-1">${typesHtml}</div>
       </div>
@@ -158,12 +181,81 @@ function createPokemonCard(pokemon, index) {
       </div>
     </div>
   `;
-  
+
   // '잡음' 상태 토글 이벤트 리스너 추가
   const toggle = card.querySelector(`#toggle-${pokemon.id}`);
   toggle.addEventListener('change', () => toggleCaughtStatus(pokemon.id, card));
-  
+
   return card;
+}
+
+// 전역 함수로 등록 (HTML onclick에서 접근 가능하도록)
+window.switchForm = function (id, formIndex) {
+  const card = document.getElementById(`card-${id}`);
+  if (!card || !card.dataset.forms) return;
+
+  const forms = JSON.parse(card.dataset.forms);
+  const targetForm = forms[formIndex];
+  if (!targetForm) return;
+
+  // 이미지 업데이트
+  const img = document.getElementById(`img-${id}`);
+  img.src = targetForm.image;
+  // 애니메이션 효과
+  img.classList.remove('scale-100');
+  img.classList.add('scale-90', 'opacity-80');
+  setTimeout(() => {
+    img.classList.remove('scale-90', 'opacity-80');
+    img.classList.add('scale-100');
+  }, 150);
+
+  // 이름 업데이트
+  const nameEl = document.getElementById(`name-${id}`);
+  nameEl.textContent = targetForm.name;
+
+  // 타입 업데이트
+  const typesDiv = document.querySelector(`#types-${id} div`);
+  typesDiv.innerHTML = createTypeBadgesHtml(targetForm.types);
+
+  // 버튼 스타일 업데이트
+  updateFormButtons(card, formIndex + 1); // 0은 기본 폼 버튼(인덱스상 첫번째)
+};
+
+window.resetForm = function (id) {
+  const card = document.getElementById(`card-${id}`);
+  if (!card) return;
+
+  const baseName = card.dataset.baseName;
+  const baseImage = card.dataset.baseImage;
+  const baseTypes = JSON.parse(card.dataset.baseTypes);
+
+  // 이미지 업데이트
+  const img = document.getElementById(`img-${id}`);
+  img.src = baseImage;
+
+  // 이름 업데이트
+  const nameEl = document.getElementById(`name-${id}`);
+  nameEl.textContent = baseName;
+
+  // 타입 업데이트
+  const typesDiv = document.querySelector(`#types-${id} div`);
+  typesDiv.innerHTML = createTypeBadgesHtml(baseTypes);
+
+  // 버튼 스타일 업데이트
+  updateFormButtons(card, 0);
+};
+
+function updateFormButtons(card, activeIndex) {
+  const buttons = card.querySelectorAll('.form-btn');
+  buttons.forEach((btn, index) => {
+    if (index === activeIndex) {
+      btn.classList.remove('bg-gray-200', 'text-gray-700');
+      btn.classList.add('bg-indigo-600', 'text-white');
+    } else {
+      btn.classList.add('bg-gray-200', 'text-gray-700');
+      btn.classList.remove('bg-indigo-600', 'text-white');
+    }
+  });
 }
 
 // --- 이벤트 핸들러 및 주요 기능 ---
@@ -184,7 +276,7 @@ function toggleCaughtStatus(pokemonId, cardElement) {
   // 현재 도감 타입에 맞는 키를 사용하여 저장
   const key = `caughtPokemon_${currentDexType}`;
   localStorage.setItem(key, JSON.stringify(Array.from(caughtPokemon)));
-  
+
   // 숨기기 옵션이 켜져 있다면, 상태 변경 시 즉시 반영
   if (isHideCaught) {
     handleSearch();
@@ -229,7 +321,7 @@ function updateToggleBtnUI() {
 function toggleHideCaught() {
   isHideCaught = !isHideCaught;
   localStorage.setItem('isHideCaught', isHideCaught); // 상태 저장
-  
+
   updateToggleBtnUI();
   handleSearch();
 }
@@ -240,24 +332,24 @@ function toggleHideCaught() {
  */
 function moveToMatch(index) {
   if (matchedCards.length === 0) return;
-  
+
   // 인덱스 순환 처리
   if (index < 0) index = matchedCards.length - 1;
   if (index >= matchedCards.length) index = 0;
-  
+
   currentMatchIndex = index;
-  
+
   // 모든 카드의 하이라이트 제거
   document.querySelectorAll('.pokemon-card').forEach(card => {
     card.classList.remove('ring-4', 'ring-yellow-400', 'z-20');
   });
-  
+
   const targetCard = matchedCards[currentMatchIndex];
-  
+
   // 타겟 카드 하이라이트 및 스크롤 (즉시 이동)
   targetCard.scrollIntoView({ behavior: 'auto', block: 'center' });
   targetCard.classList.add('ring-4', 'ring-yellow-400', 'z-20');
-  
+
   // 카운터 업데이트
   searchCounter.textContent = `${currentMatchIndex + 1}/${matchedCards.length}`;
 }
@@ -269,15 +361,15 @@ function handleSearch() {
   const searchTerm = searchInput.value.toLowerCase();
   const searchColumn = searchOptionSelect.value;
   const allCards = gridContainer.querySelectorAll('.pokemon-card');
-  
+
   // 검색 결과 초기화
   matchedCards = [];
   currentMatchIndex = -1;
-  
+
   // 내비게이션 컨트롤 숨김 (flex 클래스 제거, hidden 클래스 추가)
   searchNavControls.classList.remove('flex');
   searchNavControls.classList.add('hidden');
-  
+
   // 1. 이름 검색일 경우: 스크롤 이동 방식
   if (searchColumn === 'name') {
     allCards.forEach(card => {
@@ -289,7 +381,7 @@ function handleSearch() {
         card.style.display = 'none';
         return;
       }
-      
+
       // 이름 검색 모드에서는 필터링 없이 모두 보여줌
       card.style.display = '';
 
@@ -318,7 +410,7 @@ function handleSearch() {
       card.style.display = 'none';
       return; // 이미 숨겨졌으므로 검색어 매칭 로직 건너뜀
     }
-    
+
     // 검색어 매칭 확인
     let isMatch = false;
     if (!searchTerm) {
@@ -367,7 +459,7 @@ function renderGrid(dataToRender) {
 async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
   try {
     gridContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">데이터를 로드하고 있습니다...</p>';
-    
+
     // 검색 필터 초기화
     searchInput.value = '';
     searchOptionSelect.value = 'name';
@@ -376,7 +468,7 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
     isNationalDex = isNational;
     currentDexType = dexType; // 현재 도감 타입 업데이트
     localStorage.setItem('selectedDex', dexType);
-    
+
     // 새로운 도감의 '잡음' 데이터 불러오기
     const caughtDataKey = `caughtPokemon_${dexType}`;
     caughtPokemon = new Set(JSON.parse(localStorage.getItem(caughtDataKey)) || []);
@@ -386,9 +478,9 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const pokemonData = await response.json();
-    
+
     renderGrid(pokemonData);
-    
+
     // 모든 버튼에서 활성 스타일 제거
     dexButtons.forEach(btn => {
       btn.classList.remove('bg-indigo-100', 'text-indigo-600');
@@ -397,7 +489,7 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
     if (activeButton) {
       activeButton.classList.add('bg-indigo-100', 'text-indigo-600');
     }
-    
+
   } catch (error) {
     console.error('데이터를 불러오는 데 실패했습니다:', error);
     gridContainer.innerHTML = `<p class="col-span-full text-center text-red-500">${dataUrl} 파일을 불러오는 중 오류가 발생했습니다. 파일이 존재하는지 확인해주세요.</p>`;
@@ -435,10 +527,10 @@ function handleScrollButtons() {
 function initialize() {
   // 초기 UI 상태 설정
   updateToggleBtnUI();
-  
+
   // 이벤트 리스너 연결
   searchInput.addEventListener('input', handleSearch);
-  
+
   // 엔터키 입력 시 다음/이전 결과로 이동
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -456,11 +548,11 @@ function initialize() {
   searchOptionSelect.addEventListener('change', handleSearch);
   toggleCaughtBtn.addEventListener('click', toggleHideCaught);
   resetCaughtBtn.addEventListener('click', resetCaughtData);
-  
+
   // 검색 내비게이션 버튼 이벤트
   searchPrevBtn.addEventListener('click', () => moveToMatch(currentMatchIndex - 1));
   searchNextBtn.addEventListener('click', () => moveToMatch(currentMatchIndex + 1));
-  
+
   // 스크롤 버튼 이벤트
   btnGoToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   btnGoToBottom.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
@@ -476,18 +568,18 @@ function initialize() {
       loadPokemonData(file, btn, isNational, dexType);
     });
   });
-  
+
   // 저장된 도감 상태 불러오기 (기본값: national)
   const savedDex = localStorage.getItem('selectedDex') || 'national';
-  
+
   // 저장된 도감 타입에 해당하는 버튼 찾기
   let targetBtn = document.querySelector(`.dex-btn[data-dex-type="${savedDex}"]`);
-  
+
   // 만약 저장된 도감 버튼을 찾지 못하면 기본값(전국도감)으로 설정
   if (!targetBtn) {
     targetBtn = document.getElementById('btn-national-dex');
   }
-  
+
   // 해당 버튼의 정보를 이용하여 데이터 로드
   if (targetBtn) {
     const dexType = targetBtn.dataset.dexType;
