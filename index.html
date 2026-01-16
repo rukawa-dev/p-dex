@@ -15,6 +15,7 @@
   <link rel="manifest" href="favicon_io/site.webmanifest">
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="output.css">
 </head>
 
@@ -27,9 +28,7 @@
     <div class="h-20 sidebar-header-gradient p-6 flex items-center justify-between relative">
       <h2 class="text-white text-xl font-extrabold tracking-tight">도감 선택</h2>
       <button id="close-sidebar" class="text-white/80 hover:text-white transition-colors">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-        </svg>
+        <i data-lucide="chevron-left" class="w-7 h-7"></i>
       </button>
     </div>
 
@@ -45,10 +44,7 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-3">
             <button id="open-sidebar" class="p-2 hover:bg-gray-200 rounded-lg transition-colors">
-              <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                </path>
-              </svg>
+              <i data-lucide="menu" class="w-6 h-6 text-gray-700"></i>
             </button>
 
             <a href="https://litt.ly/rukawa" target="_blank" rel="noopener noreferrer"
@@ -62,37 +58,20 @@
             <button id="toggle-caught-btn"
               class="flex items-center space-x-2 py-2 px-3 text-sm bg-indigo-500 text-white rounded-md shadow-sm hover:bg-indigo-600 transition-colors"
               title="잡은 포켓몬 숨기기">
-              <!-- 보임 상태 아이콘 (Eye) -->
-              <svg id="icon-eye" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <!-- 숨김 상태 아이콘 (Eye Off) -->
-              <svg id="icon-eye-off" class="w-5 h-5 hidden !ml-[0]" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-              </svg>
+              <!-- 보임 상태 아이콘 -->
+              <i id="icon-eye" data-lucide="eye" class="w-5 h-5"></i>
+              <!-- 숨김 상태 아이콘 -->
+              <i id="icon-eye-off" data-lucide="eye-off" class="w-5 h-5 hidden !ml-[0]"></i>
               <span id="toggle-caught-text" class="hidden sm:inline">숨기기</span>
             </button>
             <button id="reset-caught-btn"
               class="flex items-center space-x-2 py-2 px-3 text-sm bg-red-500 text-white rounded-md shadow-sm hover:bg-red-600 transition-colors flex-shrink-0">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z"
-                  clip-rule="evenodd"></path>
-              </svg>
+              <i data-lucide="trash-2" class="h-5 w-5"></i>
               <span class="hidden sm:inline">초기화</span>
             </button>
             <a href="https://github.com/rukawa-dev/p-dex" target="_blank" rel="noopener noreferrer"
               class="flex items-center space-x-2 p-2 text-sm bg-gray-800 text-white rounded-md shadow-sm hover:bg-black transition-colors">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.308.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
-                  clip-rule="evenodd" />
-              </svg>
+              <i data-lucide="github" class="h-5 w-5"></i>
               <span class="hidden sm:inline">GitHub</span>
             </a>
           </div>
@@ -108,9 +87,7 @@
               <option value="evolution">진화 조건</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
+              <i data-lucide="chevron-down" class="h-4 w-4"></i>
             </div>
           </div>
           <div
@@ -122,15 +99,11 @@
               <div class="h-4 w-px bg-gray-300 mx-1"></div>
               <button id="search-prev-btn" class="p-1 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded"
                 title="이전 결과">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                </svg>
+                <i data-lucide="chevron-up" class="w-4 h-4"></i>
               </button>
               <button id="search-next-btn" class="p-1 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded"
                 title="다음 결과">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
               </button>
             </div>
           </div>
@@ -160,16 +133,12 @@
     <button id="btn-goto-top"
       class="scroll-btn bg-indigo-500 text-white rounded-full p-3 shadow-lg hover:bg-indigo-600 transition-colors"
       title="맨 위로">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-      </svg>
+      <i data-lucide="chevron-up" class="w-6 h-6"></i>
     </button>
     <button id="btn-goto-bottom"
       class="scroll-btn bg-indigo-500 text-white rounded-full p-3 shadow-lg hover:bg-indigo-600 transition-colors"
       title="맨 아래로">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-      </svg>
+      <i data-lucide="chevron-down" class="w-6 h-6"></i>
     </button>
   </div>
 

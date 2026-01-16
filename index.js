@@ -167,9 +167,7 @@ function createPokemonCard(pokemon, index) {
       <img id="img-${pokemon.id}" src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image transition-transform duration-300" loading="lazy">
       <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
         <h3 id="name-${pokemon.id}" class="text-lg font-bold text-gray-800 group-hover:underline text-center break-keep">${pokemon.name}</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
+        <i data-lucide="external-link" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500 flex-shrink-0"></i>
       </a>
       ${formsHtml}
     </div>
@@ -377,6 +375,9 @@ function moveToMatch(index) {
 
   // 카운터 업데이트
   searchCounter.textContent = `${currentMatchIndex + 1}/${matchedCards.length}`;
+
+  // 아이콘 렌더링 (동적으로 변경된 요소가 있을 경우 대비)
+  lucide.createIcons();
 }
 
 /**
@@ -472,6 +473,8 @@ function renderGrid(dataToRender) {
   });
   // 초기 렌더링 후 현재 필터 상태(숨기기 등) 적용
   handleSearch();
+  // 루사이드 아이콘 렌더링
+  lucide.createIcons();
 }
 
 /**
@@ -560,9 +563,7 @@ async function createSidebarMenu() {
     const nationalDexHtml = `
       <button class="dex-btn w-full flex items-center space-x-4 p-3 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all text-left" 
         data-dex-type="national" data-file="pokemon.json" data-is-national="true">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
+        <i data-lucide="globe" class="w-5 h-5"></i>
         <span class="font-medium">전국 도감</span>
       </button>
     `;
@@ -586,22 +587,27 @@ async function createSidebarMenu() {
         <div class="sidebar-group pt-2">
           <button class="sidebar-category-header text-gray-500" onclick="toggleCategory('${gId}')">
             <div class="flex items-center space-x-3">
-               <svg class="w-4 h-4" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-               </svg>
+               <i data-lucide="package" class="w-4 h-4"></i>
                <span class="text-sm">${game}</span>
             </div>
-            <svg id="arrow-${gId}" class="category-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+            <i id="arrow-${gId}" data-lucide="chevron-down" class="category-arrow w-4 h-4"></i>
           </button>
           <div id="${gId}" class="sidebar-submenu">
             ${items.map(item => `
-              <button class="dex-btn w-full flex items-center space-x-3 p-2 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-lg transition-all text-left" 
-                data-dex-type="${item.key}" data-file="${item.output}" data-is-national="false">
-                <div class="w-1.5 h-1.5 rounded-full bg-gray-300 ml-1"></div>
-                <span class="text-sm font-medium">${item.name}</span>
-              </button>
+              <div class="flex items-center group/item pr-2">
+                <button class="dex-btn flex-grow flex items-center space-x-3 p-2 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-lg transition-all text-left" 
+                  data-dex-type="${item.key}" data-file="${item.output}" data-is-national="false">
+                  <div class="w-1.5 h-1.5 rounded-full bg-gray-300 ml-1"></div>
+                  <span class="text-sm font-medium">${item.name}</span>
+                </button>
+                ${item.map_url ? `
+                  <a href="${item.map_url}" target="_blank" rel="noopener noreferrer" 
+                    class="p-1.5 text-gray-400 hover:text-indigo-500 hover:bg-indigo-50 rounded-md transition-colors" 
+                    onclick="event.stopPropagation();" title="지도 보기">
+                    <i data-lucide="map" class="w-4 h-4"></i>
+                  </a>
+                ` : ''}
+              </div>
             `).join('')}
           </div>
         </div>
@@ -611,6 +617,7 @@ async function createSidebarMenu() {
 
     // 4. 이벤트 바인딩 및 초기 상태 설정
     refreshDexButtons();
+    lucide.createIcons();
 
     // 현재 선택된 도감이 속한 그룹 열기
     const savedDex = localStorage.getItem('selectedDex') || 'national';

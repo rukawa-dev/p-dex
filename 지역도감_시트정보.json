@@ -1,7 +1,7 @@
 [
   {
     "key": "za",
-    "game": "Pokémon LEGENDS Z-A",
+    "game": "LEGENDS Z-A",
     "map_url": "https://mapgenie.io/pokemon-legends-z-a/maps/lumiose-city",
     "name": "미르도감(본토)",
     "gid": "0",
@@ -9,7 +9,7 @@
   },
   {
     "key": "za:dlc",
-    "game": "Pokémon LEGENDS Z-A",
+    "game": "LEGENDS Z-A",
     "map_url": "https://mapgenie.io/pokemon-legends-z-a/maps/lumiose-city",
     "name": "이차원도감(DLC)",
     "gid": "1623373325",
@@ -17,9 +17,17 @@
   },
   {
     "key": "paldea",
-    "game": "포켓몬스터 스칼렛·바이올렛",
+    "game": "스칼렛·바이올렛",
     "map_url": "https://mapgenie.io/pokemon-scarlet-violet/maps/paldea-region",
     "name": "팔데아도감(본토)",
+    "gid": "1321757419",
+    "output": "pokemon-paldea.json"
+  },
+  {
+    "key": "paldea:dlc",
+    "game": "스칼렛·바이올렛",
+    "map_url": "https://mapgenie.io/pokemon-scarlet-violet/maps/kitakami-region",
+    "name": "북신도감(DLC)",
     "gid": "1321757419",
     "output": "pokemon-paldea.json"
   }
