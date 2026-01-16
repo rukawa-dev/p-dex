@@ -99,9 +99,8 @@ npm run dev
 ├── pokemon-za-dlc.json # ZA DLC 도감 데이터
 ├── index.html          # 메인 페이지
 ├── index.js            # 클라이언트 사이드 로직 (UI, 검색, 이벤트, 폼 전환)
-├── sidebar.js          # 사이드바 제어 로직
 ├── load-data.js        # (Node.js) 전국도감 및 폼 데이터 생성 스크립트
-├── load-data-custom.js # (Node.js) 커스텀 도감 생성 스크립트
+├── load-regional-data.js # (Node.js) 지역별 도감 생성 스크립트
 ├── input.css           # Tailwind CSS 소스 파일
 ├── output.css          # 빌드된 Tailwind CSS 파일
 ├── package.json        # 프로젝트 정보 및 스크립트
