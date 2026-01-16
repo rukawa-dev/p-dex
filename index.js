@@ -41,7 +41,14 @@ const toggleCaughtBtn = document.getElementById('toggle-caught-btn');
 const toggleCaughtText = document.getElementById('toggle-caught-text');
 const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
-const dexButtons = document.querySelectorAll('.dex-btn'); // 모든 도감 버튼 선택
+const sidebarNav = document.getElementById('sidebar-nav');
+let dexButtons = []; // 동적으로 생성된 후 업데이트될 변수
+
+// 사이드바 관련 요소
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebar-overlay');
+const openBtn = document.getElementById('open-sidebar');
+const closeBtn = document.getElementById('close-sidebar');
 
 // 검색 내비게이션 요소
 const searchNavControls = document.getElementById('search-nav-controls');
@@ -131,16 +138,18 @@ function createPokemonCard(pokemon, index) {
   // 도감 번호 표시 로직
   const listNumHtml = isNationalDex ? '' : `<span class="list-num-b4d752de text-gray-500 mr-1">No.${index + 1}</span>`;
 
-  // 폼 버튼 HTML 생성
+  // 폼 버튼/드롭다운 HTML 생성
   let formsHtml = '';
   if (pokemon.forms && pokemon.forms.length > 0) {
     formsHtml = `
-      <div class="mt-3 flex flex-wrap justify-center gap-1.5 px-2">
-          <button class="form-btn px-2 py-1 text-xs bg-indigo-600 text-white rounded shadow-sm hover:bg-indigo-700 transition" onclick="resetForm(${pokemon.id})">기본</button>
+      <div class="mt-3 px-2 w-full max-w-[150px]">
+        <select class="form-select w-full p-1.5 text-xs border border-gray-200 rounded-md bg-white text-gray-700 outline-none focus:ring-1 focus:ring-indigo-500 transition-all font-medium" 
+          onchange="handleFormChange(${pokemon.id}, this)">
+          <option value="reset">기본 폼 (Default)</option>
           ${pokemon.forms.map((form, i) => `
-              <button class="form-btn px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded shadow-sm hover:bg-gray-300 transition" 
-                  onclick="switchForm(${pokemon.id}, ${i})">${form.name.replace(pokemon.name, '').trim() || form.name}</button>
+            <option value="${i}">${form.name.replace(pokemon.name, '').trim() || form.name}</option>
           `).join('')}
+        </select>
       </div>`;
   }
 
@@ -160,9 +169,7 @@ function createPokemonCard(pokemon, index) {
       <img id="img-${pokemon.id}" src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image transition-transform duration-300" loading="lazy">
       <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
         <h3 id="name-${pokemon.id}" class="text-lg font-bold text-gray-800 group-hover:underline text-center break-keep">${pokemon.name}</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
+        <i data-lucide="external-link" class="h-4 w-4 ml-1 text-gray-400 group-hover:text-blue-500 flex-shrink-0"></i>
       </a>
       ${formsHtml}
     </div>
@@ -217,8 +224,8 @@ window.switchForm = function (id, formIndex) {
   const typesDiv = document.querySelector(`#types-${id} div`);
   typesDiv.innerHTML = createTypeBadgesHtml(targetForm.types);
 
-  // 버튼 스타일 업데이트
-  updateFormButtons(card, formIndex + 1); // 0은 기본 폼 버튼(인덱스상 첫번째)
+  // UI 업데이트 (버튼 또는 드롭다운)
+  updateFormUI(card, formIndex + 1); // 0은 기본 폼 버튼(인덱스상 첫번째)
 };
 
 window.resetForm = function (id) {
@@ -241,24 +248,66 @@ window.resetForm = function (id) {
   const typesDiv = document.querySelector(`#types-${id} div`);
   typesDiv.innerHTML = createTypeBadgesHtml(baseTypes);
 
-  // 버튼 스타일 업데이트
-  updateFormButtons(card, 0);
+  // UI 업데이트 (버튼 또는 드롭다운)
+  updateFormUI(card, 0);
 };
 
-function updateFormButtons(card, activeIndex) {
+/**
+ * 드롭다운(Select) 변경 시 호출되는 핸들러
+ */
+window.handleFormChange = function (id, selectEl) {
+  const value = selectEl.value;
+  if (value === 'reset') {
+    resetForm(id);
+  } else {
+    switchForm(id, parseInt(value));
+  }
+};
+
+/**
+ * 폼 선택 UI(버튼 또는 드롭다운)의 상태를 업데이트합니다.
+ */
+function updateFormUI(card, activeIndex) {
+  // 1. 버튼 방식 업데이트
   const buttons = card.querySelectorAll('.form-btn');
-  buttons.forEach((btn, index) => {
-    if (index === activeIndex) {
-      btn.classList.remove('bg-gray-200', 'text-gray-700');
-      btn.classList.add('bg-indigo-600', 'text-white');
-    } else {
-      btn.classList.add('bg-gray-200', 'text-gray-700');
-      btn.classList.remove('bg-indigo-600', 'text-white');
-    }
-  });
+  if (buttons.length > 0) {
+    buttons.forEach((btn, index) => {
+      if (index === activeIndex) {
+        btn.classList.remove('bg-gray-200', 'text-gray-700');
+        btn.classList.add('bg-indigo-600', 'text-white');
+      } else {
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+        btn.classList.remove('bg-indigo-600', 'text-white');
+      }
+    });
+  }
+
+  // 2. 드롭다운 방식 업데이트
+  const select = card.querySelector('.form-select');
+  if (select) {
+    select.value = activeIndex === 0 ? 'reset' : (activeIndex - 1).toString();
+  }
 }
 
 // --- 이벤트 핸들러 및 주요 기능 ---
+
+/**
+ * 사이드바의 열림/닫힘 상태를 제어합니다.
+ * @param {boolean} isOpen - 사이드바를 열지 여부
+ */
+function toggleSidebar(isOpen) {
+  if (isOpen) {
+    // 사이드바를 화면에 표시
+    sidebar.classList.remove('-translate-x-full');
+    // 오버레이 활성화
+    overlay.classList.add('overlay-active');
+  } else {
+    // 사이드바를 화면 밖으로 이동
+    sidebar.classList.add('-translate-x-full');
+    // 오버레이 비활성화
+    overlay.classList.remove('overlay-active');
+  }
+}
 
 /**
  * 포켓몬의 '잡음' 상태를 토글하고 localStorage에 저장합니다.
@@ -352,6 +401,9 @@ function moveToMatch(index) {
 
   // 카운터 업데이트
   searchCounter.textContent = `${currentMatchIndex + 1}/${matchedCards.length}`;
+
+  // 아이콘 렌더링 (동적으로 변경된 요소가 있을 경우 대비)
+  lucide.createIcons();
 }
 
 /**
@@ -447,6 +499,8 @@ function renderGrid(dataToRender) {
   });
   // 초기 렌더링 후 현재 필터 상태(숨기기 등) 적용
   handleSearch();
+  // 루사이드 아이콘 렌더링
+  lucide.createIcons();
 }
 
 /**
@@ -483,11 +537,11 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
 
     // 모든 버튼에서 활성 스타일 제거
     dexButtons.forEach(btn => {
-      btn.classList.remove('bg-indigo-100', 'text-indigo-600');
+      btn.classList.remove('bg-indigo-100', 'text-indigo-600', 'dex-btn-active');
     });
     // 현재 선택된 버튼에만 활성 스타일 추가
     if (activeButton) {
-      activeButton.classList.add('bg-indigo-100', 'text-indigo-600');
+      activeButton.classList.add('dex-btn-active');
     }
 
   } catch (error) {
@@ -523,8 +577,136 @@ function handleScrollButtons() {
 }
 
 
+/**
+ * 사이드바 메뉴를 동적으로 생성합니다.
+ */
+async function createSidebarMenu() {
+  try {
+    const response = await fetch('지역도감_시트정보.json');
+    const regionalData = await response.json();
+
+    // 1. 전국 도감 항상 최상단에 추가
+    const nationalDexHtml = `
+      <button class="dex-btn w-full flex items-center space-x-4 p-3 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all text-left" 
+        data-dex-type="national" data-file="pokemon.json" data-is-national="true">
+        <i data-lucide="globe" class="w-5 h-5"></i>
+        <span class="font-medium">전국 도감</span>
+      </button>
+    `;
+    sidebarNav.innerHTML = nationalDexHtml;
+
+    // 2. 게임별 그룹화
+    const groups = {};
+    regionalData.forEach(item => {
+      if (!groups[item.game]) {
+        groups[item.game] = [];
+      }
+      groups[item.game].push(item);
+    });
+
+    // 3. 그룹별 HTML 생성
+    Object.keys(groups).forEach((game, index) => {
+      const gId = `group-${index}`;
+      const items = groups[game];
+
+      const groupHtml = `
+        <div class="sidebar-group pt-2">
+          <button class="sidebar-category-header text-gray-500" onclick="toggleCategory('${gId}')">
+            <div class="flex items-center space-x-3">
+               <i data-lucide="package" class="w-4 h-4"></i>
+               <span class="text-sm">${game}</span>
+            </div>
+            <i id="arrow-${gId}" data-lucide="chevron-down" class="category-arrow w-4 h-4"></i>
+          </button>
+          <div id="${gId}" class="sidebar-submenu">
+            ${items.map(item => `
+              <div class="flex items-center group/item pr-2">
+                <button class="dex-btn flex-grow flex items-center space-x-3 p-2 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-lg transition-all text-left" 
+                  data-dex-type="${item.key}" data-file="pokemon-${item.key.replace(/:/g, '-')}.json" data-is-national="false">
+                  <div class="w-1.5 h-1.5 rounded-full bg-gray-300 ml-1"></div>
+                  <span class="text-sm font-medium">${item.name}</span>
+                </button>
+                ${item.map_url ? `
+                  <a href="${item.map_url}" target="_blank" rel="noopener noreferrer" 
+                    class="p-1.5 text-gray-400 hover:text-indigo-500 hover:bg-indigo-50 rounded-md transition-colors" 
+                    onclick="event.stopPropagation();" title="지도 보기">
+                    <i data-lucide="map" class="w-4 h-4"></i>
+                  </a>
+                ` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      sidebarNav.insertAdjacentHTML('beforeend', groupHtml);
+    });
+
+    // 4. 이벤트 바인딩 및 초기 상태 설정
+    refreshDexButtons();
+    lucide.createIcons();
+
+    // 현재 선택된 도감이 속한 그룹 열기
+    const savedDex = localStorage.getItem('selectedDex') || 'national';
+    const activeBtn = Array.from(dexButtons).find(btn => btn.dataset.dexType === savedDex);
+    if (activeBtn) {
+      const submenu = activeBtn.closest('.sidebar-submenu');
+      if (submenu) {
+        toggleCategory(submenu.id, true);
+      }
+      activeBtn.click();
+    } else {
+      // 기본은 전국 도감
+      const nationalBtn = sidebarNav.querySelector('[data-dex-type="national"]');
+      if (nationalBtn) nationalBtn.click();
+    }
+
+  } catch (error) {
+    console.error('사이드바 데이터를 불러오는 데 실패했습니다:', error);
+  }
+}
+
+/**
+ * 동적으로 생성된 도감 버튼들을 다시 찾아 이벤트를 연결합니다.
+ */
+function refreshDexButtons() {
+  dexButtons = sidebarNav.querySelectorAll('.dex-btn');
+  dexButtons.forEach(btn => {
+    // 기존 리스너가 중복되지 않도록 클론 후 교체하거나, 아예 새로 등록 (우리는 새로 그림)
+    btn.addEventListener('click', () => {
+      const dexType = btn.dataset.dexType;
+      const file = btn.dataset.file;
+      const isNational = btn.dataset.isNational === 'true';
+      loadPokemonData(file, btn, isNational, dexType);
+
+      // 모바일 등에서 클릭 시 사이드바 닫기 (선택 사항)
+      // toggleSidebar(false); 
+    });
+  });
+}
+
+/**
+ * 카테고리 접기/펴기를 토글합니다.
+ * @param {string} id - 서브메뉴 ID
+ * @param {boolean} forceOpen - 강제로 열지 여부
+ */
+window.toggleCategory = function (id, forceOpen = false) {
+  const submenu = document.getElementById(id);
+  const arrow = document.getElementById(`arrow-${id}`);
+  if (!submenu || !arrow) return;
+
+  const isOpen = submenu.classList.contains('active');
+
+  if (forceOpen || !isOpen) {
+    submenu.classList.add('active');
+    arrow.classList.add('rotated');
+  } else {
+    submenu.classList.remove('active');
+    arrow.classList.remove('rotated');
+  }
+};
+
 // --- 애플리케이션 초기화 ---
-function initialize() {
+async function initialize() {
   // 초기 UI 상태 설정
   updateToggleBtnUI();
 
@@ -558,35 +740,13 @@ function initialize() {
   btnGoToBottom.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
   window.addEventListener('scroll', handleScrollButtons);
 
+  // 사이드바 이벤트 리스너 연결
+  openBtn.addEventListener('click', () => toggleSidebar(true));
+  closeBtn.addEventListener('click', () => toggleSidebar(false));
+  overlay.addEventListener('click', () => toggleSidebar(false));
 
-  // 도감 버튼 이벤트 리스너 일괄 등록
-  dexButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dexType = btn.dataset.dexType;
-      const file = btn.dataset.file;
-      const isNational = btn.dataset.isNational === 'true';
-      loadPokemonData(file, btn, isNational, dexType);
-    });
-  });
-
-  // 저장된 도감 상태 불러오기 (기본값: national)
-  const savedDex = localStorage.getItem('selectedDex') || 'national';
-
-  // 저장된 도감 타입에 해당하는 버튼 찾기
-  let targetBtn = document.querySelector(`.dex-btn[data-dex-type="${savedDex}"]`);
-
-  // 만약 저장된 도감 버튼을 찾지 못하면 기본값(전국도감)으로 설정
-  if (!targetBtn) {
-    targetBtn = document.getElementById('btn-national-dex');
-  }
-
-  // 해당 버튼의 정보를 이용하여 데이터 로드
-  if (targetBtn) {
-    const dexType = targetBtn.dataset.dexType;
-    const file = targetBtn.dataset.file;
-    const isNational = targetBtn.dataset.isNational === 'true';
-    loadPokemonData(file, targetBtn, isNational, dexType);
-  }
+  // 사이드바 메뉴 동적 생성 및 데이터 로드 시작
+  await createSidebarMenu();
 
   // 초기 스크롤 버튼 상태 설정
   handleScrollButtons();

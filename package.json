@@ -6,12 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./input.css -o ./output.css --watch",
-    "data:all": "node load-data.js all",
-    "data:all:refresh": "node load-data.js all --refresh",
+    "data:all": "node load-data.js all && node load-regional-data.js",
+    "data:all:refresh": "node load-data.js all --refresh && node load-regional-data.js",
     "data:test": "node load-data.js 1-30",
-    "data:za": "node load-data-custom.js za",
-    "data:za:dlc": "node load-data-custom.js za:dlc",
-    "data:paldea": "node load-data-custom.js paldea",
     "dev": "concurrently \"npm run build:css\""
   },
   "author": "",
