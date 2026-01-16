@@ -43,6 +43,12 @@ const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
 const dexButtons = document.querySelectorAll('.dex-btn'); // 모든 도감 버튼 선택
 
+// 사이드바 관련 요소
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebar-overlay');
+const openBtn = document.getElementById('open-sidebar');
+const closeBtn = document.getElementById('close-sidebar');
+
 // 검색 내비게이션 요소
 const searchNavControls = document.getElementById('search-nav-controls');
 const searchCounter = document.getElementById('search-counter');
@@ -259,6 +265,24 @@ function updateFormButtons(card, activeIndex) {
 }
 
 // --- 이벤트 핸들러 및 주요 기능 ---
+
+/**
+ * 사이드바의 열림/닫힘 상태를 제어합니다.
+ * @param {boolean} isOpen - 사이드바를 열지 여부
+ */
+function toggleSidebar(isOpen) {
+  if (isOpen) {
+    // 사이드바를 화면에 표시
+    sidebar.classList.remove('-translate-x-full');
+    // 오버레이 활성화
+    overlay.classList.add('overlay-active');
+  } else {
+    // 사이드바를 화면 밖으로 이동
+    sidebar.classList.add('-translate-x-full');
+    // 오버레이 비활성화
+    overlay.classList.remove('overlay-active');
+  }
+}
 
 /**
  * 포켓몬의 '잡음' 상태를 토글하고 localStorage에 저장합니다.
@@ -568,6 +592,11 @@ function initialize() {
       loadPokemonData(file, btn, isNational, dexType);
     });
   });
+
+  // 사이드바 이벤트 리스너 연결
+  openBtn.addEventListener('click', () => toggleSidebar(true));
+  closeBtn.addEventListener('click', () => toggleSidebar(false));
+  overlay.addEventListener('click', () => toggleSidebar(false));
 
   // 저장된 도감 상태 불러오기 (기본값: national)
   const savedDex = localStorage.getItem('selectedDex') || 'national';

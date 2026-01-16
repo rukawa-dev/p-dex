@@ -2,7 +2,7 @@
 
 Vanilla JavaScript와 Tailwind CSS를 사용하여 제작된 웹 기반 포켓몬 도감 프로젝트입니다. 다양한 세대의 포켓몬 도감을 탐색하고, 나만의 포획 기록을 관리할 수 있습니다.
 
-![전국도감 스크린샷](screen-shot.png)
+![전국도감 스크린샷](assets/imgs/screen-shot.png)
 **LIVE DEMO**: https://rukawa-dev.github.io/p-dex/
 
 ---
@@ -90,6 +90,7 @@ npm run dev
 
 ```
 /
+├── assets/             # 정적 리소스 (이미지 등)
 ├── favicon_io/         # 파비콘 파일
 ├── node_modules/       # npm 패키지
 ├── pokemon.json        # (생성) 전국도감 데이터 (Forms 포함)
