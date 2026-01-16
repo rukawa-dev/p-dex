@@ -41,7 +41,8 @@ const toggleCaughtBtn = document.getElementById('toggle-caught-btn');
 const toggleCaughtText = document.getElementById('toggle-caught-text');
 const iconEye = document.getElementById('icon-eye');
 const iconEyeOff = document.getElementById('icon-eye-off');
-const dexButtons = document.querySelectorAll('.dex-btn'); // 모든 도감 버튼 선택
+const sidebarNav = document.getElementById('sidebar-nav');
+let dexButtons = []; // 동적으로 생성된 후 업데이트될 변수
 
 // 사이드바 관련 요소
 const sidebar = document.getElementById('sidebar');
@@ -507,11 +508,11 @@ async function loadPokemonData(dataUrl, activeButton, isNational, dexType) {
 
     // 모든 버튼에서 활성 스타일 제거
     dexButtons.forEach(btn => {
-      btn.classList.remove('bg-indigo-100', 'text-indigo-600');
+      btn.classList.remove('bg-indigo-100', 'text-indigo-600', 'dex-btn-active');
     });
     // 현재 선택된 버튼에만 활성 스타일 추가
     if (activeButton) {
-      activeButton.classList.add('bg-indigo-100', 'text-indigo-600');
+      activeButton.classList.add('dex-btn-active');
     }
 
   } catch (error) {
@@ -547,8 +548,132 @@ function handleScrollButtons() {
 }
 
 
+/**
+ * 사이드바 메뉴를 동적으로 생성합니다.
+ */
+async function createSidebarMenu() {
+  try {
+    const response = await fetch('지역도감_시트정보.json');
+    const regionalData = await response.json();
+
+    // 1. 전국 도감 항상 최상단에 추가
+    const nationalDexHtml = `
+      <button class="dex-btn w-full flex items-center space-x-4 p-3 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-xl transition-all text-left" 
+        data-dex-type="national" data-file="pokemon.json" data-is-national="true">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span class="font-medium">전국 도감</span>
+      </button>
+    `;
+    sidebarNav.innerHTML = nationalDexHtml;
+
+    // 2. 게임별 그룹화
+    const groups = {};
+    regionalData.forEach(item => {
+      if (!groups[item.game]) {
+        groups[item.game] = [];
+      }
+      groups[item.game].push(item);
+    });
+
+    // 3. 그룹별 HTML 생성
+    Object.keys(groups).forEach((game, index) => {
+      const gId = `group-${index}`;
+      const items = groups[game];
+
+      const groupHtml = `
+        <div class="sidebar-group pt-2">
+          <button class="sidebar-category-header text-gray-500" onclick="toggleCategory('${gId}')">
+            <div class="flex items-center space-x-3">
+               <svg class="w-4 h-4" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+               </svg>
+               <span class="text-sm">${game}</span>
+            </div>
+            <svg id="arrow-${gId}" class="category-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="${gId}" class="sidebar-submenu">
+            ${items.map(item => `
+              <button class="dex-btn w-full flex items-center space-x-3 p-2 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-lg transition-all text-left" 
+                data-dex-type="${item.key}" data-file="${item.output}" data-is-national="false">
+                <div class="w-1.5 h-1.5 rounded-full bg-gray-300 ml-1"></div>
+                <span class="text-sm font-medium">${item.name}</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      sidebarNav.insertAdjacentHTML('beforeend', groupHtml);
+    });
+
+    // 4. 이벤트 바인딩 및 초기 상태 설정
+    refreshDexButtons();
+
+    // 현재 선택된 도감이 속한 그룹 열기
+    const savedDex = localStorage.getItem('selectedDex') || 'national';
+    const activeBtn = Array.from(dexButtons).find(btn => btn.dataset.dexType === savedDex);
+    if (activeBtn) {
+      const submenu = activeBtn.closest('.sidebar-submenu');
+      if (submenu) {
+        toggleCategory(submenu.id, true);
+      }
+      activeBtn.click();
+    } else {
+      // 기본은 전국 도감
+      const nationalBtn = sidebarNav.querySelector('[data-dex-type="national"]');
+      if (nationalBtn) nationalBtn.click();
+    }
+
+  } catch (error) {
+    console.error('사이드바 데이터를 불러오는 데 실패했습니다:', error);
+  }
+}
+
+/**
+ * 동적으로 생성된 도감 버튼들을 다시 찾아 이벤트를 연결합니다.
+ */
+function refreshDexButtons() {
+  dexButtons = sidebarNav.querySelectorAll('.dex-btn');
+  dexButtons.forEach(btn => {
+    // 기존 리스너가 중복되지 않도록 클론 후 교체하거나, 아예 새로 등록 (우리는 새로 그림)
+    btn.addEventListener('click', () => {
+      const dexType = btn.dataset.dexType;
+      const file = btn.dataset.file;
+      const isNational = btn.dataset.isNational === 'true';
+      loadPokemonData(file, btn, isNational, dexType);
+
+      // 모바일 등에서 클릭 시 사이드바 닫기 (선택 사항)
+      // toggleSidebar(false); 
+    });
+  });
+}
+
+/**
+ * 카테고리 접기/펴기를 토글합니다.
+ * @param {string} id - 서브메뉴 ID
+ * @param {boolean} forceOpen - 강제로 열지 여부
+ */
+window.toggleCategory = function (id, forceOpen = false) {
+  const submenu = document.getElementById(id);
+  const arrow = document.getElementById(`arrow-${id}`);
+  if (!submenu || !arrow) return;
+
+  const isOpen = submenu.classList.contains('active');
+
+  if (forceOpen || !isOpen) {
+    submenu.classList.add('active');
+    arrow.classList.add('rotated');
+  } else {
+    submenu.classList.remove('active');
+    arrow.classList.remove('rotated');
+  }
+};
+
 // --- 애플리케이션 초기화 ---
-function initialize() {
+async function initialize() {
   // 초기 UI 상태 설정
   updateToggleBtnUI();
 
@@ -582,40 +707,13 @@ function initialize() {
   btnGoToBottom.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
   window.addEventListener('scroll', handleScrollButtons);
 
-
-  // 도감 버튼 이벤트 리스너 일괄 등록
-  dexButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dexType = btn.dataset.dexType;
-      const file = btn.dataset.file;
-      const isNational = btn.dataset.isNational === 'true';
-      loadPokemonData(file, btn, isNational, dexType);
-    });
-  });
-
   // 사이드바 이벤트 리스너 연결
   openBtn.addEventListener('click', () => toggleSidebar(true));
   closeBtn.addEventListener('click', () => toggleSidebar(false));
   overlay.addEventListener('click', () => toggleSidebar(false));
 
-  // 저장된 도감 상태 불러오기 (기본값: national)
-  const savedDex = localStorage.getItem('selectedDex') || 'national';
-
-  // 저장된 도감 타입에 해당하는 버튼 찾기
-  let targetBtn = document.querySelector(`.dex-btn[data-dex-type="${savedDex}"]`);
-
-  // 만약 저장된 도감 버튼을 찾지 못하면 기본값(전국도감)으로 설정
-  if (!targetBtn) {
-    targetBtn = document.getElementById('btn-national-dex');
-  }
-
-  // 해당 버튼의 정보를 이용하여 데이터 로드
-  if (targetBtn) {
-    const dexType = targetBtn.dataset.dexType;
-    const file = targetBtn.dataset.file;
-    const isNational = targetBtn.dataset.isNational === 'true';
-    loadPokemonData(file, targetBtn, isNational, dexType);
-  }
+  // 사이드바 메뉴 동적 생성 및 데이터 로드 시작
+  await createSidebarMenu();
 
   // 초기 스크롤 버튼 상태 설정
   handleScrollButtons();
