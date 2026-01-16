@@ -26,5 +26,12 @@
     "map_url": "https://mapgenie.io/pokemon-scarlet-violet/maps/kitakami-region",
     "name": "북신도감(DLC)",
     "gid": "163679048"
+  },
+  {
+    "key": "paldea:dlc:2",
+    "game": "스칼렛·바이올렛",
+    "map_url": "https://mapgenie.io/pokemon-scarlet-violet/maps/terrarium",
+    "name": "블루베리도감(DLC)",
+    "gid": "185919154"
   }
 ]

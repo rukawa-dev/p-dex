@@ -72,10 +72,14 @@ async function processDex(config, allPokemonData) {
     // 행 데이터가 부족하면 건너뜀
     if (row.length <= nameColumnIndex) continue;
 
-    const name = row[nameColumnIndex].trim();
+    let name = row[nameColumnIndex].trim();
     if (!name) continue;
 
-    const pokemon = allPokemonData.find(p => p.name === name);
+    // 이름에서 괄호 포함 내용 제거 (예: "디그다(알로라의 모습)" -> "디그다")
+    // 매칭을 위해 원본 이름은 유지하고 처리된 이름을 사용
+    const cleanName = name.replace(/\(.*\)/g, '').trim();
+
+    const pokemon = allPokemonData.find(p => p.name === cleanName);
     if (pokemon) {
       if (!addedIds.has(pokemon.id)) {
         customPokemonList.push(pokemon);
