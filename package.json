@@ -9,9 +9,7 @@
     "data:all": "node load-data.js all",
     "data:all:refresh": "node load-data.js all --refresh",
     "data:test": "node load-data.js 1-30",
-    "data:za": "node load-regional-data.js za",
-    "data:za:dlc": "node load-regional-data.js za:dlc",
-    "data:paldea": "node load-regional-data.js paldea",
+    "data:regional": "node load-regional-data.js",
     "dev": "concurrently \"npm run build:css\""
   },
   "author": "",

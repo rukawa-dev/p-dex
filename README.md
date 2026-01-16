@@ -67,11 +67,9 @@ npm install
   ```
 
 - **커스텀 도감 데이터 생성 (ZA, Paldea 등)**
-  `pokemon.json`이 먼저 생성되어 있어야 합니다.
+  `pokemon.json`이 먼저 생성되어 있어야 합니다. `지역도감_시트정보.json`에 정의된 모든 지역 도감을 한 번에 생성합니다.
   ```bash
-  npm run data:za
-  npm run data:za:dlc
-  npm run data:paldea
+  npm run data:regional
   ```
 
 ### 3. 개발 서버 실행
@@ -97,6 +95,7 @@ npm run dev
 ├── pokemon-paldea.json # 팔데아도감 데이터
 ├── pokemon-za.json     # ZA도감 데이터
 ├── pokemon-za-dlc.json # ZA DLC 도감 데이터
+├── 지역도감_시트정보.json # 지역 도감 설정 파일 (구글 시트 GID 등)
 ├── index.html          # 메인 페이지
 ├── index.js            # 클라이언트 사이드 로직 (UI, 검색, 이벤트, 폼 전환)
 ├── load-data.js        # (Node.js) 전국도감 및 폼 데이터 생성 스크립트

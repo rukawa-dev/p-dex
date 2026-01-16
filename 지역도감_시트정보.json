@@ -1,0 +1,23 @@
+[
+  {
+    "key":"za",
+    "game":"Pokémon LEGENDS Z-A",
+    "name":"미르도감(본토)",
+    "gid":"0",
+    "output":"pokemon-za.json"
+  },
+  {
+    "key":"za:dlc",
+    "game":"Pokémon LEGENDS Z-A",
+    "name":"이차원도감 (DLC)",
+    "gid":"1623373325",
+    "output":"pokemon-za-dlc.json"
+  },
+  {
+    "key":"paldea",
+    "game":"포켓몬스터 스칼렛·바이올렛",
+    "name":"팔데아도감(본토)",
+    "gid":"1321757419",
+    "output":"pokemon-paldea.json"
+  }
+]
