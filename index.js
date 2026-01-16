@@ -596,7 +596,7 @@ async function createSidebarMenu() {
             ${items.map(item => `
               <div class="flex items-center group/item pr-2">
                 <button class="dex-btn flex-grow flex items-center space-x-3 p-2 text-gray-500 hover:bg-gray-50 hover:text-indigo-600 rounded-lg transition-all text-left" 
-                  data-dex-type="${item.key}" data-file="${item.output}" data-is-national="false">
+                  data-dex-type="${item.key}" data-file="pokemon-${item.key.replace(/:/g, '-')}.json" data-is-national="false">
                   <div class="w-1.5 h-1.5 rounded-full bg-gray-300 ml-1"></div>
                   <span class="text-sm font-medium">${item.name}</span>
                 </button>
