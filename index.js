@@ -138,16 +138,18 @@ function createPokemonCard(pokemon, index) {
   // 도감 번호 표시 로직
   const listNumHtml = isNationalDex ? '' : `<span class="list-num-b4d752de text-gray-500 mr-1">No.${index + 1}</span>`;
 
-  // 폼 버튼 HTML 생성
+  // 폼 버튼/드롭다운 HTML 생성
   let formsHtml = '';
   if (pokemon.forms && pokemon.forms.length > 0) {
     formsHtml = `
-      <div class="mt-3 flex flex-wrap justify-center gap-1.5 px-2">
-          <button class="form-btn px-2 py-1 text-xs bg-indigo-600 text-white rounded shadow-sm hover:bg-indigo-700 transition" onclick="resetForm(${pokemon.id})">기본</button>
+      <div class="mt-3 px-2 w-full max-w-[150px]">
+        <select class="form-select w-full p-1.5 text-xs border border-gray-200 rounded-md bg-white text-gray-700 outline-none focus:ring-1 focus:ring-indigo-500 transition-all font-medium" 
+          onchange="handleFormChange(${pokemon.id}, this)">
+          <option value="reset">기본 폼 (Default)</option>
           ${pokemon.forms.map((form, i) => `
-              <button class="form-btn px-2 py-1 text-xs bg-gray-200 text-gray-700 rounded shadow-sm hover:bg-gray-300 transition" 
-                  onclick="switchForm(${pokemon.id}, ${i})">${form.name.replace(pokemon.name, '').trim() || form.name}</button>
+            <option value="${i}">${form.name.replace(pokemon.name, '').trim() || form.name}</option>
           `).join('')}
+        </select>
       </div>`;
   }
 
@@ -222,8 +224,8 @@ window.switchForm = function (id, formIndex) {
   const typesDiv = document.querySelector(`#types-${id} div`);
   typesDiv.innerHTML = createTypeBadgesHtml(targetForm.types);
 
-  // 버튼 스타일 업데이트
-  updateFormButtons(card, formIndex + 1); // 0은 기본 폼 버튼(인덱스상 첫번째)
+  // UI 업데이트 (버튼 또는 드롭다운)
+  updateFormUI(card, formIndex + 1); // 0은 기본 폼 버튼(인덱스상 첫번째)
 };
 
 window.resetForm = function (id) {
@@ -246,21 +248,45 @@ window.resetForm = function (id) {
   const typesDiv = document.querySelector(`#types-${id} div`);
   typesDiv.innerHTML = createTypeBadgesHtml(baseTypes);
 
-  // 버튼 스타일 업데이트
-  updateFormButtons(card, 0);
+  // UI 업데이트 (버튼 또는 드롭다운)
+  updateFormUI(card, 0);
 };
 
-function updateFormButtons(card, activeIndex) {
+/**
+ * 드롭다운(Select) 변경 시 호출되는 핸들러
+ */
+window.handleFormChange = function (id, selectEl) {
+  const value = selectEl.value;
+  if (value === 'reset') {
+    resetForm(id);
+  } else {
+    switchForm(id, parseInt(value));
+  }
+};
+
+/**
+ * 폼 선택 UI(버튼 또는 드롭다운)의 상태를 업데이트합니다.
+ */
+function updateFormUI(card, activeIndex) {
+  // 1. 버튼 방식 업데이트
   const buttons = card.querySelectorAll('.form-btn');
-  buttons.forEach((btn, index) => {
-    if (index === activeIndex) {
-      btn.classList.remove('bg-gray-200', 'text-gray-700');
-      btn.classList.add('bg-indigo-600', 'text-white');
-    } else {
-      btn.classList.add('bg-gray-200', 'text-gray-700');
-      btn.classList.remove('bg-indigo-600', 'text-white');
-    }
-  });
+  if (buttons.length > 0) {
+    buttons.forEach((btn, index) => {
+      if (index === activeIndex) {
+        btn.classList.remove('bg-gray-200', 'text-gray-700');
+        btn.classList.add('bg-indigo-600', 'text-white');
+      } else {
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+        btn.classList.remove('bg-indigo-600', 'text-white');
+      }
+    });
+  }
+
+  // 2. 드롭다운 방식 업데이트
+  const select = card.querySelector('.form-select');
+  if (select) {
+    select.value = activeIndex === 0 ? 'reset' : (activeIndex - 1).toString();
+  }
 }
 
 // --- 이벤트 핸들러 및 주요 기능 ---
