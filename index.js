@@ -75,6 +75,19 @@ let currentMatchIndex = -1;
 // --- 헬퍼 함수 ---
 
 /**
+ * 검색 모드에 따라 하단 네비게이션 컨트롤의 가시성을 업데이트합니다.
+ * '이름' 검색 모드에서만 노출됩니다.
+ */
+function updateSearchNavVisibility() {
+  const searchColumn = searchOptionSelect.value;
+  if (searchColumn === 'name') {
+    searchNavControls.classList.remove('hidden');
+  } else {
+    searchNavControls.classList.add('hidden');
+  }
+}
+
+/**
  * 현재 활성화된 도감의 이름을 반환합니다.
  * @returns {string} 도감 이름
  */
@@ -136,7 +149,7 @@ function createPokemonCard(pokemon, index) {
   const wikiUrl = `https://pokemon.fandom.com/ko/wiki/${pokemon.name}_(포켓몬)`;
 
   // 도감 번호 표시 로직
-  const listNumHtml = isNationalDex ? '' : `<span class="list-num-b4d752de text-gray-500 mr-1">No.${index + 1}</span>`;
+  const listNumHtml = isNationalDex ? '' : `<span class="pokemon-list-num text-gray-500 mr-1">No.${index + 1}</span>`;
 
   // 폼 버튼/드롭다운 HTML 생성
   let formsHtml = '';
@@ -165,7 +178,7 @@ function createPokemonCard(pokemon, index) {
       ${listNumHtml}
       <span class="text-xs text-green-600">#${pokemon.id}</span>
     </p>
-    <div class="img-box-56319e8e p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center transition-colors duration-300">
+    <div class="pokemon-img-container p-4 pt-8 bg-gray-50 flex flex-col items-center justify-center transition-colors duration-300">
       <img id="img-${pokemon.id}" src="${pokemon.image}" alt="${pokemon.name}" class="w-24 h-24 pokemon-image transition-transform duration-300" loading="lazy">
       <a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center mt-2">
         <h3 id="name-${pokemon.id}" class="text-lg font-bold text-gray-800 group-hover:underline text-center break-keep">${pokemon.name}</h3>
@@ -418,10 +431,6 @@ function handleSearch() {
   matchedCards = [];
   currentMatchIndex = -1;
 
-  // 내비게이션 컨트롤 숨김 (flex 클래스 제거, hidden 클래스 추가)
-  searchNavControls.classList.remove('flex');
-  searchNavControls.classList.add('hidden');
-
   // 1. 이름 검색일 경우: 스크롤 이동 방식
   if (searchColumn === 'name') {
     allCards.forEach(card => {
@@ -443,16 +452,19 @@ function handleSearch() {
       }
     });
 
-    // 매칭된 결과가 있으면 내비게이션 표시 및 첫 번째 결과로 이동
+    // 매칭된 결과가 있으면 첫 번째 결과로 이동
     if (matchedCards.length > 0) {
-      searchNavControls.classList.remove('hidden');
-      searchNavControls.classList.add('flex');
       moveToMatch(0);
+    } else {
+      // 결과가 없으면 카운터 초기화
+      searchCounter.textContent = '0/0';
     }
+    updateSearchNavVisibility();
     return;
   }
 
   // 2. 그 외 검색(도감번호, 타입 등): 필터링 방식
+  updateSearchNavVisibility();
   allCards.forEach(card => {
     // 하이라이트 초기화
     card.classList.remove('ring-4', 'ring-yellow-400', 'z-20');
@@ -709,6 +721,7 @@ window.toggleCategory = function (id, forceOpen = false) {
 async function initialize() {
   // 초기 UI 상태 설정
   updateToggleBtnUI();
+  updateSearchNavVisibility();
 
   // 이벤트 리스너 연결
   searchInput.addEventListener('input', handleSearch);

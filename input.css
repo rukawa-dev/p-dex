@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 
-.is-caught .img-box-56319e8e {
-  background-color: skyblue;
+.is-caught .pokemon-img-container {
+  background-color: #d1fae5;
 }
 
 .toggle-checkbox:checked {
